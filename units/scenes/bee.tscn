@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://cqk7nr3fbe5o"]
+
+[ext_resource type="PackedScene" uid="uid://bvtp0s6wnj00c" path="res://units/unit.tscn" id="1_nwdxo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nwdxo"]
+albedo_color = Color(1, 0.7666667, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_uv1g8"]
+material = SubResource("StandardMaterial3D_nwdxo")
+size = Vector3(0.7, 0.7, 0.7)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v5471"]
+albedo_color = Color(0.37, 0.291745, 0.2701, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_uv1g8"]
+material = SubResource("StandardMaterial3D_v5471")
+size = Vector3(0.5, 0.5, 0.5)
+
+[node name="Bee" unique_id=544613324 instance=ExtResource("1_nwdxo")]
+collision_layer = 512
+
+[node name="MeshInstance3D" parent="View" parent_id_path=PackedInt32Array(1725393697) index="0" unique_id=1431449746]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("BoxMesh_uv1g8")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="View" parent_id_path=PackedInt32Array(1725393697) index="1" unique_id=1412854508]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1.2, -0.5)
+mesh = SubResource("PrismMesh_uv1g8")
+
+[node name="SelectView" parent="." index="2" unique_id=1425820741]
+visible = false

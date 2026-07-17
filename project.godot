@@ -15,8 +15,17 @@ run/main_scene="uid://g2tauh0gspdj"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Controls="*uid://c2hyt6poi2t5c"
+MouseInput="*uid://135n7rh3gs4x"
+Nodes="*uid://bkfm82mofvjbj"
+
 [display]
 
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/mode=3
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
