@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://bt3g4k22j16ej"]
+
+[ext_resource type="Script" uid="uid://ukk6mw3ml4gn" path="res://units/unit.gd" id="1_rfm8r"]
+[ext_resource type="ArrayMesh" uid="uid://cclcfmiofkhu4" path="res://Assets/Animals/Penguin/animal-penguin.obj" id="2_fdw5m"]
+[ext_resource type="Texture2D" uid="uid://c8fe5wldvut7q" path="res://Assets/Animals/colormap.png" id="2_ivvgl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ivvgl"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("2_ivvgl")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_n3mfm"]
+radius = 1.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n3mfm"]
+albedo_color = Color(0, 1, 0.64995646, 0.39000002)
+
+[sub_resource type="TorusMesh" id="TorusMesh_ivvgl"]
+material = SubResource("StandardMaterial3D_n3mfm")
+
+[node name="Penguin" type="CharacterBody3D" unique_id=1493439624]
+script = ExtResource("1_rfm8r")
+
+[node name="View" type="Node3D" parent="." unique_id=792624847]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="View" unique_id=1082022792]
+material_override = SubResource("StandardMaterial3D_ivvgl")
+cast_shadow = 0
+mesh = ExtResource("2_fdw5m")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=821766520]
+shape = SubResource("SphereShape3D_n3mfm")
+
+[node name="SelectView" type="MeshInstance3D" parent="." unique_id=691376556]
+unique_name_in_owner = true
+mesh = SubResource("TorusMesh_ivvgl")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1040918590]
+unique_name_in_owner = true

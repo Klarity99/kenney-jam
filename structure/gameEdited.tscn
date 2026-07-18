@@ -48,8 +48,6 @@ size = Vector3(1.6, 0.8, 1.6)
 size = Vector3(100, 1, 100)
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_uv1g8"]
-vertices = PackedVector3Array(-49.5, 0.5, -49.5, -49.5, 0.5, 49.5, 49.5, 0.5, 49.5, 49.5, 0.5, -49.5)
-polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
 [node name="Game" type="Node3D" unique_id=1225339460]
 
@@ -57,16 +55,22 @@ polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
 [node name="Bee" parent="Units" unique_id=544613324 instance=ExtResource("1_2epig")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8414166, 0, -4.5202312)
+collision_mask = 0
+move_speed = 5.0
 id = "bee"
 ally = true
 
 [node name="Bee2" parent="Units" unique_id=368719653 instance=ExtResource("1_2epig")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.134755, 0, -4.3387833)
+collision_mask = 0
+move_speed = 5.0
 id = "bee"
 ally = true
 
 [node name="Bee3" parent="Units" unique_id=663540903 instance=ExtResource("1_2epig")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.874092, 0, 5.5188828)
+collision_mask = 0
+move_speed = 5.0
 id = "bee"
 ally = true
 
@@ -75,7 +79,6 @@ collision_layer = 512
 collision_mask = 0
 script = ExtResource("2_w5r8o")
 id = "hive"
-builidng = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Units/BeeHive" unique_id=1822252848]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
@@ -98,6 +101,7 @@ visible = false
 mesh = SubResource("TorusMesh_uv1g8")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="Units/BeeHive" unique_id=1200929928]
+unique_name_in_owner = true
 
 [node name="Crab" parent="Units" unique_id=1977050223 instance=ExtResource("3_ccnt6")]
 transform = Transform3D(-0.34932056, 0, -0.93700325, 0, 1, 0, 0.93700325, 0, -0.34932056, -15.104718, 0, -12.351271)
@@ -122,6 +126,6 @@ shape = SubResource("BoxShape3D_uv1g8")
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=803932357]
 navigation_mesh = SubResource("NavigationMesh_uv1g8")
 
-[node name="Environment" parent="NavigationRegion3D" unique_id=1959008010 instance=ExtResource("4_w5r8o")]
+[node name="Environment" parent="." unique_id=1959008010 instance=ExtResource("4_w5r8o")]
 
-[editable path="NavigationRegion3D/Environment"]
+[editable path="Environment"]
