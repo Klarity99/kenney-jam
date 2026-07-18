@@ -2,13 +2,22 @@ extends Node3D
 
 
 @export var panSpeed : float = 15.0
+@export var panFastSpeed : float = 2.5
+@export var rotationSpeed : float = 2.5
 @export var zoomSpeed : float = 2.0
 @export var minZoomScale : float = 4.0
 @export var maxZoomScale : float = 25.0
+@export var limitCameraOnXAxis : float = 40.0
+@export var limitCameraOnZAxis : float = 40.0
 
 @onready var camera3d : Camera3D = $Camera3D
 
 func _process(delta: float) -> void:
+	if Input.is_physical_key_pressed(KEY_Q):
+		rotation.y += rotationSpeed * delta
+	if Input.is_physical_key_pressed(KEY_E):
+		rotation.y -= rotationSpeed * delta
+	
 	var movementDirection := Vector3.ZERO
 	
 	if Input.is_action_pressed("ui_up") or Input.is_physical_key_pressed(KEY_W):
@@ -22,7 +31,14 @@ func _process(delta: float) -> void:
 	
 	if movementDirection != Vector3.ZERO:
 		movementDirection = movementDirection.normalized()
-		position += movementDirection * panSpeed * delta
+		movementDirection = movementDirection.rotated(Vector3.UP, rotation.y)
+		var currentSpeed : float = panSpeed
+		if Input.is_physical_key_pressed(KEY_SHIFT):
+			currentSpeed *= panFastSpeed
+		position += movementDirection * currentSpeed * delta
+	
+	position.x = clamp(position.x, -limitCameraOnXAxis, limitCameraOnXAxis)
+	position.z = clamp(position.z, -limitCameraOnZAxis, limitCameraOnZAxis)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
