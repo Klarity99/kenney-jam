@@ -2,7 +2,7 @@ extends Node3D
 class_name Unit
 
 @onready var select_view := %SelectView
-@onready var nav_agent := $NavigationAgent3D
+@onready var nav_agent := %NavigationAgent3D
 
 @export var move_speed := 5.0
 @export var id: String
