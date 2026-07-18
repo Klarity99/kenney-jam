@@ -55,16 +55,22 @@ size = Vector3(100, 1, 100)
 
 [node name="Bee" parent="Units" unique_id=544613324 instance=ExtResource("1_2epig")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8414166, 0, -4.5202312)
+collision_mask = 0
+move_speed = 5.0
 id = "bee"
 ally = true
 
 [node name="Bee2" parent="Units" unique_id=368719653 instance=ExtResource("1_2epig")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.134755, 0, -4.3387833)
+collision_mask = 0
+move_speed = 5.0
 id = "bee"
 ally = true
 
 [node name="Bee3" parent="Units" unique_id=663540903 instance=ExtResource("1_2epig")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.874092, 0, 5.5188828)
+collision_mask = 0
+move_speed = 5.0
 id = "bee"
 ally = true
 
@@ -73,7 +79,6 @@ collision_layer = 512
 collision_mask = 0
 script = ExtResource("2_w5r8o")
 id = "hive"
-builidng = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Units/BeeHive" unique_id=1822252848]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
