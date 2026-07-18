@@ -34,7 +34,8 @@ func parse_mouse_press(button_index: int, unit: Unit, floor_pos: Vector3):
 #				else:
 #					Controls.floor_right_click(Vector2(floor_pos.x, floor_pos.z))
 
-func mouse_press(event :InputEventMouseButton):
+func mouse_press(event :InputEventMouseButton) -> void:
+	if not Nodes.game: return
 	var camera :Camera3D = get_viewport().get_camera_3d()
 	var from :Vector3 = camera.project_ray_origin(event.position)
 	var to :Vector3 = from + camera.project_ray_normal(event.position) * 1000
