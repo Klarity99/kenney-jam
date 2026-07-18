@@ -1,10 +1,10 @@
 [gd_scene format=4 uid="uid://otulilnltlmt"]
 
-[ext_resource type="Texture2D" uid="uid://dmu4l3aj8jq8u" path="res://Assets/Environment/grass.png" id="1_apx3g"]
+[ext_resource type="Texture2D" uid="uid://csmbtcfjbxex3" path="res://Assets/Environment/Godot Dedicated Scenes/colormap.png" id="1_apx3g"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ewtqy"]
 resource_name = "colormap"
-vertex_color_is_srgb = true
+albedo_texture = ExtResource("1_apx3g")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_1lfyo"]
 _surfaces = [{
@@ -64,11 +64,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_1lfyo")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ypncg"]
-albedo_texture = ExtResource("1_apx3g")
-
 [node name="grass" type="Node3D" unique_id=474254834]
 
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=813565713]
 mesh = SubResource("ArrayMesh_ivwyx")
-surface_material_override/0 = SubResource("StandardMaterial3D_ypncg")

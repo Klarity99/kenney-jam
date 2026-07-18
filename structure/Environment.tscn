@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://bh8t68141jqd8" path="res://Scripts/camera_pivot.gd" id="4_tvovm"]
 [ext_resource type="Texture2D" uid="uid://bmlcg3hyakb71" path="res://Assets/Environment/rock-a.png" id="7_t5nok"]
 [ext_resource type="ArrayMesh" uid="uid://bes0x3k8epbo6" path="res://Assets/Environment/rock-a.obj" id="7_xq0rg"]
+[ext_resource type="PackedScene" uid="uid://b1ro34t0mxoh1" path="res://Assets/Environment/Godot Dedicated Scenes/patch-grass.tscn" id="4_y1xwy"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_dotlx"]
 
@@ -87,6 +88,21 @@ multimesh = SubResource("MultiMesh_y1xwy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, -12)
 visible = false
 mesh = ExtResource("2_ypncg")
+
+[node name="PatchGrass" parent="." unique_id=481969486 instance=ExtResource("4_y1xwy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0356627, 0, -2.9480472)
+
+[node name="PatchGrass4" parent="." unique_id=1375894893 instance=ExtResource("4_y1xwy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0129192, 0.36583924, -5.0165114)
+
+[node name="PatchGrass5" parent="." unique_id=2147024204 instance=ExtResource("4_y1xwy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.16693592, 0.13763785, -5.0165114)
+
+[node name="PatchGrass2" parent="." unique_id=1298671116 instance=ExtResource("4_y1xwy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.469317, 0, 0.4888718)
+
+[node name="PatchGrass3" parent="." unique_id=2107566568 instance=ExtResource("4_y1xwy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6700673, 0, -7.4746485)
 
 [node name="CameraPivot" type="Node3D" parent="." unique_id=1296783688]
 script = ExtResource("4_tvovm")

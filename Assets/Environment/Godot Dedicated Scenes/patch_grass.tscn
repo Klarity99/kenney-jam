@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://bb1sbvmoav61u"]
+
+[ext_resource type="PackedScene" uid="uid://ca2uiohkgoshs" path="res://Assets/Environment/Godot Dedicated Scenes/patch-grass.fbx" id="1_impa4"]
+
+[node name="patch-grass" unique_id=374261786 instance=ExtResource("1_impa4")]
