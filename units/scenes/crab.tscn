@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bvtp0s6wnj00c" path="res://units/unit.tscn" id="1_8syei"]
 [ext_resource type="ArrayMesh" uid="uid://dtlyrtcv2k1p3" path="res://Assets/Animals/Crab/animal-crab.obj" id="2_32vo0"]
+[ext_resource type="PackedScene" uid="uid://c2nv5wf2eqlr4" path="res://Assets/Animals/Crab/animal-crab.fbx" id="2_j2ghb"]
 [ext_resource type="Texture2D" uid="uid://c8fe5wldvut7q" path="res://Assets/Animals/colormap.png" id="2_p0sbq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p0sbq"]
@@ -24,13 +25,20 @@ outer_radius = 1.4
 [sub_resource type="ViewportTexture" id="ViewportTexture_p0sbq"]
 viewport_path = NodePath("FloaterSprite3D/SubViewport")
 
-[node name="Crab" unique_id=544613324 instance=ExtResource("1_8syei")]
+[node name="Crab" unique_id=544613324 node_paths=PackedStringArray("animation") instance=ExtResource("1_8syei")]
 id = "crab"
 loot = 100
+animation = NodePath("View/animal-crab/AnimationPlayer")
 hp = 30
 
-[node name="MeshInstance3D" parent="View" parent_id_path=PackedInt32Array(1725393697) index="0" unique_id=1431449746]
+[node name="animal-crab" parent="View" parent_id_path=PackedInt32Array(1725393697) index="0" unique_id=1874338521 instance=ExtResource("2_j2ghb")]
+
+[node name="body" parent="View/animal-crab/animal-crab/root" parent_id_path=PackedInt32Array(1874338521, 438791850) index="1" unique_id=1573416586]
+transform = Transform3D(0.9824088, 0.1732252, 0.06975646, -0.1736482, 0.9848077, 4.656613e-10, -0.06869671, -0.012113084, 0.9975641, 1.573182e-08, 0.18124998, -3.8083503e-08)
+
+[node name="MeshInstance3D" parent="View" parent_id_path=PackedInt32Array(1725393697) index="1" unique_id=1431449746]
 transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
+visible = false
 material_override = SubResource("StandardMaterial3D_p0sbq")
 cast_shadow = 0
 mesh = ExtResource("2_32vo0")
@@ -43,3 +51,5 @@ mesh = SubResource("TorusMesh_p0sbq")
 
 [node name="FloaterSprite3D" parent="." index="6" unique_id=1350929214]
 texture = SubResource("ViewportTexture_p0sbq")
+
+[editable path="View/animal-crab"]

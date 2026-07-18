@@ -7,13 +7,13 @@ class_name Unit
 @onready var reach_area: Area3D = $Reach
 @onready var seconds_timer: Timer = $SecondsTimer
 @onready var floater := %FloaterControl
-@onready var animation : AnimationPlayer = $"View/animal-bee/AnimationPlayer"
 
 @export var move_speed := 5.0
 @export var id: String
 @export var building := false
 @export var ally := false
 @export var loot: int
+@export var animation : AnimationPlayer
 
 var in_reach := []
 
@@ -44,7 +44,6 @@ func _ready() -> void:
 		else:
 			floater.visible = true
 	update_floater_hp()
-	
 	animationLoop("idle", true)
 	animationLoop("run", true)
 	animationLoop("eat", true)

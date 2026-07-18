@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://ukk6mw3ml4gn" path="res://units/unit.gd" id="1_rfm8r"]
 [ext_resource type="ArrayMesh" uid="uid://cclcfmiofkhu4" path="res://Assets/Animals/Penguin/animal-penguin.obj" id="2_fdw5m"]
 [ext_resource type="Texture2D" uid="uid://c8fe5wldvut7q" path="res://Assets/Animals/colormap.png" id="2_ivvgl"]
+[ext_resource type="PackedScene" uid="uid://bkecjo41ybljr" path="res://Assets/Animals/Penguin/animal-penguin.fbx" id="2_n3mfm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ivvgl"]
 transparency = 2
@@ -19,12 +20,16 @@ albedo_color = Color(0, 1, 0.64995646, 0.39000002)
 [sub_resource type="TorusMesh" id="TorusMesh_ivvgl"]
 material = SubResource("StandardMaterial3D_n3mfm")
 
-[node name="Penguin" type="CharacterBody3D" unique_id=1493439624]
+[node name="Penguin" type="CharacterBody3D" unique_id=1493439624 node_paths=PackedStringArray("animation")]
 script = ExtResource("1_rfm8r")
+animation = NodePath("View/animal-penguin/AnimationPlayer")
 
 [node name="View" type="Node3D" parent="." unique_id=792624847]
 
+[node name="animal-penguin" parent="View" unique_id=269273525 instance=ExtResource("2_n3mfm")]
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="View" unique_id=1082022792]
+visible = false
 material_override = SubResource("StandardMaterial3D_ivvgl")
 cast_shadow = 0
 mesh = ExtResource("2_fdw5m")
@@ -38,3 +43,5 @@ mesh = SubResource("TorusMesh_ivvgl")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1040918590]
 unique_name_in_owner = true
+
+[editable path="View/animal-penguin"]
