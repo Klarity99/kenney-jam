@@ -57,6 +57,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8414166, 0, -4.5202312)
 id = "bee"
 ally = true
 
+[node name="Bee4" parent="Units" unique_id=1467829073 instance=ExtResource("1_yt7f2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.452511, 0, -3.2201033)
+id = "bee"
+ally = true
+
+[node name="Bee5" parent="Units" unique_id=1367635193 instance=ExtResource("1_yt7f2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.421274, 0, -5.9639435)
+id = "bee"
+ally = true
+
+[node name="Bee6" parent="Units" unique_id=2079351565 instance=ExtResource("1_yt7f2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.6739225, 0, -1.1560163)
+id = "bee"
+ally = true
+
 [node name="Bee2" parent="Units" unique_id=368719653 instance=ExtResource("1_yt7f2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.134755, 0, -4.3387833)
 id = "bee"
@@ -97,6 +112,12 @@ mesh = SubResource("TorusMesh_uv1g8")
 
 [node name="Crab" parent="Units" unique_id=1977050223 instance=ExtResource("3_afpvs")]
 transform = Transform3D(-0.34932056, 0, -0.93700325, 0, 1, 0, 0.93700325, 0, -0.34932056, -15.104718, 0, -12.351271)
+
+[node name="Crab2" parent="Units" unique_id=465752031 instance=ExtResource("3_afpvs")]
+transform = Transform3D(-0.34932056, 0, -0.93700325, 0, 1, 0, 0.93700325, 0, -0.34932056, -7.3175764, 0, -11.567726)
+
+[node name="Crab3" parent="Units" unique_id=1010482667 instance=ExtResource("3_afpvs")]
+transform = Transform3D(-0.34932056, 0, -0.93700325, 0, 1, 0, 0.93700325, 0, -0.34932056, -14.549222, 0, -1.3900299)
 
 [node name="Meat" parent="Units" unique_id=1230019374 instance=ExtResource("4_ggc3g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75013053, 0, -11.113395)

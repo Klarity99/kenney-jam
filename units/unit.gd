@@ -12,6 +12,7 @@ class_name Unit
 @export var id: String
 @export var building := false
 @export var ally := false
+@export var loot: int
 
 var in_reach := []
 
@@ -46,11 +47,23 @@ func _ready() -> void:
 
 signal died
 
-func dmg(amount: int):
+var dead := false
+
+func dmg(amount: int) -> void:
+	if dead: return
 	hp -= amount
 	if hp <= 0:
+		dead = true
 		queue_free()
 		died.emit()
+		if not ally:
+			var meat_node: Unit = load("res://units/scenes/meat.tscn").instantiate()
+			add_sibling(meat_node)
+			meat_node.hp = loot
+			meat_node.hp_max = loot
+			meat_node.view.scale *= loot / 100.0
+			meat_node.get_node("CollisionShape3D").shape.radius *= loot / 100.0
+			meat_node.global_position = global_position
 	update_floater_hp()
 	
 func update_floater_hp():

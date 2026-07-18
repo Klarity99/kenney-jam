@@ -10,6 +10,9 @@ alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
 albedo_texture = ExtResource("2_p0sbq")
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_p0sbq"]
+radius = 1.1
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vu64o"]
 albedo_color = Color(0, 1, 0.3833332, 0.39215687)
 
@@ -18,21 +21,25 @@ material = SubResource("StandardMaterial3D_vu64o")
 inner_radius = 0.8
 outer_radius = 1.4
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_8syei"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_p0sbq"]
 viewport_path = NodePath("FloaterSprite3D/SubViewport")
 
 [node name="Crab" unique_id=544613324 instance=ExtResource("1_8syei")]
-collision_layer = 512
 id = "crab"
+loot = 100
 hp = 30
 
 [node name="MeshInstance3D" parent="View" parent_id_path=PackedInt32Array(1725393697) index="0" unique_id=1431449746]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_p0sbq")
 cast_shadow = 0
 mesh = ExtResource("2_32vo0")
+
+[node name="CollisionShape3D" parent="." index="1" unique_id=1940204611]
+shape = SubResource("SphereShape3D_p0sbq")
 
 [node name="SelectView" parent="." index="2" unique_id=1425820741]
 mesh = SubResource("TorusMesh_p0sbq")
 
 [node name="FloaterSprite3D" parent="." index="6" unique_id=1350929214]
-texture = SubResource("ViewportTexture_8syei")
+texture = SubResource("ViewportTexture_p0sbq")
