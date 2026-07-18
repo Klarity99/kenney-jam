@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c3bdxaveqvyyn" path="res://units/scenes/meat.tscn" id="4_w5r8o"]
 [ext_resource type="PackedScene" uid="uid://bngshg2sjmuux" path="res://structure/floor.tscn" id="5_ccnt6"]
 [ext_resource type="PackedScene" uid="uid://bdl3ig4n6gxgx" path="res://structure/Environment.tscn" id="6_u2mji"]
+[ext_resource type="Script" uid="uid://glceocqlv4o3" path="res://structure/instructions_panel.gd" id="8_qwh1x"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vu64o"]
 albedo_color = Color(1, 0.90000004, 0, 1)
@@ -157,3 +158,78 @@ navigation_mesh = SubResource("NavigationMesh_uv1g8")
 [node name="Floor" parent="NavigationRegion3D" unique_id=1289221044 instance=ExtResource("5_ccnt6")]
 
 [node name="Environment" parent="." unique_id=1959008010 instance=ExtResource("6_u2mji")]
+
+[node name="Interface" type="Control" parent="." unique_id=392688739]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+
+[node name="ControlsBtn" type="Button" parent="Interface" unique_id=46101393]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 3.0
+offset_right = 76.0
+offset_bottom = 34.0
+text = "Controls"
+
+[node name="InstructionsPanel" type="Control" parent="Interface" unique_id=1375313519]
+anchors_preset = 0
+offset_left = 562.0
+offset_top = 246.0
+offset_right = 562.0
+offset_bottom = 246.0
+script = ExtResource("8_qwh1x")
+
+[node name="ColorRect" type="ColorRect" parent="Interface/InstructionsPanel" unique_id=146435574]
+layout_mode = 0
+offset_left = -593.0
+offset_top = -273.0
+offset_right = 1468.0
+offset_bottom = 903.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.39215687)
+
+[node name="PanelContainer" type="PanelContainer" parent="Interface/InstructionsPanel" unique_id=634719994]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Interface/InstructionsPanel/PanelContainer" unique_id=80110816]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Label" type="RichTextLabel" parent="Interface/InstructionsPanel/PanelContainer/MarginContainer" unique_id=1621533234]
+custom_minimum_size = Vector2(550, 0)
+layout_mode = 2
+bbcode_enabled = true
+text = "[font_size=28][color=#FFD54F]Controls[/color][/font_size]
+[color=#81C784]Left-click[/color] Select objects
+[color=#81C784]Right-click[/color] Command selected units to [b]Move[/b], [b]Gather[/b] and [b]Attack[/b]
+[color=#64B5F6]WASD[/color] Move camera
+[color=#64B5F6]Scroll Wheel[/color] Zoom camera
+
+[font_size=28][color=#FFD54F]Objective[/color][/font_size]
+Defeat the [color=#FF8A65][b]Big Elephant[/b][/color] within [color=#FF5252][b]3 minutes[/b][/color]."
+fit_content = true
+
+[node name="BtnBackground" type="ColorRect" parent="Interface/InstructionsPanel" unique_id=1509939402]
+layout_mode = 0
+offset_left = 460.0
+offset_top = 191.0
+offset_right = 537.0
+offset_bottom = 230.0
+mouse_filter = 2
+color = Color(0.71, 0.59308666, 0.17040001, 0.39215687)
+
+[node name="CloseBtn" type="Button" parent="Interface/InstructionsPanel" unique_id=136370410]
+layout_mode = 0
+offset_left = 464.0
+offset_top = 195.0
+offset_right = 532.0
+offset_bottom = 226.0
+text = "OK"
+
+[connection signal="pressed" from="Interface/ControlsBtn" to="Interface/InstructionsPanel" method="toggle"]
