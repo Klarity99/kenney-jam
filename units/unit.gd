@@ -28,6 +28,8 @@ var last_target_mine: Unit
 var target_unit: Unit
 var target_floor: Vector3
 
+var ui : CanvasLayer
+
 func _ready() -> void:
 	hp_max = hp
 	select_view.visible = false
@@ -153,9 +155,17 @@ func change_state(new_state) -> void:
 	match new_state:
 		"idle":
 			playAnimation("idle")
-		"move", "move_mine", "move_building", "move_attack":
+		"move":
 			playAnimation("run")
-		"mine", "attack":
+		"move_mine":
+			playAnimation("run")
+		"move_building":
+			playAnimation("run")
+		"move_attack":
+			playAnimation("run")
+		"attack":
+			playAnimation("eat")
+		"mine":
 			playAnimation("eat")
 	match new_state:
 		"attack":
@@ -213,3 +223,11 @@ func on_body_exited(body: Node3D) -> void:
 		if name.contains("Bee") and !name.contains("Hive"):
 			animation.play("idle")
 		change_state("idle")
+
+func _input_event(_camera: Camera3D, event: InputEvent, _event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
+		get_viewport().set_input_as_handled()
+		ui = get_tree().current_scene.get_node("UI")
+		ui.visible = true
+		if ui:
+			ui.showDetails(state)

@@ -34,12 +34,11 @@ hp = 30
 [node name="animal-crab" parent="View" parent_id_path=PackedInt32Array(1725393697) index="0" unique_id=1874338521 instance=ExtResource("2_j2ghb")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
-[node name="body" parent="View/animal-crab/animal-crab/root" parent_id_path=PackedInt32Array(1874338521, 871246586) index="1" unique_id=1528554565]
+[node name="body" parent="View/animal-crab/animal-crab/root" parent_id_path=PackedInt32Array(1874338521, 438791850) index="1" unique_id=1573416586]
 transform = Transform3D(0.9824088, 0.1732252, 0.06975646, -0.1736482, 0.9848077, 4.656613e-10, -0.06869671, -0.012113084, 0.9975641, 1.573182e-08, 0.18124998, -3.8083503e-08)
 
 [node name="MeshInstance3D" parent="View" parent_id_path=PackedInt32Array(1725393697) index="1" unique_id=1431449746]
 transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
-visible = false
 material_override = SubResource("StandardMaterial3D_p0sbq")
 cast_shadow = 0
 mesh = ExtResource("2_32vo0")

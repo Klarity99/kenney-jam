@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cb6c6qb81aikd"]
 
-[ext_resource type="Script" uid="uid://cunexk6oqkcjp" path="res://structure/menu.gd" id="1_7k5hj"]
+[ext_resource type="Script" uid="uid://csjlhdunqxkyv" path="res://structure/menu.gd" id="1_7k5hj"]
 [ext_resource type="Shader" uid="uid://cqgy87c4jn2y3" path="res://structure/menu_blur.gdshader" id="2_q85n1"]
 [ext_resource type="Texture2D" uid="uid://bxhhjvowc86ae" path="res://Assets/Interface/banner_classic_curtain.svg" id="3_52gwt"]
 [ext_resource type="FontFile" uid="uid://bfel12nuthty7" path="res://Assets/Fonts/Kenney Blocks.ttf" id="4_ciqhn"]
@@ -61,7 +61,11 @@ transform = Transform3D(0.8660253, -0.35355347, 0.3535534, -0.43301275, -0.17677
 
 [node name="Control" type="Control" parent="." unique_id=202312892]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="ColorRect" type="ColorRect" parent="Control" unique_id=1585076461]
 material = SubResource("ShaderMaterial_uv1g8")
@@ -70,19 +74,22 @@ offset_right = 1983.0
 offset_bottom = 1145.0
 
 [node name="TextureRect" type="TextureRect" parent="Control" unique_id=1517066232]
-layout_mode = 0
-offset_left = 511.0
-offset_top = 110.0
-offset_right = 1390.2307
-offset_bottom = 335.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -439.61536
+offset_right = 439.61536
+offset_bottom = 225.0
+grow_horizontal = 2
 texture = ExtResource("3_52gwt")
 
-[node name="Label" type="Label" parent="Control" unique_id=849974425]
+[node name="Label" type="Label" parent="Control/TextureRect" unique_id=849974425]
 layout_mode = 0
-offset_left = 685.0
-offset_top = 147.0
-offset_right = 1225.0
-offset_bottom = 267.0
+offset_left = 174.0
+offset_top = 37.0
+offset_right = 714.0
+offset_bottom = 157.0
 theme_override_constants/paragraph_spacing = 0
 theme_override_fonts/font = ExtResource("4_ciqhn")
 theme_override_font_sizes/font_size = 80
@@ -90,11 +97,18 @@ text = "Beesiness"
 
 [node name="Play" type="Button" parent="Control" unique_id=48168353]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = 757.0
-offset_top = 786.0
-offset_right = 1138.0
-offset_bottom = 918.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -190.5
+offset_top = -66.0
+offset_right = 190.5
+offset_bottom = 66.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_color = Color(0.88, 0.26649338, 0.096800014, 1)
 theme_override_fonts/font = ExtResource("5_ciqhn")
 theme_override_font_sizes/font_size = 64

@@ -2,9 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://cb6c6qb81aikd" path="res://structure/menu.tscn" id="2_18kql"]
 [ext_resource type="PackedScene" uid="uid://d2i0gj1k61835" path="res://structure/gameEdited.tscn" id="2_dqrcv"]
+[ext_resource type="PackedScene" uid="uid://cnf3dyoxyxg5q" path="res://structure/ui.tscn" id="3_18kql"]
 
 [node name="Main" type="Node3D" unique_id=2100256056]
 
 [node name="Game" parent="." unique_id=1225339460 instance=ExtResource("2_dqrcv")]
 
 [node name="Menu" parent="." unique_id=2147196511 instance=ExtResource("2_18kql")]
+
+[node name="UI" parent="." unique_id=644455120 instance=ExtResource("3_18kql")]
+visible = false

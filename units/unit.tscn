@@ -24,10 +24,13 @@ viewport_path = NodePath("FloaterSprite3D/SubViewport")
 collision_layer = 512
 collision_mask = 0
 script = ExtResource("1_2atv2")
+id = "bee"
+ally = true
 
 [node name="View" type="Node3D" parent="." unique_id=1725393697]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="View" unique_id=1431449746]
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1940204611]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
