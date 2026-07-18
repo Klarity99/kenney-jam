@@ -2,14 +2,11 @@
 
 [ext_resource type="Texture2D" uid="uid://isigflbo8qso" path="res://Assets/Environment/patch-grass.png" id="1_u2q5c"]
 [ext_resource type="ArrayMesh" uid="uid://bbfulnirstjpg" path="res://Assets/Environment/patch-grass-large.obj" id="1_y1xwy"]
-[ext_resource type="Texture2D" uid="uid://dmu4l3aj8jq8u" path="res://Assets/Environment/grass.png" id="2_hg5i7"]
-[ext_resource type="Texture2D" uid="uid://c7ppitfn5bpfq" path="res://Assets/Environment/patch-grass-large.png" id="2_y1xwy"]
 [ext_resource type="ArrayMesh" uid="uid://cvy64vwuiia4g" path="res://Assets/Environment/grass.obj" id="2_ypncg"]
 [ext_resource type="Script" uid="uid://bh8t68141jqd8" path="res://Scripts/camera_pivot.gd" id="4_tvovm"]
 [ext_resource type="PackedScene" uid="uid://b1ro34t0mxoh1" path="res://Assets/Environment/Godot Dedicated Scenes/patch-grass.tscn" id="4_y1xwy"]
-[ext_resource type="Texture2D" uid="uid://bmlcg3hyakb71" path="res://Assets/Environment/rock-a.png" id="7_t5nok"]
 [ext_resource type="ArrayMesh" uid="uid://bes0x3k8epbo6" path="res://Assets/Environment/rock-a.obj" id="7_xq0rg"]
-[ext_resource type="Texture2D" uid="uid://jlmtdy771aqa" path="res://Assets/Environment/Trees/tree-tall.png" id="10_8edf8"]
+[ext_resource type="Texture2D" uid="uid://bfquufvoo5xtv" path="res://Assets/Environment/variation-a.png" id="10_8edf8"]
 [ext_resource type="ArrayMesh" uid="uid://v7urux7cuaai" path="res://Assets/Environment/Trees/tree-tall.obj" id="10_xkj7h"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_dotlx"]
@@ -31,7 +28,7 @@ transparency = 2
 alpha_scissor_threshold = 0.0
 alpha_antialiasing_mode = 0
 cull_mode = 2
-albedo_texture = ExtResource("2_hg5i7")
+albedo_texture = ExtResource("10_8edf8")
 
 [sub_resource type="MultiMesh" id="MultiMesh_y1xwy"]
 transform_format = 1
@@ -44,7 +41,7 @@ transparency = 2
 alpha_scissor_threshold = 0.0
 alpha_antialiasing_mode = 0
 cull_mode = 2
-albedo_texture = ExtResource("2_y1xwy")
+albedo_texture = ExtResource("10_8edf8")
 
 [sub_resource type="MultiMesh" id="MultiMesh_t5nok"]
 transform_format = 1
@@ -57,7 +54,7 @@ transparency = 2
 alpha_scissor_threshold = 0.0
 alpha_antialiasing_mode = 0
 cull_mode = 2
-albedo_texture = ExtResource("7_t5nok")
+albedo_texture = ExtResource("10_8edf8")
 
 [sub_resource type="MultiMesh" id="MultiMesh_fsqr0"]
 transform_format = 1
