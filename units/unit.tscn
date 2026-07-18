@@ -7,7 +7,7 @@
 radius = 1.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vu64o"]
-albedo_color = Color(0, 1, 0.3833332, 0.39215687)
+albedo_color = Color(0, 1, 0.3833332, 0.19607843)
 
 [sub_resource type="TorusMesh" id="TorusMesh_2atv2"]
 material = SubResource("StandardMaterial3D_vu64o")

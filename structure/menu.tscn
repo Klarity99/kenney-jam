@@ -1,0 +1,103 @@
+[gd_scene format=3 uid="uid://cb6c6qb81aikd"]
+
+[ext_resource type="Script" uid="uid://cunexk6oqkcjp" path="res://structure/menu.gd" id="1_7k5hj"]
+[ext_resource type="Shader" uid="uid://cqgy87c4jn2y3" path="res://structure/menu_blur.gdshader" id="2_q85n1"]
+[ext_resource type="Texture2D" uid="uid://bxhhjvowc86ae" path="res://Assets/Interface/banner_classic_curtain.svg" id="3_52gwt"]
+[ext_resource type="FontFile" uid="uid://bfel12nuthty7" path="res://Assets/Fonts/Kenney Blocks.ttf" id="4_ciqhn"]
+[ext_resource type="FontFile" uid="uid://bk7on2ui84bts" path="res://Assets/Fonts/Kenney Future.ttf" id="5_ciqhn"]
+[ext_resource type="Texture2D" uid="uid://bardwof5knw0e" path="res://Assets/Interface/spritesheet-double.png" id="6_vecy5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ded8m"]
+albedo_color = Color(0, 0.46, 0.022999978, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_uv1g8"]
+material = SubResource("StandardMaterial3D_ded8m")
+size = Vector2(100, 100)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uv1g8"]
+shader = ExtResource("2_q85n1")
+shader_parameter/blur = 2.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vu64o"]
+atlas = ExtResource("6_vecy5")
+region = Rect2(640, 640, 128, 128)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uv1g8"]
+texture = SubResource("AtlasTexture_vu64o")
+texture_margin_left = 30.0
+texture_margin_top = 30.0
+texture_margin_right = 30.0
+texture_margin_bottom = 30.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_52gwt"]
+atlas = ExtResource("6_vecy5")
+region = Rect2(768, 640, 128, 128)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q85n1"]
+texture = SubResource("AtlasTexture_52gwt")
+texture_margin_left = 30.0
+texture_margin_top = 30.0
+texture_margin_right = 30.0
+texture_margin_bottom = 30.0
+
+[node name="Menu" type="Node3D" unique_id=1873937113]
+script = ExtResource("1_7k5hj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=577035233]
+mesh = SubResource("PlaneMesh_uv1g8")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=526999722]
+transform = Transform3D(1, 0, 0, 0, 0.34202015, 0.9396926, 0, -0.9396926, 0.34202015, 0, 68, 26)
+fov = 20.0
+
+[node name="BeeSpawner" type="Timer" parent="." unique_id=314668558]
+wait_time = 0.5
+autostart = true
+
+[node name="Bees" type="Node3D" parent="." unique_id=767771600]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=42698264]
+transform = Transform3D(0.8660253, -0.35355347, 0.3535534, -0.43301275, -0.1767767, 0.8838834, -0.25000006, -0.91855866, -0.30618626, 0, 45, 0)
+
+[node name="Control" type="Control" parent="." unique_id=202312892]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="ColorRect" type="ColorRect" parent="Control" unique_id=1585076461]
+material = SubResource("ShaderMaterial_uv1g8")
+layout_mode = 0
+offset_right = 1983.0
+offset_bottom = 1145.0
+
+[node name="TextureRect" type="TextureRect" parent="Control" unique_id=1517066232]
+layout_mode = 0
+offset_left = 511.0
+offset_top = 110.0
+offset_right = 1390.2307
+offset_bottom = 335.0
+texture = ExtResource("3_52gwt")
+
+[node name="Label" type="Label" parent="Control" unique_id=849974425]
+layout_mode = 0
+offset_left = 685.0
+offset_top = 147.0
+offset_right = 1225.0
+offset_bottom = 267.0
+theme_override_constants/paragraph_spacing = 0
+theme_override_fonts/font = ExtResource("4_ciqhn")
+theme_override_font_sizes/font_size = 80
+text = "Beesiness"
+
+[node name="Play" type="Button" parent="Control" unique_id=48168353]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 757.0
+offset_top = 786.0
+offset_right = 1138.0
+offset_bottom = 918.0
+theme_override_colors/font_color = Color(0.88, 0.26649338, 0.096800014, 1)
+theme_override_fonts/font = ExtResource("5_ciqhn")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxTexture_uv1g8")
+theme_override_styles/hover = SubResource("StyleBoxTexture_q85n1")
+text = "Play"

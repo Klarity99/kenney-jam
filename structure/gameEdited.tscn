@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://d2i0gj1k61835"]
 
 [ext_resource type="PackedScene" uid="uid://cqk7nr3fbe5o" path="res://units/scenes/bee.tscn" id="1_2epig"]
+[ext_resource type="Script" uid="uid://b63opu7k2y14q" path="res://structure/game.gd" id="1_p1ves"]
 [ext_resource type="Script" uid="uid://ukk6mw3ml4gn" path="res://units/unit.gd" id="2_w5r8o"]
 [ext_resource type="PackedScene" uid="uid://doe6norionpkc" path="res://units/scenes/crab.tscn" id="3_ccnt6"]
 [ext_resource type="PackedScene" uid="uid://c3bdxaveqvyyn" path="res://units/scenes/meat.tscn" id="4_w5r8o"]
@@ -44,6 +45,7 @@ vertices = PackedVector3Array(-49.5, 0.5, -49.5, -49.5, 0.5, 49.5, 49.5, 0.5, 49
 polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
 [node name="Game" type="Node3D" unique_id=1225339460]
+script = ExtResource("1_p1ves")
 
 [node name="Units" type="Node3D" parent="." unique_id=131176160]
 
@@ -106,13 +108,37 @@ mesh = SubResource("TorusMesh_uv1g8")
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="Units/BeeHive" unique_id=2134980816]
 
 [node name="Crab" parent="Units" unique_id=1977050223 instance=ExtResource("3_ccnt6")]
-transform = Transform3D(-0.34932056, 0, -0.93700325, 0, 1, 0, 0.93700325, 0, -0.34932056, -15.104718, 0, -12.351271)
+transform = Transform3D(-0.63636005, 0, 0.7713922, 0, 1, 0, -0.7713922, 0, -0.63636005, -10.993857, 0, 13.493238)
+
+[node name="Crab4" parent="Units" unique_id=826081175 instance=ExtResource("3_ccnt6")]
+transform = Transform3D(0.028815031, 0, 0.9995847, 0, 1, 0, -0.9995847, 0, 0.028815031, -27.713036, 0, -6.6569233)
+
+[node name="Crab5" parent="Units" unique_id=1091459337 instance=ExtResource("3_ccnt6")]
+transform = Transform3D(0.028815031, 0, 0.9995847, 0, 1, 0, -0.9995847, 0, 0.028815031, 23.309723, 0, -30.50064)
+
+[node name="Crab6" parent="Units" unique_id=1038715041 instance=ExtResource("3_ccnt6")]
+transform = Transform3D(0.028815031, 0, 0.9995847, 0, 1, 0, -0.9995847, 0, 0.028815031, -26.40813, 0, -33.822163)
+
+[node name="Crab7" parent="Units" unique_id=79002425 instance=ExtResource("3_ccnt6")]
+transform = Transform3D(0.028815031, 0, 0.9995847, 0, 1, 0, -0.9995847, 0, 0.028815031, -30.432507, 0, 24.624859)
+
+[node name="Crab8" parent="Units" unique_id=1438649871 instance=ExtResource("3_ccnt6")]
+transform = Transform3D(0.028815031, 0, 0.9995847, 0, 1, 0, -0.9995847, 0, 0.028815031, 2.0425148, 0, 22.192688)
+
+[node name="Crab9" parent="Units" unique_id=1516455151 instance=ExtResource("3_ccnt6")]
+transform = Transform3D(0.028815031, 0, 0.9995847, 0, 1, 0, -0.9995847, 0, 0.028815031, 26.76148, 0, 11.80009)
+
+[node name="Crab10" parent="Units" unique_id=1803475393 instance=ExtResource("3_ccnt6")]
+transform = Transform3D(0.028815031, 0, 0.9995847, 0, 1, 0, -0.9995847, 0, 0.028815031, 19.150026, 0, 33.65012)
+
+[node name="Crab11" parent="Units" unique_id=521784080 instance=ExtResource("3_ccnt6")]
+transform = Transform3D(0.028815031, 0, 0.9995847, 0, 1, 0, -0.9995847, 0, 0.028815031, 36.29093, 0, -13.82637)
 
 [node name="Crab2" parent="Units" unique_id=465752031 instance=ExtResource("3_ccnt6")]
-transform = Transform3D(-0.34932056, 0, -0.93700325, 0, 1, 0, 0.93700325, 0, -0.34932056, -7.3175764, 0, -11.567726)
+transform = Transform3D(0.6333881, 0, -0.7738344, 0, 1, 0, 0.7738344, 0, 0.6333881, 5.932967, 0, -15.379196)
 
 [node name="Crab3" parent="Units" unique_id=1010482667 instance=ExtResource("3_ccnt6")]
-transform = Transform3D(-0.34932056, 0, -0.93700325, 0, 1, 0, 0.93700325, 0, -0.34932056, -14.549222, 0, -1.3900299)
+transform = Transform3D(-0.34932056, 0, -0.93700325, 0, 1, 0, 0.93700325, 0, -0.34932056, 14.674031, 0, 2.9090772)
 
 [node name="Meat" parent="Units" unique_id=1230019374 instance=ExtResource("4_w5r8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75013053, 0, -11.113395)

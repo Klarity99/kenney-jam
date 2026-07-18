@@ -114,7 +114,7 @@ func command(pos: Vector3, command_type: String, new_target_unit = null):
 	print(target_floor)
 	change_state(command_type)
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if building:
 		return
 

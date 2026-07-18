@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://cucwtutnfooi"]
 
+[ext_resource type="Script" uid="uid://b63opu7k2y14q" path="res://structure/game.gd" id="1_8kf2c"]
 [ext_resource type="PackedScene" uid="uid://cqk7nr3fbe5o" path="res://units/scenes/bee.tscn" id="1_yt7f2"]
 [ext_resource type="Script" uid="uid://ukk6mw3ml4gn" path="res://units/unit.gd" id="2_vpj1x"]
 [ext_resource type="PackedScene" uid="uid://doe6norionpkc" path="res://units/scenes/crab.tscn" id="3_afpvs"]
 [ext_resource type="PackedScene" uid="uid://c3bdxaveqvyyn" path="res://units/scenes/meat.tscn" id="4_ggc3g"]
+[ext_resource type="Script" uid="uid://glceocqlv4o3" path="res://structure/instructions_panel.gd" id="5_5jwt3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vu64o"]
 albedo_color = Color(1, 0.90000004, 0, 1)
@@ -34,6 +36,8 @@ material = SubResource("StandardMaterial3D_ggc3g")
 inner_radius = 2.1
 outer_radius = 2.5
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_vu64o"]
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_uv1g8"]
 size = Vector3(100, 1, 100)
 
@@ -49,6 +53,7 @@ material = SubResource("StandardMaterial3D_nwdxo")
 size = Vector2(100, 100)
 
 [node name="Game" type="Node3D" unique_id=1225339460]
+script = ExtResource("1_8kf2c")
 
 [node name="Units" type="Node3D" parent="." unique_id=131176160]
 
@@ -88,15 +93,17 @@ collision_mask = 0
 script = ExtResource("2_vpj1x")
 id = "hive"
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Units/BeeHive" unique_id=1822252848]
+[node name="View" type="Node3D" parent="Units/BeeHive" unique_id=1643599773]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Units/BeeHive/View" unique_id=1822252848]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
 mesh = SubResource("CapsuleMesh_uv1g8")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Units/BeeHive" unique_id=377843785]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Units/BeeHive/View" unique_id=377843785]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.29999995, 0)
 mesh = SubResource("CapsuleMesh_yt7f2")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Units/BeeHive" unique_id=1816344865]
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Units/BeeHive/View" unique_id=1816344865]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.90000004, 0)
 mesh = SubResource("CapsuleMesh_vpj1x")
 
@@ -109,6 +116,21 @@ visible = false
 mesh = SubResource("TorusMesh_uv1g8")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="Units/BeeHive" unique_id=2134980816]
+unique_name_in_owner = true
+
+[node name="Reach" type="Area3D" parent="Units/BeeHive" unique_id=1131319834]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Units/BeeHive/Reach" unique_id=533902679]
+shape = SubResource("SphereShape3D_vu64o")
+
+[node name="SecondsTimer" type="Timer" parent="Units/BeeHive" unique_id=1118494531]
+
+[node name="FloaterControl" type="Control" parent="Units/BeeHive" unique_id=352721364]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="Crab" parent="Units" unique_id=1977050223 instance=ExtResource("3_afpvs")]
 transform = Transform3D(-0.34932056, 0, -0.93700325, 0, 1, 0, 0.93700325, 0, -0.34932056, -15.104718, 0, -12.351271)
@@ -142,3 +164,78 @@ transform = Transform3D(0.9659258, -0.066987306, 0.25, -0.25881907, -0.25000006,
 [node name="Camera3D" type="Camera3D" parent="." unique_id=523767539]
 transform = Transform3D(1, 0, 0, 0, 0.49999997, 0.86602545, 0, -0.86602545, 0.49999997, 0, 48.170967, 27.494139)
 fov = 28.0
+
+[node name="Interface" type="Control" parent="." unique_id=622023103]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+
+[node name="ControlsBtn" type="Button" parent="Interface" unique_id=379196841]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 3.0
+offset_right = 76.0
+offset_bottom = 34.0
+text = "Controls"
+
+[node name="InstructionsPanel" type="Control" parent="Interface" unique_id=1269246383]
+anchors_preset = 0
+offset_left = 562.0
+offset_top = 246.0
+offset_right = 562.0
+offset_bottom = 246.0
+script = ExtResource("5_5jwt3")
+
+[node name="ColorRect" type="ColorRect" parent="Interface/InstructionsPanel" unique_id=1898887471]
+layout_mode = 0
+offset_left = -593.0
+offset_top = -273.0
+offset_right = 1468.0
+offset_bottom = 903.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.39215687)
+
+[node name="PanelContainer" type="PanelContainer" parent="Interface/InstructionsPanel" unique_id=307840682]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Interface/InstructionsPanel/PanelContainer" unique_id=279894472]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Label" type="RichTextLabel" parent="Interface/InstructionsPanel/PanelContainer/MarginContainer" unique_id=1352655049]
+custom_minimum_size = Vector2(550, 0)
+layout_mode = 2
+bbcode_enabled = true
+text = "[font_size=28][color=#FFD54F]Controls[/color][/font_size]
+[color=#81C784]Left-click[/color] Select objects
+[color=#81C784]Right-click[/color] Command selected units to [b]Move[/b], [b]Gather[/b] and [b]Attack[/b]
+[color=#64B5F6]WASD[/color] Move camera
+[color=#64B5F6]Scroll Wheel[/color] Zoom camera
+
+[font_size=28][color=#FFD54F]Objective[/color][/font_size]
+Defeat the [color=#FF8A65][b]Big Elephant[/b][/color] within [color=#FF5252][b]3 minutes[/b][/color]."
+fit_content = true
+
+[node name="BtnBackground" type="ColorRect" parent="Interface/InstructionsPanel" unique_id=1842521133]
+layout_mode = 0
+offset_left = 460.0
+offset_top = 191.0
+offset_right = 537.0
+offset_bottom = 230.0
+mouse_filter = 2
+color = Color(0.71, 0.59308666, 0.17040001, 0.39215687)
+
+[node name="CloseBtn" type="Button" parent="Interface/InstructionsPanel" unique_id=1555526497]
+layout_mode = 0
+offset_left = 464.0
+offset_top = 195.0
+offset_right = 532.0
+offset_bottom = 226.0
+text = "OK"
+
+[connection signal="pressed" from="Interface/ControlsBtn" to="Interface/InstructionsPanel" method="toggle"]

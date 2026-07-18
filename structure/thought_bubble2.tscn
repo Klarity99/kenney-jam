@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://vec7pc7kxnw7"]
+
+[ext_resource type="Script" uid="uid://m8fduk7b4w1j" path="res://structure/thought_bubble.gd" id="1_jxue2"]
+[ext_resource type="FontFile" uid="uid://b7ox3ixlb24g1" path="res://Assets/Fonts/Kenney Future Narrow.ttf" id="2_o2cj4"]
+
+[node name="ThoughtBubble" type="Control" unique_id=1605281346]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_jxue2")
+
+[node name="Label" type="Label" parent="." unique_id=969770235]
+custom_minimum_size = Vector2(360, 270)
+custom_maximum_size = Vector2(360, 270)
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 270.0
+theme_override_colors/font_color = Color(1, 0.73333335, 0, 1)
+theme_override_fonts/font = ExtResource("2_o2cj4")
+theme_override_font_sizes/font_size = 48
+text = "I have some thoughts"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3

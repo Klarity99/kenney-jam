@@ -1,0 +1,124 @@
+[gd_scene format=3 uid="uid://dd7uwle4kcw1m"]
+
+[ext_resource type="Script" uid="uid://njhksr1cmd6q" path="res://structure/cutscene.gd" id="1_ljsmw"]
+[ext_resource type="Texture2D" uid="uid://cw6lv1tm7uuyk" path="res://Assets/Environment/skybox-day.png" id="2_dkv7v"]
+[ext_resource type="PackedScene" uid="uid://dlcsdorivbi3j" path="res://Assets/Animals/Bee/animal_bee.tscn" id="3_25tqd"]
+[ext_resource type="PackedScene" uid="uid://vec7pc7kxnw7" path="res://structure/thought_bubble2.tscn" id="4_dkv7v"]
+[ext_resource type="FontFile" uid="uid://b7ox3ixlb24g1" path="res://Assets/Fonts/Kenney Future Narrow.ttf" id="6_div0m"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vu64o"]
+albedo_color = Color(0.21372494, 0.83, 0.1577, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_uv1g8"]
+material = SubResource("StandardMaterial3D_vu64o")
+size = Vector3(250, 1, 500)
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_0ttyb"]
+panorama = ExtResource("2_dkv7v")
+
+[sub_resource type="Sky" id="Sky_vu64o"]
+sky_material = SubResource("PanoramaSkyMaterial_0ttyb")
+
+[sub_resource type="Environment" id="Environment_uv1g8"]
+background_mode = 2
+sky = SubResource("Sky_vu64o")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ljsmw"]
+albedo_color = Color(1, 0.90000004, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_uv1g8"]
+material = SubResource("StandardMaterial3D_ljsmw")
+radius = 1.0
+height = 3.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_yt7f2"]
+material = SubResource("StandardMaterial3D_ljsmw")
+radius = 1.6
+height = 4.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_vpj1x"]
+material = SubResource("StandardMaterial3D_ljsmw")
+radius = 2.2
+height = 5.0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_dkv7v"]
+viewport_path = NodePath("Sprite3D/SubViewport")
+
+[node name="Cutscene" type="Node3D" unique_id=1454669019]
+script = ExtResource("1_ljsmw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1836112386]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55444336, 0, 0)
+mesh = SubResource("BoxMesh_uv1g8")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2123924069]
+environment = SubResource("Environment_uv1g8")
+
+[node name="animal-bee" parent="." unique_id=777331044 instance=ExtResource("3_25tqd")]
+transform = Transform3D(0.258819, 0, 0.9659258, 0, 1, 0, -0.9659258, 0, 0.258819, -8.414495, 1.1242985, -28.800703)
+
+[node name="animal-bee2" parent="." unique_id=1120432046 instance=ExtResource("3_25tqd")]
+transform = Transform3D(-21.21321, 0, 21.213198, 0, 30, 0, -21.213198, 0, -21.21321, -14, 1.1242975, 20.097017)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1320529640]
+transform = Transform3D(-4.222196e-08, 0.25881907, 0.9659258, 1.131334e-08, 0.9659259, -0.25881907, -1, 0, -4.371139e-08, 29.473526, 9.383186, 0)
+current = true
+
+[node name="Camera3D2" type="Camera3D" parent="." unique_id=682205437]
+transform = Transform3D(-0.722472, 0.17894754, 0.66784126, 4.158017e-09, 0.9659259, -0.25881907, -0.6914002, -0.18698955, -0.6978544, -4.1953545, 2.0268402, -31.61474)
+
+[node name="View" type="Node3D" parent="." unique_id=605360061]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -10.51886, 2, -34.33354)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="View" unique_id=988302786]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
+mesh = SubResource("CapsuleMesh_uv1g8")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="View" unique_id=962624355]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.29999995, 0)
+mesh = SubResource("CapsuleMesh_yt7f2")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="View" unique_id=680861031]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.90000004, 0)
+mesh = SubResource("CapsuleMesh_vpj1x")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1282992443]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 30, -21)
+billboard = 1
+texture = SubResource("ViewportTexture_dkv7v")
+
+[node name="SubViewport" type="SubViewport" parent="Sprite3D" unique_id=1959692845]
+transparent_bg = true
+size = Vector2i(360, 256)
+
+[node name="ThoughtBubble" parent="Sprite3D/SubViewport" unique_id=1605281346 instance=ExtResource("4_dkv7v")]
+unique_name_in_owner = true
+
+[node name="Stage2Sprite" type="Sprite3D" parent="." unique_id=402494121]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -12.667736, 11.409388, -11.551091)
+visible = false
+billboard = 1
+texture = SubResource("ViewportTexture_dkv7v")
+
+[node name="SubViewport" type="SubViewport" parent="Stage2Sprite" unique_id=1081976644]
+transparent_bg = true
+size = Vector2i(360, 256)
+
+[node name="ThoughtBubble" parent="Stage2Sprite/SubViewport" unique_id=1795688515 instance=ExtResource("4_dkv7v")]
+
+[node name="Control" type="Control" parent="." unique_id=1826454650]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Control" unique_id=2111609063]
+layout_mode = 0
+offset_left = 652.0
+offset_top = 1007.0
+offset_right = 1384.0
+offset_bottom = 1074.0
+theme_override_colors/font_color = Color(1, 0.6625, 0.19, 1)
+theme_override_fonts/font = ExtResource("6_div0m")
+theme_override_font_sizes/font_size = 40
+text = "press any key to continue"
