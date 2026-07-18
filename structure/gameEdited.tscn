@@ -3,7 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://cqk7nr3fbe5o" path="res://units/scenes/bee.tscn" id="1_2epig"]
 [ext_resource type="Script" uid="uid://ukk6mw3ml4gn" path="res://units/unit.gd" id="2_w5r8o"]
 [ext_resource type="PackedScene" uid="uid://doe6norionpkc" path="res://units/scenes/crab.tscn" id="3_ccnt6"]
-[ext_resource type="PackedScene" uid="uid://bdl3ig4n6gxgx" path="res://structure/Environment.tscn" id="4_w5r8o"]
+[ext_resource type="PackedScene" uid="uid://c3bdxaveqvyyn" path="res://units/scenes/meat.tscn" id="4_w5r8o"]
+[ext_resource type="PackedScene" uid="uid://bngshg2sjmuux" path="res://structure/floor.tscn" id="5_ccnt6"]
+[ext_resource type="PackedScene" uid="uid://bdl3ig4n6gxgx" path="res://structure/Environment.tscn" id="6_u2mji"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vu64o"]
 albedo_color = Color(1, 0.90000004, 0, 1)
@@ -26,28 +28,20 @@ height = 5.0
 [sub_resource type="SphereShape3D" id="SphereShape3D_uv1g8"]
 radius = 2.1000001
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yt7f2"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ggc3g"]
 albedo_color = Color(0.01666665, 1, 0, 1)
 
 [sub_resource type="TorusMesh" id="TorusMesh_uv1g8"]
-material = SubResource("StandardMaterial3D_yt7f2")
+material = SubResource("StandardMaterial3D_ggc3g")
 inner_radius = 2.1
 outer_radius = 2.5
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_vu64o"]
-radius = 1.5
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pxlwx"]
-albedo_color = Color(0.66, 0, 0, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_lyh0d"]
-material = SubResource("StandardMaterial3D_pxlwx")
-size = Vector3(1.6, 0.8, 1.6)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uv1g8"]
 size = Vector3(100, 1, 100)
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_uv1g8"]
+vertices = PackedVector3Array(-49.5, 0.5, -49.5, -49.5, 0.5, 49.5, 49.5, 0.5, 49.5, 49.5, 0.5, -49.5)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
 [node name="Game" type="Node3D" unique_id=1225339460]
 
@@ -55,27 +49,36 @@ size = Vector3(100, 1, 100)
 
 [node name="Bee" parent="Units" unique_id=544613324 instance=ExtResource("1_2epig")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8414166, 0, -4.5202312)
-collision_mask = 0
-move_speed = 5.0
+id = "bee"
+ally = true
+
+[node name="Bee4" parent="Units" unique_id=1467829073 instance=ExtResource("1_2epig")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.452511, 0, -3.2201033)
+id = "bee"
+ally = true
+
+[node name="Bee5" parent="Units" unique_id=1367635193 instance=ExtResource("1_2epig")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.421274, 0, -5.9639435)
+id = "bee"
+ally = true
+
+[node name="Bee6" parent="Units" unique_id=2079351565 instance=ExtResource("1_2epig")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.6739225, 0, -1.1560163)
 id = "bee"
 ally = true
 
 [node name="Bee2" parent="Units" unique_id=368719653 instance=ExtResource("1_2epig")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.134755, 0, -4.3387833)
-collision_mask = 0
-move_speed = 5.0
 id = "bee"
 ally = true
 
 [node name="Bee3" parent="Units" unique_id=663540903 instance=ExtResource("1_2epig")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.874092, 0, 5.5188828)
-collision_mask = 0
-move_speed = 5.0
 id = "bee"
 ally = true
 
-[node name="BeeHive" type="StaticBody3D" parent="Units" unique_id=1063536639]
-collision_layer = 512
+[node name="BeeHive" type="CharacterBody3D" parent="Units" unique_id=1388160235]
+collision_layer = 4608
 collision_mask = 0
 script = ExtResource("2_w5r8o")
 id = "hive"
@@ -100,21 +103,20 @@ unique_name_in_owner = true
 visible = false
 mesh = SubResource("TorusMesh_uv1g8")
 
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Units/BeeHive" unique_id=1200929928]
-unique_name_in_owner = true
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Units/BeeHive" unique_id=2134980816]
 
 [node name="Crab" parent="Units" unique_id=1977050223 instance=ExtResource("3_ccnt6")]
 transform = Transform3D(-0.34932056, 0, -0.93700325, 0, 1, 0, 0.93700325, 0, -0.34932056, -15.104718, 0, -12.351271)
 
-[node name="Meat" type="StaticBody3D" parent="Units" unique_id=487492166]
+[node name="Crab2" parent="Units" unique_id=465752031 instance=ExtResource("3_ccnt6")]
+transform = Transform3D(-0.34932056, 0, -0.93700325, 0, 1, 0, 0.93700325, 0, -0.34932056, -7.3175764, 0, -11.567726)
+
+[node name="Crab3" parent="Units" unique_id=1010482667 instance=ExtResource("3_ccnt6")]
+transform = Transform3D(-0.34932056, 0, -0.93700325, 0, 1, 0, 0.93700325, 0, -0.34932056, -14.549222, 0, -1.3900299)
+
+[node name="Meat" parent="Units" unique_id=1230019374 instance=ExtResource("4_w5r8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75013053, 0, -11.113395)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Units/Meat" unique_id=2130672006]
-shape = SubResource("SphereShape3D_vu64o")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Units/Meat" unique_id=309068425]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-mesh = SubResource("BoxMesh_lyh0d")
+hp = 70
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=940165178]
 collision_layer = 256
@@ -126,6 +128,6 @@ shape = SubResource("BoxShape3D_uv1g8")
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=803932357]
 navigation_mesh = SubResource("NavigationMesh_uv1g8")
 
-[node name="Environment" parent="." unique_id=1959008010 instance=ExtResource("4_w5r8o")]
+[node name="Floor" parent="NavigationRegion3D" unique_id=1289221044 instance=ExtResource("5_ccnt6")]
 
-[editable path="Environment"]
+[node name="Environment" parent="." unique_id=1959008010 instance=ExtResource("6_u2mji")]

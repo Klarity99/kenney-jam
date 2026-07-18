@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bngshg2sjmuux"]
+
+[ext_resource type="Texture2D" uid="uid://isigflbo8qso" path="res://Assets/Environment/patch-grass.png" id="1_wk8r4"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_dotlx"]
+size = Vector2(100, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gwmbe"]
+albedo_texture = ExtResource("1_wk8r4")
+
+[node name="Floor" type="MeshInstance3D" unique_id=1289221044]
+mesh = SubResource("PlaneMesh_dotlx")
+surface_material_override/0 = SubResource("StandardMaterial3D_gwmbe")

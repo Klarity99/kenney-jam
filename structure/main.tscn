@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://g2tauh0gspdj"]
 
-[ext_resource type="PackedScene" uid="uid://cucwtutnfooi" path="res://structure/game.tscn" id="1_i01mv"]
+[ext_resource type="PackedScene" uid="uid://d2i0gj1k61835" path="res://structure/gameEdited.tscn" id="2_dqrcv"]
 
 [node name="Main" type="Node3D" unique_id=2100256056]
 
-[node name="Game" parent="." unique_id=1225339460 instance=ExtResource("1_i01mv")]
+[node name="Game" parent="." unique_id=1225339460 instance=ExtResource("2_dqrcv")]

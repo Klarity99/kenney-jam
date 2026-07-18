@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://bdl3ig4n6gxgx"]
 
-[ext_resource type="Texture2D" uid="uid://isigflbo8qso" path="res://Assets/Environment/patch-grass.png" id="1_u2q5c"]
 [ext_resource type="ArrayMesh" uid="uid://bbfulnirstjpg" path="res://Assets/Environment/patch-grass-large.obj" id="1_y1xwy"]
 [ext_resource type="ArrayMesh" uid="uid://cvy64vwuiia4g" path="res://Assets/Environment/grass.obj" id="2_ypncg"]
 [ext_resource type="Script" uid="uid://bh8t68141jqd8" path="res://Scripts/camera_pivot.gd" id="4_tvovm"]
@@ -8,12 +7,6 @@
 [ext_resource type="ArrayMesh" uid="uid://bes0x3k8epbo6" path="res://Assets/Environment/rock-a.obj" id="7_xq0rg"]
 [ext_resource type="Texture2D" uid="uid://bfquufvoo5xtv" path="res://Assets/Environment/variation-a.png" id="10_8edf8"]
 [ext_resource type="ArrayMesh" uid="uid://v7urux7cuaai" path="res://Assets/Environment/Trees/tree-tall.obj" id="10_xkj7h"]
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_dotlx"]
-size = Vector2(100, 100)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gwmbe"]
-albedo_texture = ExtResource("1_u2q5c")
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ypncg"]
 
@@ -77,10 +70,6 @@ mesh = ExtResource("10_xkj7h")
 buffer = PackedFloat32Array(-5.0327096, 0, 2.2981858, -11.298548, 0, 5.5326147, 0, 0, -2.2981858, 0, -5.0327096, -3.5344038, -5.0366316, 0, -1.613203, -18.971283, 0, 5.288675, 0, 0, 1.613203, 0, -5.0366316, -42.297302, -2.4915876, 0, -3.5072687, -18.808077, 0, 4.302202, 0, 0, 3.5072687, 0, -2.4915876, 41.361763, -3.2846754, 0, -3.0516706, 16.25304, 0, 4.4835014, 0, 0, 3.0516706, 0, -3.2846754, 18.482544, -2.130772, 0, 3.8889847, -13.138943, 0, 4.434455, 0, 0, -3.8889847, 0, -2.130772, -1.4700203, 0.6126955, 0, -4.361434, 17.953957, 0, 4.4042597, 0, 0, 4.361434, 0, 0.6126955, 24.722107, -3.9985616, 0, -3.3171897, 38.487316, 0, 5.195406, 0, 0, 3.3171897, 0, -3.9985616, 14.339346, -2.2788498, 0, -3.3012655, -22.585989, 0, 4.0114226, 0, 0, 3.3012655, 0, -2.2788498, 46.228424, -4.172193, 0, -3.026825, -17.319405, 0, 5.1544995, 0, 0, 3.026825, 0, -4.172193, 12.335777, -3.695734, 0, 1.7401242, -40.08144, 0, 4.084909, 0, 0, -1.7401242, 0, -3.695734, -8.041816, 0.26751462, 0, -4.150488, 26.612965, 0, 4.1591, 0, 0, 4.150488, 0, 0.26751462, 16.653885, 2.2770154, 0, -5.290367, 6.543991, 0, 5.7595816, 0, 0, 5.290367, 0, 2.2770154, 20.76101, -3.5626411, 0, 2.550738, 32.169163, 0, 4.3816295, 0, 0, -2.550738, 0, -3.5626411, -48.612556, -3.1808155, 0, -3.2138886, 30.604073, 0, 4.521799, 0, 0, 3.2138886, 0, -3.1808155, 26.312141, -2.919772, 0, 2.8021204, -30.818878, 0, 4.046844, 0, 0, -2.8021204, 0, -2.919772, 17.573944, 2.4752078, 0, -4.0350804, 18.734337, 0, 4.7337646, 0, 0, 4.0350804, 0, 2.4752078, 15.289467, -4.1698933, 0, 2.7447314, 0.318573, 0, 4.99215, 0, 0, -2.7447314, 0, -4.1698933, -25.75047, -2.4186866, 0, -3.6585524, -19.913895, 0, 4.385778, 0, 0, 3.6585524, 0, -2.4186866, 41.632996, -4.215695, 0, -0.95255303, -6.8945656, 0, 4.321972, 0, 0, 0.95255303, 0, -4.215695, 0.23686981, -4.5339675, 0, 2.7673738, 42.648685, 0, 5.3118, 0, 0, -2.7673738, 0, -4.5339675, -46.74111)
 
 [node name="Environment" type="Node3D" unique_id=1959008010]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1483861366]
-mesh = SubResource("PlaneMesh_dotlx")
-surface_material_override/0 = SubResource("StandardMaterial3D_gwmbe")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1958752903]
 transform = Transform3D(0.70710677, -0.18301271, -0.6830127, 0.70710677, 0.18301295, 0.6830126, 1.7484554e-07, -0.9659258, 0.25881922, 0, 99, 0)

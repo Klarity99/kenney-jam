@@ -92,6 +92,7 @@ func set_carry(new_carry):
 func command(pos: Vector3, command_type: String, new_target_unit = null):
 	target_unit = new_target_unit
 	target_floor = pos
+	print(target_floor)
 	change_state(command_type)
 
 func _physics_process(delta: float) -> void:
