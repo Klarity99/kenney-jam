@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://c3bdxaveqvyyn"]
+
+[ext_resource type="Script" uid="uid://ukk6mw3ml4gn" path="res://units/unit.gd" id="1_dk767"]
+[ext_resource type="PackedScene" uid="uid://dl2xlwksfbns3" path="res://units/floater_control.tscn" id="2_g64jv"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_vu64o"]
+radius = 1.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pxlwx"]
+albedo_color = Color(0.66, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lyh0d"]
+material = SubResource("StandardMaterial3D_pxlwx")
+size = Vector3(1.6, 0.8, 1.6)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dk767"]
+albedo_color = Color(0.01666665, 1, 0, 1)
+
+[sub_resource type="TorusMesh" id="TorusMesh_g64jv"]
+material = SubResource("StandardMaterial3D_dk767")
+inner_radius = 1.1
+outer_radius = 1.4
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_djrox"]
+viewport_path = NodePath("FloaterSprite3D/SubViewport")
+
+[node name="Meat" type="CharacterBody3D" unique_id=1420686129]
+collision_layer = 512
+collision_mask = 0
+script = ExtResource("1_dk767")
+move_speed = 0.0
+id = "meat"
+ally = true
+hp = 500
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=956248747]
+shape = SubResource("SphereShape3D_vu64o")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=130382436]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_lyh0d")
+
+[node name="SelectView" type="MeshInstance3D" parent="." unique_id=605157256]
+unique_name_in_owner = true
+mesh = SubResource("TorusMesh_g64jv")
+
+[node name="FloaterSprite3D" type="Sprite3D" parent="." unique_id=122738271]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.5)
+billboard = 1
+double_sided = false
+no_depth_test = true
+texture = SubResource("ViewportTexture_djrox")
+
+[node name="SubViewport" type="SubViewport" parent="FloaterSprite3D" unique_id=1608910137]
+transparent_bg = true
+size = Vector2i(256, 256)
+
+[node name="FloaterControl" parent="FloaterSprite3D/SubViewport" unique_id=178591429 instance=ExtResource("2_g64jv")]
+unique_name_in_owner = true

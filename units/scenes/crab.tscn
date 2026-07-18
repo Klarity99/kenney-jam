@@ -18,8 +18,13 @@ material = SubResource("StandardMaterial3D_vu64o")
 inner_radius = 0.8
 outer_radius = 1.4
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_8syei"]
+viewport_path = NodePath("FloaterSprite3D/SubViewport")
+
 [node name="Crab" unique_id=544613324 instance=ExtResource("1_8syei")]
 collision_layer = 512
+id = "crab"
+hp = 30
 
 [node name="MeshInstance3D" parent="View" parent_id_path=PackedInt32Array(1725393697) index="0" unique_id=1431449746]
 material_override = SubResource("StandardMaterial3D_p0sbq")
@@ -28,3 +33,6 @@ mesh = ExtResource("2_32vo0")
 
 [node name="SelectView" parent="." index="2" unique_id=1425820741]
 mesh = SubResource("TorusMesh_p0sbq")
+
+[node name="FloaterSprite3D" parent="." index="6" unique_id=1350929214]
+texture = SubResource("ViewportTexture_8syei")

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bvtp0s6wnj00c"]
 
 [ext_resource type="Script" uid="uid://ukk6mw3ml4gn" path="res://units/unit.gd" id="1_2atv2"]
+[ext_resource type="PackedScene" uid="uid://dl2xlwksfbns3" path="res://units/floater_control.tscn" id="2_gxe1c"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_uv1g8"]
 radius = 1.0
@@ -13,8 +14,14 @@ material = SubResource("StandardMaterial3D_vu64o")
 inner_radius = 0.4
 outer_radius = 0.7
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_5jwt3"]
+radius = 1.0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_uv1g8"]
+viewport_path = NodePath("FloaterSprite3D/SubViewport")
+
 [node name="Unit" type="CharacterBody3D" unique_id=1946197526]
-collision_layer = 16
+collision_layer = 512
 collision_mask = 0
 script = ExtResource("1_2atv2")
 
@@ -32,4 +39,28 @@ visible = false
 mesh = SubResource("TorusMesh_2atv2")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1538010534]
+unique_name_in_owner = true
+
+[node name="Reach" type="Area3D" parent="." unique_id=48632682]
+collision_layer = 0
+collision_mask = 512
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Reach" unique_id=18216346]
+shape = SubResource("SphereShape3D_5jwt3")
+
+[node name="SecondsTimer" type="Timer" parent="." unique_id=1044625127]
+
+[node name="FloaterSprite3D" type="Sprite3D" parent="." unique_id=1350929214]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.5)
+billboard = 1
+double_sided = false
+no_depth_test = true
+texture = SubResource("ViewportTexture_uv1g8")
+
+[node name="SubViewport" type="SubViewport" parent="FloaterSprite3D" unique_id=2115703870]
+transparent_bg = true
+size = Vector2i(256, 256)
+
+[node name="FloaterControl" parent="FloaterSprite3D/SubViewport" unique_id=178591429 instance=ExtResource("2_gxe1c")]
 unique_name_in_owner = true
