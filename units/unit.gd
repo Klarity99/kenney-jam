@@ -7,6 +7,7 @@ class_name Unit
 @onready var reach_area: Area3D = $Reach
 @onready var seconds_timer: Timer = $SecondsTimer
 @onready var floater := %FloaterControl
+@onready var animation : AnimationPlayer = $"View/animal-bee/AnimationPlayer"
 
 @export var move_speed := 5.0
 @export var id: String
@@ -43,7 +44,11 @@ func _ready() -> void:
 		else:
 			floater.visible = true
 	update_floater_hp()
-		
+	
+	animationLoop("idle", true)
+	animationLoop("run", true)
+	animationLoop("eat", true)
+	playAnimation("idle")
 
 signal died
 
@@ -65,10 +70,25 @@ func dmg(amount: int) -> void:
 			meat_node.get_node("CollisionShape3D").shape.radius *= loot / 100.0
 			meat_node.global_position = global_position
 	update_floater_hp()
-	
+
 func update_floater_hp():
 	if id not in ["bee", "hive"]:
 		floater.bar.value = hp * 100.0 / float(hp_max)
+
+func animationLoop(animationName: String, loopFlag: bool):
+	if not animation:
+		return
+	if animation.has_animation(animationName):
+		var currentAnimation := animation.get_animation(animationName)
+		currentAnimation.loop_mode = Animation.LOOP_LINEAR if loopFlag else Animation.LOOP_NONE
+	else:
+		print("Current Animation error not found", animationName)
+
+func playAnimation(animationName: String) -> void:
+	if not animation:
+		return
+	if animation and animation.has_animation(animationName):
+		animation.play(animationName)
 
 func on_seconds_timeout():
 	if state == "mine" and carry < carry_max:
@@ -104,6 +124,8 @@ func _physics_process(delta: float) -> void:
 
 	if nav_agent.is_navigation_finished():
 		velocity = Vector3.ZERO
+		if state == "move":
+			change_state("idle")
 		return
 
 	var next_pos: Vector3 = nav_agent.get_next_path_position()
@@ -129,6 +151,13 @@ func change_state(new_state) -> void:
 		"mine":
 			seconds_timer.stop()
 	
+	match new_state:
+		"idle":
+			playAnimation("idle")
+		"move", "move_mine", "move_building", "move_attack":
+			playAnimation("run")
+		"mine", "attack":
+			playAnimation("eat")
 	match new_state:
 		"attack":
 			if target_unit not in in_reach:
@@ -182,4 +211,6 @@ func on_body_exited(body: Node3D) -> void:
 	if body == self: return
 	in_reach.erase(body)
 	if body == target_unit and state == "mine":
+		if name.contains("Bee") and !name.contains("Hive"):
+			animation.play("idle")
 		change_state("idle")
