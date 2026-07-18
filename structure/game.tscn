@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cqk7nr3fbe5o" path="res://units/scenes/bee.tscn" id="1_yt7f2"]
 [ext_resource type="Script" uid="uid://ukk6mw3ml4gn" path="res://units/unit.gd" id="2_vpj1x"]
 [ext_resource type="PackedScene" uid="uid://doe6norionpkc" path="res://units/scenes/crab.tscn" id="3_afpvs"]
+[ext_resource type="PackedScene" uid="uid://c3bdxaveqvyyn" path="res://units/scenes/meat.tscn" id="4_ggc3g"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vu64o"]
 albedo_color = Color(1, 0.90000004, 0, 1)
@@ -25,23 +26,13 @@ height = 5.0
 [sub_resource type="SphereShape3D" id="SphereShape3D_uv1g8"]
 radius = 2.1000001
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yt7f2"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ggc3g"]
 albedo_color = Color(0.01666665, 1, 0, 1)
 
 [sub_resource type="TorusMesh" id="TorusMesh_uv1g8"]
-material = SubResource("StandardMaterial3D_yt7f2")
+material = SubResource("StandardMaterial3D_ggc3g")
 inner_radius = 2.1
 outer_radius = 2.5
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_vu64o"]
-radius = 1.5
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pxlwx"]
-albedo_color = Color(0.66, 0, 0, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_lyh0d"]
-material = SubResource("StandardMaterial3D_pxlwx")
-size = Vector3(1.6, 0.8, 1.6)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uv1g8"]
 size = Vector3(100, 1, 100)
@@ -76,12 +67,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.874092, 0, 5.5188828)
 id = "bee"
 ally = true
 
-[node name="BeeHive" type="StaticBody3D" parent="Units" unique_id=1063536639]
-collision_layer = 512
+[node name="BeeHive" type="CharacterBody3D" parent="Units" unique_id=1388160235]
+collision_layer = 4608
 collision_mask = 0
 script = ExtResource("2_vpj1x")
 id = "hive"
-builidng = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Units/BeeHive" unique_id=1822252848]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
@@ -108,15 +98,9 @@ mesh = SubResource("TorusMesh_uv1g8")
 [node name="Crab" parent="Units" unique_id=1977050223 instance=ExtResource("3_afpvs")]
 transform = Transform3D(-0.34932056, 0, -0.93700325, 0, 1, 0, 0.93700325, 0, -0.34932056, -15.104718, 0, -12.351271)
 
-[node name="Meat" type="StaticBody3D" parent="Units" unique_id=487492166]
+[node name="Meat" parent="Units" unique_id=1230019374 instance=ExtResource("4_ggc3g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75013053, 0, -11.113395)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Units/Meat" unique_id=2130672006]
-shape = SubResource("SphereShape3D_vu64o")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Units/Meat" unique_id=309068425]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-mesh = SubResource("BoxMesh_lyh0d")
+hp = 70
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=940165178]
 collision_layer = 256

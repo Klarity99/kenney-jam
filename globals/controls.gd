@@ -1,6 +1,7 @@
 extends Node
 
 var selected_unit: Unit
+var meat := 0
 
 func select_unit(new_selected_unit: Unit):
 	print("selected", new_selected_unit)

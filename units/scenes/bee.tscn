@@ -10,11 +10,25 @@ alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
 albedo_texture = ExtResource("2_juba4")
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_nwdxo"]
+radius = 0.6
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_nwdxo"]
+viewport_path = NodePath("FloaterSprite3D/SubViewport")
+
 [node name="Bee" unique_id=544613324 instance=ExtResource("1_nwdxo")]
 collision_layer = 512
+collision_mask = 4096
+move_speed = 4.0
 
 [node name="MeshInstance3D" parent="View" parent_id_path=PackedInt32Array(1725393697) index="0" unique_id=1431449746]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1, 0)
 material_override = SubResource("StandardMaterial3D_dfyp8")
 cast_shadow = 0
 mesh = ExtResource("3_sw13t")
+
+[node name="CollisionShape3D" parent="." index="1" unique_id=1940204611]
+shape = SubResource("SphereShape3D_nwdxo")
+
+[node name="FloaterSprite3D" parent="." index="6" unique_id=1350929214]
+texture = SubResource("ViewportTexture_nwdxo")
