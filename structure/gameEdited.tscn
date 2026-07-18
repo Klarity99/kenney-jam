@@ -1,8 +1,9 @@
-[gd_scene format=3 uid="uid://cucwtutnfooi"]
+[gd_scene format=3 uid="uid://d2i0gj1k61835"]
 
-[ext_resource type="PackedScene" uid="uid://cqk7nr3fbe5o" path="res://units/scenes/bee.tscn" id="1_yt7f2"]
-[ext_resource type="Script" uid="uid://ukk6mw3ml4gn" path="res://units/unit.gd" id="2_vpj1x"]
-[ext_resource type="PackedScene" uid="uid://doe6norionpkc" path="res://units/scenes/crab.tscn" id="3_afpvs"]
+[ext_resource type="PackedScene" uid="uid://cqk7nr3fbe5o" path="res://units/scenes/bee.tscn" id="1_2epig"]
+[ext_resource type="Script" uid="uid://ukk6mw3ml4gn" path="res://units/unit.gd" id="2_w5r8o"]
+[ext_resource type="PackedScene" uid="uid://doe6norionpkc" path="res://units/scenes/crab.tscn" id="3_ccnt6"]
+[ext_resource type="PackedScene" uid="uid://bdl3ig4n6gxgx" path="res://structure/Environment.tscn" id="4_w5r8o"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vu64o"]
 albedo_color = Color(1, 0.90000004, 0, 1)
@@ -50,28 +51,21 @@ size = Vector3(100, 1, 100)
 vertices = PackedVector3Array(-49.5, 0.5, -49.5, -49.5, 0.5, 49.5, 49.5, 0.5, 49.5, 49.5, 0.5, -49.5)
 polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nwdxo"]
-albedo_color = Color(0.081400014, 0.37, 0.09583, 1)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_uv1g8"]
-material = SubResource("StandardMaterial3D_nwdxo")
-size = Vector2(100, 100)
-
 [node name="Game" type="Node3D" unique_id=1225339460]
 
 [node name="Units" type="Node3D" parent="." unique_id=131176160]
 
-[node name="Bee" parent="Units" unique_id=544613324 instance=ExtResource("1_yt7f2")]
+[node name="Bee" parent="Units" unique_id=544613324 instance=ExtResource("1_2epig")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8414166, 0, -4.5202312)
 id = "bee"
 ally = true
 
-[node name="Bee2" parent="Units" unique_id=368719653 instance=ExtResource("1_yt7f2")]
+[node name="Bee2" parent="Units" unique_id=368719653 instance=ExtResource("1_2epig")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.134755, 0, -4.3387833)
 id = "bee"
 ally = true
 
-[node name="Bee3" parent="Units" unique_id=663540903 instance=ExtResource("1_yt7f2")]
+[node name="Bee3" parent="Units" unique_id=663540903 instance=ExtResource("1_2epig")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.874092, 0, 5.5188828)
 id = "bee"
 ally = true
@@ -79,7 +73,7 @@ ally = true
 [node name="BeeHive" type="StaticBody3D" parent="Units" unique_id=1063536639]
 collision_layer = 512
 collision_mask = 0
-script = ExtResource("2_vpj1x")
+script = ExtResource("2_w5r8o")
 id = "hive"
 builidng = true
 
@@ -103,9 +97,9 @@ unique_name_in_owner = true
 visible = false
 mesh = SubResource("TorusMesh_uv1g8")
 
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Units/BeeHive" unique_id=2134980816]
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Units/BeeHive" unique_id=1200929928]
 
-[node name="Crab" parent="Units" unique_id=1977050223 instance=ExtResource("3_afpvs")]
+[node name="Crab" parent="Units" unique_id=1977050223 instance=ExtResource("3_ccnt6")]
 transform = Transform3D(-0.34932056, 0, -0.93700325, 0, 1, 0, 0.93700325, 0, -0.34932056, -15.104718, 0, -12.351271)
 
 [node name="Meat" type="StaticBody3D" parent="Units" unique_id=487492166]
@@ -128,12 +122,6 @@ shape = SubResource("BoxShape3D_uv1g8")
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=803932357]
 navigation_mesh = SubResource("NavigationMesh_uv1g8")
 
-[node name="Floor" type="MeshInstance3D" parent="NavigationRegion3D" unique_id=1518793072]
-mesh = SubResource("PlaneMesh_uv1g8")
+[node name="Environment" parent="NavigationRegion3D" unique_id=1959008010 instance=ExtResource("4_w5r8o")]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1233621407]
-transform = Transform3D(0.9659258, -0.066987306, 0.25, -0.25881907, -0.25000006, 0.9330128, 0, -0.96592593, -0.2588191, 0, 54.45025, 0)
-
-[node name="Camera3D" type="Camera3D" parent="." unique_id=523767539]
-transform = Transform3D(1, 0, 0, 0, 0.49999997, 0.86602545, 0, -0.86602545, 0.49999997, 0, 48.170967, 27.494139)
-fov = 28.0
+[editable path="NavigationRegion3D/Environment"]
