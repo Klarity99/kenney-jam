@@ -210,7 +210,7 @@ func change_state(new_state) -> void:
 		
 func explode():
 	target_unit.dmg(hp) # hp for bees count as damage
-	queue_free()
+	$AudioStreamPlayer2D.play()
 
 func on_body_entered(body: Node3D) -> void:
 	if body == self: return
@@ -247,3 +247,7 @@ func on_area_entered(area: Area3D):
 	if area.get_parent() is HoneyCollectible:
 		set_carry(carry + 10)
 		area.get_parent().queue_free()
+
+
+func _on_audio_stream_player_2d_finished() -> void:
+	queue_free()

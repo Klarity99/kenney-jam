@@ -31,6 +31,7 @@ func showDetails(state : String) -> void:
 	$Control/PanelOfDetail/VBoxContainer/State.text = "State : " + state
 
 func _on_buy_bee_button_pressed() -> void:
+	$AudioSteamPlayer2D.play()
 	var costBee := 50
 	if Controls.honey < costBee:
 		return
@@ -47,6 +48,7 @@ func _on_buy_bee_button_pressed() -> void:
 		newBeeSpawn.global_position = Vector3.ZERO
 
 func _on_buy_bumblebee_button_pressed() -> void:
+	$AudioSteamPlayer2D.play()
 	var costBee := 100
 	if Controls.honey < costBee:
 		return
@@ -63,6 +65,7 @@ func _on_buy_bumblebee_button_pressed() -> void:
 		newBeeSpawn.global_position = Vector3.ZERO
 
 func _on_buy_wasp_button_pressed() -> void:
+	$AudioSteamPlayer2D.play()
 	var costBee := 75
 	if Controls.honey < costBee:
 		return
