@@ -11,6 +11,8 @@ func parse_mouse_press(button_index: int, unit: Node3D, floor_pos: Vector3):
 				Controls.select_unit(unit)
 		MOUSE_BUTTON_RIGHT:
 			if Controls.selected_unit and not Controls.selected_unit.building and Controls.selected_unit.ally:
+				if unit:
+					unit.select_blink()
 				if unit and not unit.ally:
 					Controls.selected_unit.command(floor_pos, "attack", unit)	
 				elif unit and unit.id == "hive":
@@ -34,11 +36,12 @@ func mouse_press(event :InputEventMouseButton) -> void:
 	var floor_result := space_state.intersect_ray(floor_query)
 	
 	var unit_query := PhysicsRayQueryParameters3D.create(from, to)
-	unit_query.collision_mask = 512
+	unit_query.collision_mask = 2048
+	unit_query.collide_with_areas = true
 	var unit_result := space_state.intersect_ray(unit_query)
 	
 	var floor_pos = floor_result.position if floor_result else null
-	var unit = unit_result.collider if unit_result else null
+	var unit = unit_result.collider.get_parent() if unit_result else null
 	
 	print("---")
 	print(floor_pos)

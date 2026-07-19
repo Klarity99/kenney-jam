@@ -23,6 +23,7 @@ func update_stage() -> void:
 	if stage == 6:
 		queue_free()
 		add_sibling(load("res://structure/gameEdited.tscn").instantiate())
+		Nodes.ui.visible = false
 		return
 	bubble.label.text = texts[stage]
 	

@@ -1,13 +1,18 @@
 [gd_scene format=3 uid="uid://d2i0gj1k61835"]
 
 [ext_resource type="PackedScene" uid="uid://cqk7nr3fbe5o" path="res://units/scenes/bee.tscn" id="1_2epig"]
-[ext_resource type="Script" uid="uid://b63opu7k2y14q" path="res://structure/game.gd" id="1_p1ves"]
+[ext_resource type="Script" uid="uid://dgdtid53kw4kt" path="res://structure/game.gd" id="1_p1ves"]
 [ext_resource type="Script" uid="uid://ukk6mw3ml4gn" path="res://units/unit.gd" id="2_w5r8o"]
 [ext_resource type="PackedScene" uid="uid://doe6norionpkc" path="res://units/scenes/crab.tscn" id="3_ccnt6"]
 [ext_resource type="PackedScene" uid="uid://c3bdxaveqvyyn" path="res://units/scenes/meat.tscn" id="4_w5r8o"]
 [ext_resource type="PackedScene" uid="uid://bngshg2sjmuux" path="res://structure/floor.tscn" id="5_ccnt6"]
+[ext_resource type="PackedScene" uid="uid://ch3d3qx8l18tv" path="res://units/scenes/elephant.tscn" id="6_dix6q"]
 [ext_resource type="PackedScene" uid="uid://bdl3ig4n6gxgx" path="res://structure/Environment.tscn" id="6_u2mji"]
+[ext_resource type="PackedScene" uid="uid://bt3g4k22j16ej" path="res://units/scenes/penguin.tscn" id="7_nrl1j"]
+[ext_resource type="PackedScene" uid="uid://1wc265jfy88u" path="res://structure/honey_collectible.tscn" id="8_cdvfy"]
 [ext_resource type="Script" uid="uid://glceocqlv4o3" path="res://structure/instructions_panel.gd" id="8_qwh1x"]
+[ext_resource type="PackedScene" uid="uid://cbnfsbvn2c7gr" path="res://units/scenes/bumblebee.tscn" id="9_2gtup"]
+[ext_resource type="FontFile" uid="uid://b7ox3ixlb24g1" path="res://Assets/Fonts/Kenney Future Narrow.ttf" id="13_c0ge4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vu64o"]
 albedo_color = Color(1, 0.90000004, 0, 1)
@@ -38,6 +43,9 @@ material = SubResource("StandardMaterial3D_ggc3g")
 inner_radius = 2.1
 outer_radius = 2.5
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_nrl1j"]
+radius = 2.0
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_uv1g8"]
 size = Vector3(100, 1, 100)
 
@@ -52,39 +60,28 @@ script = ExtResource("1_p1ves")
 
 [node name="Bee" parent="Units" unique_id=544613324 instance=ExtResource("1_2epig")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8414166, 0, -4.5202312)
-id = "bee"
-ally = true
 
 [node name="Bee4" parent="Units" unique_id=1467829073 instance=ExtResource("1_2epig")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.452511, 0, -3.2201033)
-id = "bee"
-ally = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.793644, 0, 0.07978058)
 
 [node name="Bee5" parent="Units" unique_id=1367635193 instance=ExtResource("1_2epig")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.421274, 0, -5.9639435)
-id = "bee"
-ally = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9975681, 0, 4.8810453)
 
 [node name="Bee6" parent="Units" unique_id=2079351565 instance=ExtResource("1_2epig")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.6739225, 0, -1.1560163)
-id = "bee"
-ally = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.791436, 0, 0.21580982)
 
 [node name="Bee2" parent="Units" unique_id=368719653 instance=ExtResource("1_2epig")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.134755, 0, -4.3387833)
-id = "bee"
-ally = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.7410727, 0, -4.331373)
 
 [node name="Bee3" parent="Units" unique_id=663540903 instance=ExtResource("1_2epig")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.874092, 0, 5.5188828)
-id = "bee"
-ally = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6432521, 0, 4.7494655)
 
 [node name="BeeHive" type="CharacterBody3D" parent="Units" unique_id=1388160235]
 collision_layer = 4608
 collision_mask = 0
 script = ExtResource("2_w5r8o")
 id = "hive"
+ally = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Units/BeeHive" unique_id=1822252848]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
@@ -106,7 +103,14 @@ unique_name_in_owner = true
 visible = false
 mesh = SubResource("TorusMesh_uv1g8")
 
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Units/BeeHive" unique_id=2134980816]
+[node name="SelectArea" type="Area3D" parent="Units/BeeHive" unique_id=1305945364]
+collision_layer = 2048
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Units/BeeHive/SelectArea" unique_id=153173604]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("SphereShape3D_nrl1j")
 
 [node name="Crab" parent="Units" unique_id=1977050223 instance=ExtResource("3_ccnt6")]
 transform = Transform3D(-0.63636005, 0, 0.7713922, 0, 1, 0, -0.7713922, 0, -0.63636005, -10.993857, 0, 13.493238)
@@ -144,6 +148,42 @@ transform = Transform3D(-0.34932056, 0, -0.93700325, 0, 1, 0, 0.93700325, 0, -0.
 [node name="Meat" parent="Units" unique_id=1230019374 instance=ExtResource("4_w5r8o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75013053, 0, -11.113395)
 hp = 70
+
+[node name="Crab12" parent="Units" unique_id=1818721755 instance=ExtResource("6_dix6q")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, -48)
+
+[node name="Penguin" parent="Units" unique_id=386263323 instance=ExtResource("7_nrl1j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.576082, 0, 8.825165)
+
+[node name="Penguin2" parent="Units" unique_id=74853827 instance=ExtResource("7_nrl1j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.213463, 0, 26.203604)
+
+[node name="Penguin3" parent="Units" unique_id=1606471187 instance=ExtResource("7_nrl1j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.846779, 0, 36.972908)
+
+[node name="Penguin4" parent="Units" unique_id=2005945757 instance=ExtResource("7_nrl1j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.92342, 0, 19.516352)
+
+[node name="Penguin5" parent="Units" unique_id=1373365549 instance=ExtResource("7_nrl1j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.607563, 3.8146973e-06, -9.169628)
+
+[node name="Penguin6" parent="Units" unique_id=1975241694 instance=ExtResource("7_nrl1j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.040703, 3.8146973e-06, -19.210346)
+
+[node name="HoneyCollectible" parent="Units" unique_id=1869444858 instance=ExtResource("8_cdvfy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.897814, 0, -11.334334)
+
+[node name="HoneyCollectible2" parent="Units" unique_id=908730672 instance=ExtResource("8_cdvfy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.124346, 0, -14.080058)
+
+[node name="HoneyCollectible3" parent="Units" unique_id=1140734036 instance=ExtResource("8_cdvfy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.036962, 0, 4.2777147)
+
+[node name="HoneyCollectible4" parent="Units" unique_id=169101182 instance=ExtResource("8_cdvfy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.114659, 0, 9.677233)
+
+[node name="BumbleBee" parent="Units" unique_id=194509048 instance=ExtResource("9_2gtup")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.631565, 0, -2.7558937)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=940165178]
 collision_layer = 256
@@ -191,8 +231,10 @@ color = Color(0, 0, 0, 0.39215687)
 
 [node name="PanelContainer" type="PanelContainer" parent="Interface/InstructionsPanel" unique_id=634719994]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -408.0
+offset_top = -45.0
+offset_right = 158.0
+offset_bottom = 295.0
 
 [node name="MarginContainer" type="MarginContainer" parent="Interface/InstructionsPanel/PanelContainer" unique_id=80110816]
 layout_mode = 2
@@ -212,24 +254,102 @@ text = "[font_size=28][color=#FFD54F]Controls[/color][/font_size]
 [color=#64B5F6]Scroll Wheel[/color] Zoom camera
 
 [font_size=28][color=#FFD54F]Objective[/color][/font_size]
-Defeat the [color=#FF8A65][b]Big Elephant[/b][/color] within [color=#FF5252][b]3 minutes[/b][/color]."
+Defeat the [color=#FF8A65][b]Big Elephant[/b][/color] within [color=#FF5252][b]3 minutes[/b][/color].
+
+[font_size=28][color=#FFD54F]Tips[/color][/font_size]
+Collect [color=#FDD835][b]Honey Blobs[/b][/color] for [color=#FDD835][b]10 Honey[/b][/color] each.
+Sacrifice [color=#81C784][b]Bees[/b][/color] to kill animals and earn [color=#FDD835][b]Honey[/b][/color]. "
+fit_content = true
+
+[node name="PanelContainer2" type="PanelContainer" parent="Interface/InstructionsPanel" unique_id=1332505500]
+layout_mode = 0
+offset_left = 196.0
+offset_top = -191.0
+offset_right = 512.0
+offset_bottom = 264.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Interface/InstructionsPanel/PanelContainer2" unique_id=2142422909]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Label" type="RichTextLabel" parent="Interface/InstructionsPanel/PanelContainer2/MarginContainer" unique_id=727699594]
+custom_minimum_size = Vector2(300, 0)
+custom_maximum_size = Vector2(300, -1)
+layout_mode = 2
+bbcode_enabled = true
+text = "[font_size=28][color=#FFD54F]Bee[/color][/font_size]
+[color=#FDD835]Cost:[/color] [b]50 Honey[/b]
+[color=#EF5350]Damage:[/color] [b]10[/b]
+[color=#81C784]Carry Capacity:[/color] [b]20[/b]
+[color=#64B5F6]Speed:[/color] [b]4[/b]
+
+[font_size=28][color=#FFD54F]Bumblebee[/color][/font_size]
+[color=#FDD835]Cost:[/color] [b]100 Honey[/b]
+[color=#EF5350]Damage:[/color] [b]20[/b]
+[color=#81C784]Carry Capacity:[/color] [b]50[/b]
+[color=#64B5F6]Speed:[/color] [b]1.5[/b]
+
+[font_size=28][color=#FFD54F]Wasp[/color][/font_size]
+[color=#FDD835]Cost:[/color] [b]75 Honey[/b]
+[color=#EF5350]Damage:[/color] [b]20[/b]
+[color=#81C784]Carry Capacity:[/color] [b]20[/b]
+[color=#64B5F6]Speed:[/color] [b]3[/b]
+[color=#81C784]Ability:[/color] [b]Makes animals run away[/b]"
+fit_content = true
+
+[node name="PanelContainer3" type="PanelContainer" parent="Interface/InstructionsPanel" unique_id=300247202]
+layout_mode = 0
+offset_left = 672.0
+offset_top = -191.0
+offset_right = 988.0
+offset_bottom = 126.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Interface/InstructionsPanel/PanelContainer3" unique_id=1012517726]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Label" type="RichTextLabel" parent="Interface/InstructionsPanel/PanelContainer3/MarginContainer" unique_id=1428646645]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+bbcode_enabled = true
+text = "[font_size=28][color=#FFD54F]Crab[/color][/font_size]
+[color=#EF5350]HP:[/color] [b]30[/b]
+[color=#FDD835]Reward:[/color] [b]100 Honey[/b]
+
+[font_size=28][color=#FFD54F]Penguin[/color][/font_size]
+[color=#EF5350]HP:[/color] [b]50[/b]
+[color=#FDD835]Reward:[/color] [b]150 Honey[/b]
+
+[font_size=28][color=#FFD54F]Big Elephant[/color][/font_size]
+[color=#EF5350]HP:[/color] [b]500[/b]
+[color=#FDD835]Reward:[/color] [b]Victory[/b]"
 fit_content = true
 
 [node name="BtnBackground" type="ColorRect" parent="Interface/InstructionsPanel" unique_id=1509939402]
 layout_mode = 0
-offset_left = 460.0
-offset_top = 191.0
-offset_right = 537.0
-offset_bottom = 230.0
+offset_left = 293.0
+offset_top = 545.0
+offset_right = 493.0
+offset_bottom = 615.0
 mouse_filter = 2
 color = Color(0.71, 0.59308666, 0.17040001, 0.39215687)
 
 [node name="CloseBtn" type="Button" parent="Interface/InstructionsPanel" unique_id=136370410]
 layout_mode = 0
-offset_left = 464.0
-offset_top = 195.0
-offset_right = 532.0
-offset_bottom = 226.0
-text = "OK"
+offset_left = 297.0
+offset_top = 549.0
+offset_right = 489.0
+offset_bottom = 611.0
+theme_override_fonts/font = ExtResource("13_c0ge4")
+theme_override_font_sizes/font_size = 48
+text = " CLOSE"
+
+[node name="HoneyCollectibleTimer" type="Timer" parent="." unique_id=1562126264]
 
 [connection signal="pressed" from="Interface/ControlsBtn" to="Interface/InstructionsPanel" method="toggle"]

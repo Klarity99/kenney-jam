@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://1wc265jfy88u"]
+
+[ext_resource type="Script" uid="uid://c2k3yhbtvelt" path="res://structure/honey_collectible.gd" id="1_04cag"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vu64o"]
+albedo_color = Color(1, 0.8333334, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_uv1g8"]
+material = SubResource("StandardMaterial3D_vu64o")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_uv1g8"]
+
+[node name="HoneyCollectible" type="Node3D" unique_id=1869444858]
+script = ExtResource("1_04cag")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=750320769]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("SphereMesh_uv1g8")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=738481932]
+collision_layer = 512
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1062130254]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("SphereShape3D_uv1g8")

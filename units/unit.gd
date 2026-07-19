@@ -3,10 +3,11 @@ class_name Unit
 
 @onready var view := $View
 @onready var select_view := %SelectView
-@onready var nav_agent := %NavigationAgent3D
-@onready var reach_area: Area3D = $Reach
-@onready var seconds_timer: Timer = $SecondsTimer
+@onready var nav_agent := get_node_or_null("NavigationAgent3D")
+@onready var reach_area: Area3D = get_node_or_null("Reach")
+@onready var seconds_timer: Timer = get_node_or_null("SecondsTimer")
 @onready var floater := %FloaterControl
+@onready var behavior := get_node_or_null("Behavior")
 
 @export var move_speed := 5.0
 @export var id: String
@@ -21,7 +22,7 @@ var in_reach := []
 var hp_max := 10
 
 var carry := 0
-var carry_max := 15
+@export var carry_max := 20
 
 var state := "idle"
 var last_target_mine: Unit
@@ -36,12 +37,13 @@ func _ready() -> void:
 	if reach_area:
 		reach_area.body_entered.connect(on_body_entered)
 		reach_area.body_exited.connect(on_body_exited)
+		reach_area.area_entered.connect(on_area_entered)
 	if seconds_timer:
 		seconds_timer.timeout.connect(on_seconds_timeout)
 	if id == "hive":
 		Nodes.hive = self
 	if floater:
-		if id in ["bee", "hive"]:
+		if id in ["bee", "hive", "bumblebee"]:
 			floater.visible = false
 		else:
 			floater.visible = true
@@ -72,8 +74,17 @@ func dmg(amount: int) -> void:
 			meat_node.global_position = global_position
 	update_floater_hp()
 
+func select_blink():
+	select_view.visible = !select_view.visible
+	await get_tree().create_timer(0.2).timeout
+	select_view.visible = is_selected()
+
+func is_selected():
+	return Controls.selected_unit == self
+
 func update_floater_hp():
-	if id not in ["bee", "hive"]:
+	if id not in ["bee", "hive", "bumblebee"]:
+		floater.bar.visible = hp < hp_max
 		floater.bar.value = hp * 100.0 / float(hp_max)
 
 func animationLoop(animationName: String, loopFlag: bool):
@@ -89,7 +100,7 @@ func playAnimation(animationName: String) -> void:
 	if not animation:
 		return
 	if animation and animation.has_animation(animationName):
-		animation.play(animationName)
+		animation.play(animationName, -1.0, 1.0 if id != "elephant" else 0.01)
 
 func on_seconds_timeout():
 	if state == "mine" and carry < carry_max:
@@ -103,7 +114,8 @@ func on_seconds_timeout():
 
 func set_carry(new_carry):
 	carry = new_carry
-	if id in ["bee"]:
+	carry = min(carry, carry_max)
+	if id in ["bee", "bumblebee"]:
 		if carry == 0:
 			floater.visible = false
 		else:
@@ -113,7 +125,6 @@ func set_carry(new_carry):
 func command(pos: Vector3, command_type: String, new_target_unit = null):
 	target_unit = new_target_unit
 	target_floor = pos
-	print(target_floor)
 	change_state(command_type)
 
 func _physics_process(_delta: float) -> void:
@@ -198,14 +209,14 @@ func change_state(new_state) -> void:
 	state = new_state
 		
 func explode():
-	target_unit.dmg(10)
+	target_unit.dmg(hp) # hp for bees count as damage
 	queue_free()
 
 func on_body_entered(body: Node3D) -> void:
 	if body == self: return
 	in_reach.append(body)
 	if body == target_unit and state == "move_building":
-		Controls.meat += carry
+		Controls.set_honey(Controls.honey + carry)
 		set_carry(0)
 		if last_target_mine:
 			command(last_target_mine.global_position, "mine", last_target_mine)
@@ -220,7 +231,7 @@ func on_body_exited(body: Node3D) -> void:
 	if body == self: return
 	in_reach.erase(body)
 	if body == target_unit and state == "mine":
-		if name.contains("Bee") and !name.contains("Hive"):
+		if (name.contains("Bee") or name.contains("Bumblebee")) and !name.contains("Hive"):
 			animation.play("idle")
 		change_state("idle")
 
@@ -231,3 +242,8 @@ func _input_event(_camera: Camera3D, event: InputEvent, _event_position: Vector3
 		ui.visible = true
 		if ui:
 			ui.showDetails(state)
+
+func on_area_entered(area: Area3D):
+	if area.get_parent() is HoneyCollectible:
+		set_carry(carry + 10)
+		area.get_parent().queue_free()

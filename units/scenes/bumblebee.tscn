@@ -1,38 +1,41 @@
-[gd_scene format=3 uid="uid://cqk7nr3fbe5o"]
+[gd_scene format=3 uid="uid://cbnfsbvn2c7gr"]
 
-[ext_resource type="PackedScene" uid="uid://bvtp0s6wnj00c" path="res://units/unit.tscn" id="1_nwdxo"]
-[ext_resource type="Texture2D" uid="uid://c8fe5wldvut7q" path="res://Assets/Animals/colormap.png" id="2_juba4"]
-[ext_resource type="PackedScene" uid="uid://bamd6xcbauj86" path="res://Assets/Animals/Bee/animal-bee.fbx" id="2_sw13t"]
-[ext_resource type="ArrayMesh" uid="uid://dk11b3sedgs6o" path="res://Assets/Animals/Bee/animal-bee.obj" id="3_sw13t"]
+[ext_resource type="PackedScene" uid="uid://bvtp0s6wnj00c" path="res://units/unit.tscn" id="1_b3mf1"]
+[ext_resource type="PackedScene" uid="uid://bamd6xcbauj86" path="res://Assets/Animals/Bee/animal-bee.fbx" id="2_oqmue"]
+[ext_resource type="Texture2D" uid="uid://c8fe5wldvut7q" path="res://Assets/Animals/colormap.png" id="3_2p0ao"]
+[ext_resource type="ArrayMesh" uid="uid://dk11b3sedgs6o" path="res://Assets/Animals/Bee/animal-bee.obj" id="4_ojvtp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dfyp8"]
 transparency = 2
 alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
-albedo_texture = ExtResource("2_juba4")
+albedo_texture = ExtResource("3_2p0ao")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_nwdxo"]
 radius = 0.6
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_sw13t"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_b3mf1"]
 viewport_path = NodePath("FloaterSprite3D/SubViewport")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_sw13t"]
 radius = 1.0
 
-[node name="Bee" unique_id=544613324 node_paths=PackedStringArray("animation") instance=ExtResource("1_nwdxo")]
+[node name="BumbleBee" unique_id=544613324 node_paths=PackedStringArray("animation") instance=ExtResource("1_b3mf1")]
 collision_mask = 4096
-move_speed = 4.0
+move_speed = 2.0
+id = "bumblebee"
 animation = NodePath("View/animal-bee/AnimationPlayer")
+hp = 20
+carry_max = 50
 
-[node name="animal-bee" parent="View" parent_id_path=PackedInt32Array(1725393697) index="0" unique_id=1078006901 instance=ExtResource("2_sw13t")]
-transform = Transform3D(-0.5, 0, 4.371139e-08, 0, 0.5, 0, -4.371139e-08, 0, -0.5, 0, 0, 0)
+[node name="animal-bee" parent="View" parent_id_path=PackedInt32Array(1725393697) index="0" unique_id=1078006901 instance=ExtResource("2_oqmue")]
+transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 0, 0, 0)
 
 [node name="MeshInstance3D" parent="View" parent_id_path=PackedInt32Array(1725393697) index="1" unique_id=1431449746]
 transform = Transform3D(-0.5, 0, -4.371139e-08, 0, 0.5, 0, 4.371139e-08, 0, -0.5, 0, 0.7, 0)
 material_override = SubResource("StandardMaterial3D_dfyp8")
 cast_shadow = 0
-mesh = ExtResource("3_sw13t")
+mesh = ExtResource("4_ojvtp")
 
 [node name="CollisionShape3D" parent="." index="1" unique_id=1940204611]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
@@ -42,7 +45,7 @@ shape = SubResource("SphereShape3D_nwdxo")
 visible = true
 
 [node name="FloaterSprite3D" parent="." index="6" unique_id=1350929214]
-texture = SubResource("ViewportTexture_sw13t")
+texture = SubResource("ViewportTexture_b3mf1")
 
 [node name="CollisionShape3D" parent="SelectArea" parent_id_path=PackedInt32Array(69241534) index="0" unique_id=767091832]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.39999998, 0)

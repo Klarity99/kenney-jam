@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c8fe5wldvut7q" path="res://Assets/Animals/colormap.png" id="2_ivvgl"]
 [ext_resource type="PackedScene" uid="uid://bkecjo41ybljr" path="res://Assets/Animals/Penguin/animal-penguin.fbx" id="2_n3mfm"]
 [ext_resource type="ArrayMesh" uid="uid://dtlyrtcv2k1p3" path="res://Assets/Animals/Crab/animal-crab.obj" id="4_u2ve2"]
+[ext_resource type="Script" uid="uid://cx46bev2tmthj" path="res://units/behavior.gd" id="5_u2ve2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p0sbq"]
 transparency = 2
@@ -22,24 +23,29 @@ material = SubResource("StandardMaterial3D_vu64o")
 inner_radius = 0.8
 outer_radius = 1.4
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_k6g5l"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_n3mfm"]
 viewport_path = NodePath("FloaterSprite3D/SubViewport")
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_n3mfm"]
+radius = 2.0
+
 [node name="Penguin" unique_id=544613324 node_paths=PackedStringArray("animation") instance=ExtResource("1_n3mfm")]
-id = "crab"
-loot = 100
+move_speed = 3.0
+id = "penguin"
+loot = 150
 animation = NodePath("View/animal-penguin/AnimationPlayer")
-hp = 30
+hp = 50
 
 [node name="animal-penguin" parent="View" parent_id_path=PackedInt32Array(1725393697) index="0" unique_id=269273525 instance=ExtResource("2_n3mfm")]
+transform = Transform3D(-3.5, 0, -5.284853e-07, 0, 3.5, 0, 5.284853e-07, 0, -3.5, 0, 0, 0)
 
-[node name="body" parent="View/animal-penguin/animal-penguin/root" parent_id_path=PackedInt32Array(269273525, 640347715) index="1" unique_id=1306180185]
+[node name="body" parent="View/animal-penguin/animal-penguin/root" parent_id_path=PackedInt32Array(269273525, 1045084463) index="1" unique_id=1495881367]
 transform = Transform3D(0.9824088, 0.1732252, 0.06975646, -0.1736482, 0.9848077, 4.656613e-10, -0.06869671, -0.012113084, 0.9975641, 1.573182e-08, 0.18124998, -3.8083503e-08)
 
-[node name="wing-left" parent="View/animal-penguin/animal-penguin/root/body" index="0" unique_id=908363973]
+[node name="wing-left" parent="View/animal-penguin/animal-penguin/root/body" index="0" unique_id=906740336]
 transform = Transform3D(0.76604444, 0.6427876, 0, -0.6427876, 0.76604444, 0, 0, 0, 1, 0.625, 0.4625, 0.031078815)
 
-[node name="wing-right" parent="View/animal-penguin/animal-penguin/root/body" index="1" unique_id=1228186685]
+[node name="wing-right" parent="View/animal-penguin/animal-penguin/root/body" index="1" unique_id=1561891674]
 transform = Transform3D(0.76604444, -0.6427876, 0, 0.6427876, 0.76604444, 0, 0, 0, 1, -0.525, 0.4625, 0.031078815)
 
 [node name="MeshInstance3D" parent="View" parent_id_path=PackedInt32Array(1725393697) index="1" unique_id=1431449746]
@@ -55,6 +61,14 @@ shape = SubResource("SphereShape3D_p0sbq")
 mesh = SubResource("TorusMesh_p0sbq")
 
 [node name="FloaterSprite3D" parent="." index="6" unique_id=1350929214]
-texture = SubResource("ViewportTexture_k6g5l")
+texture = SubResource("ViewportTexture_n3mfm")
+
+[node name="CollisionShape3D" parent="SelectArea" parent_id_path=PackedInt32Array(69241534) index="0" unique_id=767091832]
+shape = SubResource("SphereShape3D_n3mfm")
+
+[node name="Behavior" type="Node3D" parent="." index="8" unique_id=1626578198]
+script = ExtResource("5_u2ve2")
+
+[node name="RandomWalk" type="Timer" parent="Behavior" index="0" unique_id=1765261915]
 
 [editable path="View/animal-penguin"]

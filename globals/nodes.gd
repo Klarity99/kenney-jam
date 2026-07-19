@@ -3,6 +3,7 @@ extends Node
 var main: Node3D
 var game: Node3D
 var menu: Node3D
+var ui
 
 var hive: Unit
 
