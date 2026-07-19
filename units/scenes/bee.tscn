@@ -24,7 +24,7 @@ radius = 1.0
 collision_mask = 4096
 move_speed = 4.0
 animation = NodePath("View/animal-bee/AnimationPlayer")
-carry_max = 30
+carry_max = 32
 
 [node name="animal-bee" parent="View" parent_id_path=PackedInt32Array(1725393697) index="0" unique_id=1078006901 instance=ExtResource("2_sw13t")]
 transform = Transform3D(-0.5, 0, 4.371139e-08, 0, 0.5, 0, -4.371139e-08, 0, -0.5, 0, 0, 0)

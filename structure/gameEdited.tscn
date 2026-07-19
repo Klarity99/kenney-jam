@@ -274,7 +274,7 @@ bbcode_enabled = true
 text = "[font_size=28][color=#FFD54F]Bee[/color][/font_size]
 [color=#FDD835]Cost:[/color] [b]50 Honey[/b]
 [color=#EF5350]Damage:[/color] [b]10[/b]
-[color=#81C784]Carry Capacity:[/color] [b]30[/b]
+[color=#81C784]Carry Capacity:[/color] [b]32[/b]
 [color=#64B5F6]Speed:[/color] [b]4[/b]
 
 [font_size=28][color=#FFD54F]Bumblebee[/color][/font_size]
@@ -286,7 +286,7 @@ text = "[font_size=28][color=#FFD54F]Bee[/color][/font_size]
 [font_size=28][color=#FFD54F]Wasp[/color][/font_size]
 [color=#FDD835]Cost:[/color] [b]75 Honey[/b]
 [color=#EF5350]Damage:[/color] [b]20[/b]
-[color=#81C784]Carry Capacity:[/color] [b]35[/b]
+[color=#81C784]Carry Capacity:[/color] [b]40[/b]
 [color=#64B5F6]Speed:[/color] [b]3[/b]
 [color=#81C784]Ability:[/color] [b]Makes animals run away[/b]"
 fit_content = true

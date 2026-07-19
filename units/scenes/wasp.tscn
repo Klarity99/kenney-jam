@@ -26,7 +26,7 @@ move_speed = 3.0
 id = "wasp"
 animation = NodePath("View/animal-bee/AnimationPlayer")
 hp = 20
-carry_max = 35
+carry_max = 40
 
 [node name="animal-bee" parent="View" parent_id_path=PackedInt32Array(1725393697) index="0" unique_id=1078006901 instance=ExtResource("2_cmjb1")]
 transform = Transform3D(-0.5, 0, 1.8874475e-07, 0, 0.5, 0, -7.54979e-08, 0, -1.25, 0, 0, 0)
