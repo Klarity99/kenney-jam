@@ -32,7 +32,7 @@ func showDetails(state : String) -> void:
 
 func _on_buy_bee_button_pressed() -> void:
 	$AudioStreamPlayer2D.play()
-	var costBee := 40
+	var costBee := 50
 	if Controls.honey < costBee:
 		return
 	if not beeSceneRef:
@@ -49,7 +49,7 @@ func _on_buy_bee_button_pressed() -> void:
 
 func _on_buy_bumblebee_button_pressed() -> void:
 	$AudioStreamPlayer2D.play()
-	var costBee := 80
+	var costBee := 100
 	if Controls.honey < costBee:
 		return
 	if not bumblebeeSceneRef:
@@ -66,7 +66,7 @@ func _on_buy_bumblebee_button_pressed() -> void:
 
 func _on_buy_wasp_button_pressed() -> void:
 	$AudioStreamPlayer2D.play()
-	var costBee := 60
+	var costBee := 75
 	if Controls.honey < costBee:
 		return
 	if not waspSceneRef:
