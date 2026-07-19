@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c8fe5wldvut7q" path="res://Assets/Animals/colormap.png" id="2_ivvgl"]
 [ext_resource type="PackedScene" uid="uid://bkecjo41ybljr" path="res://Assets/Animals/Penguin/animal-penguin.fbx" id="2_n3mfm"]
 [ext_resource type="ArrayMesh" uid="uid://dtlyrtcv2k1p3" path="res://Assets/Animals/Crab/animal-crab.obj" id="4_u2ve2"]
-[ext_resource type="Script" uid="uid://cx46bev2tmthj" path="res://units/behavior.gd" id="5_u2ve2"]
+[ext_resource type="PackedScene" uid="uid://bh80k32kopcob" path="res://units/behavior.tscn" id="5_u2ve2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p0sbq"]
 transparency = 2
@@ -20,14 +20,14 @@ albedo_color = Color(0, 1, 0.3833332, 0.39215687)
 
 [sub_resource type="TorusMesh" id="TorusMesh_p0sbq"]
 material = SubResource("StandardMaterial3D_vu64o")
-inner_radius = 0.8
-outer_radius = 1.4
+inner_radius = 1.7
+outer_radius = 2.2
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_n3mfm"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_k6g5l"]
 viewport_path = NodePath("FloaterSprite3D/SubViewport")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_n3mfm"]
-radius = 2.0
+radius = 2.5
 
 [node name="Penguin" unique_id=544613324 node_paths=PackedStringArray("animation") instance=ExtResource("1_n3mfm")]
 move_speed = 3.0
@@ -61,14 +61,13 @@ shape = SubResource("SphereShape3D_p0sbq")
 mesh = SubResource("TorusMesh_p0sbq")
 
 [node name="FloaterSprite3D" parent="." index="6" unique_id=1350929214]
-texture = SubResource("ViewportTexture_n3mfm")
+texture = SubResource("ViewportTexture_k6g5l")
 
 [node name="CollisionShape3D" parent="SelectArea" parent_id_path=PackedInt32Array(69241534) index="0" unique_id=767091832]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
 shape = SubResource("SphereShape3D_n3mfm")
 
-[node name="Behavior" type="Node3D" parent="." index="8" unique_id=1626578198]
-script = ExtResource("5_u2ve2")
-
-[node name="RandomWalk" type="Timer" parent="Behavior" index="0" unique_id=1765261915]
+[node name="Behavior" parent="." index="8" unique_id=1409495441 instance=ExtResource("5_u2ve2")]
+id = "penguin"
 
 [editable path="View/animal-penguin"]
