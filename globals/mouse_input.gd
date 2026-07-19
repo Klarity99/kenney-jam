@@ -47,7 +47,9 @@ func mouse_press(event :InputEventMouseButton) -> void:
 	print(floor_pos)
 	print(unit)
 	
-	if not floor_pos:
+	if not floor_pos and not unit:
 		return
+	if not floor_pos:
+		floor_pos = unit.global_position
 	
 	parse_mouse_press(event.button_index, unit, floor_pos)

@@ -20,8 +20,8 @@ albedo_color = Color(0, 1, 0.3833332, 0.39215687)
 
 [sub_resource type="TorusMesh" id="TorusMesh_p0sbq"]
 material = SubResource("StandardMaterial3D_vu64o")
-inner_radius = 0.8
-outer_radius = 1.4
+inner_radius = 8.0
+outer_radius = 9.0
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_xok0j"]
 viewport_path = NodePath("FloaterSprite3D/SubViewport")

@@ -4,7 +4,7 @@
 [ext_resource type="ArrayMesh" uid="uid://dtlyrtcv2k1p3" path="res://Assets/Animals/Crab/animal-crab.obj" id="2_32vo0"]
 [ext_resource type="PackedScene" uid="uid://c2nv5wf2eqlr4" path="res://Assets/Animals/Crab/animal-crab.fbx" id="2_j2ghb"]
 [ext_resource type="Texture2D" uid="uid://c8fe5wldvut7q" path="res://Assets/Animals/colormap.png" id="2_p0sbq"]
-[ext_resource type="Script" uid="uid://cx46bev2tmthj" path="res://units/behavior.gd" id="5_c6g40"]
+[ext_resource type="PackedScene" uid="uid://bh80k32kopcob" path="res://units/behavior.tscn" id="5_c6g40"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p0sbq"]
 transparency = 2
@@ -55,9 +55,7 @@ mesh = SubResource("TorusMesh_p0sbq")
 [node name="FloaterSprite3D" parent="." index="6" unique_id=1350929214]
 texture = SubResource("ViewportTexture_c6g40")
 
-[node name="Behavior" type="Node3D" parent="." index="7" unique_id=46667175]
-script = ExtResource("5_c6g40")
-
-[node name="RandomWalk" type="Timer" parent="Behavior" index="0" unique_id=170530958]
+[node name="Behavior" parent="." index="7" unique_id=1409495441 instance=ExtResource("5_c6g40")]
+id = "crab"
 
 [editable path="View/animal-crab"]
