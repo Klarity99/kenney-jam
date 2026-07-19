@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bdl3ig4n6gxgx" path="res://structure/Environment.tscn" id="6_u2mji"]
 [ext_resource type="PackedScene" uid="uid://bt3g4k22j16ej" path="res://units/scenes/penguin.tscn" id="7_nrl1j"]
 [ext_resource type="PackedScene" uid="uid://1wc265jfy88u" path="res://structure/honey_collectible.tscn" id="8_cdvfy"]
-[ext_resource type="Script" uid="uid://glceocqlv4o3" path="res://structure/instructions_panel.gd" id="8_qwh1x"]
+[ext_resource type="Script" uid="uid://b0x6hvhnldngv" path="res://structure/instructions_panel.gd" id="8_qwh1x"]
 [ext_resource type="FontFile" uid="uid://b7ox3ixlb24g1" path="res://Assets/Fonts/Kenney Future Narrow.ttf" id="13_c0ge4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vu64o"]
@@ -100,57 +100,75 @@ shape = SubResource("SphereShape3D_nrl1j")
 
 [node name="Crab" parent="Units" unique_id=1977050223 instance=ExtResource("3_ccnt6")]
 transform = Transform3D(-0.63636005, 0, 0.7713922, 0, 1, 0, -0.7713922, 0, -0.63636005, -10.993857, 0, 13.493238)
+gameWonScene = null
 
 [node name="Crab4" parent="Units" unique_id=826081175 instance=ExtResource("3_ccnt6")]
 transform = Transform3D(0.028815031, 0, 0.9995847, 0, 1, 0, -0.9995847, 0, 0.028815031, -27.713036, 0, -6.6569233)
+gameWonScene = null
 
 [node name="Crab5" parent="Units" unique_id=1091459337 instance=ExtResource("3_ccnt6")]
 transform = Transform3D(0.028815031, 0, 0.9995847, 0, 1, 0, -0.9995847, 0, 0.028815031, 23.309723, 0, -30.50064)
+gameWonScene = null
 
 [node name="Crab6" parent="Units" unique_id=1038715041 instance=ExtResource("3_ccnt6")]
 transform = Transform3D(0.028815031, 0, 0.9995847, 0, 1, 0, -0.9995847, 0, 0.028815031, -26.40813, 0, -33.822163)
+gameWonScene = null
 
 [node name="Crab7" parent="Units" unique_id=79002425 instance=ExtResource("3_ccnt6")]
 transform = Transform3D(0.028815031, 0, 0.9995847, 0, 1, 0, -0.9995847, 0, 0.028815031, -30.432507, 0, 24.624859)
+gameWonScene = null
 
 [node name="Crab8" parent="Units" unique_id=1438649871 instance=ExtResource("3_ccnt6")]
 transform = Transform3D(0.028815031, 0, 0.9995847, 0, 1, 0, -0.9995847, 0, 0.028815031, 2.0425148, 0, 22.192688)
+gameWonScene = null
 
 [node name="Crab9" parent="Units" unique_id=1516455151 instance=ExtResource("3_ccnt6")]
 transform = Transform3D(0.028815031, 0, 0.9995847, 0, 1, 0, -0.9995847, 0, 0.028815031, 26.76148, 0, 11.80009)
+gameWonScene = null
 
 [node name="Crab10" parent="Units" unique_id=1803475393 instance=ExtResource("3_ccnt6")]
 transform = Transform3D(0.028815031, 0, 0.9995847, 0, 1, 0, -0.9995847, 0, 0.028815031, 19.150026, 0, 33.65012)
+gameWonScene = null
 
 [node name="Crab11" parent="Units" unique_id=521784080 instance=ExtResource("3_ccnt6")]
 transform = Transform3D(0.028815031, 0, 0.9995847, 0, 1, 0, -0.9995847, 0, 0.028815031, 36.29093, 0, -13.82637)
+gameWonScene = null
 
 [node name="Crab2" parent="Units" unique_id=465752031 instance=ExtResource("3_ccnt6")]
 transform = Transform3D(0.6333881, 0, -0.7738344, 0, 1, 0, 0.7738344, 0, 0.6333881, 5.932967, 0, -15.379196)
+gameWonScene = null
 
 [node name="Crab3" parent="Units" unique_id=1010482667 instance=ExtResource("3_ccnt6")]
 transform = Transform3D(-0.34932056, 0, -0.93700325, 0, 1, 0, 0.93700325, 0, -0.34932056, 14.674031, 0, 2.9090772)
+gameWonScene = null
 
 [node name="Elephant" parent="Units" unique_id=1818721755 instance=ExtResource("6_dix6q")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, -48)
+gameWonScene = null
 
 [node name="Penguin" parent="Units" unique_id=386263323 instance=ExtResource("7_nrl1j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.576082, 0, 8.825165)
+gameWonScene = null
 
 [node name="Penguin2" parent="Units" unique_id=74853827 instance=ExtResource("7_nrl1j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.213463, 0, 26.203604)
+gameWonScene = null
 
 [node name="Penguin3" parent="Units" unique_id=1606471187 instance=ExtResource("7_nrl1j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.846779, 0, 36.972908)
+gameWonScene = null
 
 [node name="Penguin4" parent="Units" unique_id=2005945757 instance=ExtResource("7_nrl1j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.92342, 0, 19.516352)
+gameWonScene = null
 
 [node name="Penguin5" parent="Units" unique_id=1373365549 instance=ExtResource("7_nrl1j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.607563, 3.8146973e-06, -9.169628)
+gameWonScene = null
 
 [node name="Penguin6" parent="Units" unique_id=1975241694 instance=ExtResource("7_nrl1j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.040703, 3.8146973e-06, -19.210346)
+gameWonScene = null
 
 [node name="HoneyCollectible" parent="Units" unique_id=1869444858 instance=ExtResource("8_cdvfy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.332255, 0, 6.1652374)
@@ -347,6 +365,11 @@ text = " CLOSE"
 
 [node name="HoneyCollectibleTimer" type="Timer" parent="." unique_id=1562126264]
 
+[node name="GameOverTimer" type="Timer" parent="." unique_id=1869205221]
+wait_time = 180.0
+one_shot = true
+autostart = true
+
 [node name="StaticBody3D2" type="StaticBody3D" parent="." unique_id=2006325930]
 collision_layer = 64
 collision_mask = 0
@@ -355,3 +378,4 @@ collision_mask = 0
 shape = SubResource("SphereShape3D_vu64o")
 
 [connection signal="pressed" from="Interface/ControlsBtn" to="Interface/InstructionsPanel" method="toggle"]
+[connection signal="timeout" from="GameOverTimer" to="." method="_on_game_over_timer_timeout"]

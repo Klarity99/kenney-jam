@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://bpg0r0flff8r3"]
+
+[ext_resource type="Script" uid="uid://bxtykj5o6oc3g" path="res://structure/game_over_ui.gd" id="1_vti3x"]
+[ext_resource type="Texture2D" uid="uid://bardwof5knw0e" path="res://Assets/Interface/spritesheet-double.png" id="2_bqa46"]
+[ext_resource type="Texture2D" uid="uid://bxhhjvowc86ae" path="res://Assets/Interface/banner_classic_curtain.svg" id="2_dlpmy"]
+[ext_resource type="FontFile" uid="uid://cdr5lpo1kwk2l" path="res://Assets/Fonts/Kenney Pixel.ttf" id="3_dlpmy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p53dl"]
+atlas = ExtResource("2_bqa46")
+region = Rect2(896, 769, 128, 127)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ql4s8"]
+texture = SubResource("AtlasTexture_p53dl")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_goj6s"]
+atlas = ExtResource("2_bqa46")
+region = Rect2(640, 640, 128, 128)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p53dl"]
+texture = SubResource("AtlasTexture_goj6s")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g2rv1"]
+atlas = ExtResource("2_bqa46")
+region = Rect2(640, 513, 128, 127)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g2rv1"]
+texture = SubResource("AtlasTexture_g2rv1")
+
+[node name="VictoryUI" type="CanvasLayer" unique_id=922342694]
+script = ExtResource("1_vti3x")
+
+[node name="Control" type="Control" parent="." unique_id=539880865]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control" unique_id=2096840666]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -256.0
+offset_right = 256.0
+offset_bottom = 128.0
+grow_horizontal = 2
+texture = ExtResource("2_dlpmy")
+
+[node name="Label" type="Label" parent="Control/TextureRect" unique_id=1783720556]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_dlpmy")
+theme_override_font_sizes/font_size = 80
+text = "Game Won..."
+
+[node name="Button" type="Button" parent="Control" unique_id=306257683]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.5
+offset_top = -26.5
+offset_right = 100.5
+offset_bottom = 26.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.12225252, 0.122252144, 0.12225222, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_dlpmy")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxTexture_ql4s8")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_p53dl")
+theme_override_styles/hover = SubResource("StyleBoxTexture_g2rv1")
+text = "Restart?"
+
+[connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]

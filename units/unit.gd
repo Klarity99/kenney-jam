@@ -16,6 +16,8 @@ class_name Unit
 @export var loot: int
 @export var animation : AnimationPlayer
 
+@export var gameWonScene : PackedScene
+
 var in_reach := []
 
 @export var hp := 10
@@ -61,6 +63,10 @@ func dmg(amount: int) -> void:
 	if dead: return
 	hp -= amount
 	if hp <= 0:
+		if name == "Elephant":
+			gameWonScene = preload("res://structure/victory_ui.tscn")
+			var newScene = gameWonScene.instantiate()
+			get_tree().current_scene.get_node("Game").add_child(newScene)
 		dead = true
 		queue_free()
 		died.emit()
