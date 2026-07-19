@@ -10,8 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://bt3g4k22j16ej" path="res://units/scenes/penguin.tscn" id="7_nrl1j"]
 [ext_resource type="PackedScene" uid="uid://1wc265jfy88u" path="res://structure/honey_collectible.tscn" id="8_cdvfy"]
 [ext_resource type="Script" uid="uid://b0x6hvhnldngv" path="res://structure/instructions_panel.gd" id="8_qwh1x"]
-[ext_resource type="PackedScene" uid="uid://cbnfsbvn2c7gr" path="res://units/scenes/bumblebee.tscn" id="9_2gtup"]
-[ext_resource type="Script" uid="uid://glceocqlv4o3" path="res://structure/instructions_panel.gd" id="8_qwh1x"]
 [ext_resource type="FontFile" uid="uid://b7ox3ixlb24g1" path="res://Assets/Fonts/Kenney Future Narrow.ttf" id="13_c0ge4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vu64o"]
@@ -82,23 +80,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.7410727, 0, -4.331373)
 gameWonScene = null
 
 [node name="Bee3" parent="Units" unique_id=663540903 instance=ExtResource("1_2epig")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6432521, 0, 4.7494655)
-gameWonScene = null
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 3.593476, 0, 4.8783975)
+gameWonScene = null
 
-[node name="Bee4" parent="Units" unique_id=1467829073 instance=ExtResource("1_2epig")]
+[node name="Bee7" parent="Units" unique_id=1727786459 instance=ExtResource("1_2epig")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -5.041584, 0, 0.27838454)
 
-[node name="Bee5" parent="Units" unique_id=1367635193 instance=ExtResource("1_2epig")]
+[node name="Bee8" parent="Units" unique_id=71583525 instance=ExtResource("1_2epig")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -2.2455077, 0, -4.5228796)
 
-[node name="Bee6" parent="Units" unique_id=2079351565 instance=ExtResource("1_2epig")]
+[node name="Bee9" parent="Units" unique_id=989192232 instance=ExtResource("1_2epig")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 5.543496, 0, 0.14235622)
 
-[node name="Bee2" parent="Units" unique_id=368719653 instance=ExtResource("1_2epig")]
+[node name="Bee10" parent="Units" unique_id=970833585 instance=ExtResource("1_2epig")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -2.9890132, 0, 4.6895385)
 
-[node name="Bee3" parent="Units" unique_id=663540903 instance=ExtResource("1_2epig")]
+[node name="Bee11" parent="Units" unique_id=166698112 instance=ExtResource("1_2epig")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 3.3953125, 0, -4.3912992)
 
 [node name="BeeHive" type="CharacterBody3D" parent="Units" unique_id=1388160235]
