@@ -6,7 +6,7 @@ const HONEY_COLLECTIBLE := preload("res://structure/honey_collectible.tscn")
 
 func _ready() -> void:
 	Nodes.game = self
-	honey_collectible_timer.start(10.0)
+	honey_collectible_timer.start(8.0)
 	honey_collectible_timer.timeout.connect(on_honey_collectible_timer)
 	for i in 15:
 		on_honey_collectible_timer()

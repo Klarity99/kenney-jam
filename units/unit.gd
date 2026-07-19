@@ -75,8 +75,8 @@ func dmg(amount: int) -> void:
 			add_sibling(meat_node)
 			meat_node.hp = loot
 			meat_node.hp_max = loot
-			meat_node.view.scale *= loot / 200.0
-			meat_node.get_node("CollisionShape3D").shape.radius *= loot / 200.0
+			meat_node.view.scale *= loot / 250.0
+			meat_node.get_node("CollisionShape3D").shape.radius *= loot / 250.0
 			meat_node.global_position = global_position
 	update_floater_hp()
 
@@ -205,7 +205,7 @@ func change_state(new_state) -> void:
 				change_state("move_mine")
 				return
 			else:
-				seconds_timer.start(1.0)
+				seconds_timer.start(0.5)
 		"move_building":
 			if target_floor != null:
 				nav_agent.target_position = target_floor
@@ -263,7 +263,7 @@ func _input_event(_camera: Camera3D, event: InputEvent, _event_position: Vector3
 
 func on_area_entered(area: Area3D):
 	if area.get_parent() is HoneyCollectible:
-		set_carry(carry + 8)
+		set_carry(carry + 10)
 		area.get_parent().queue_free()
 
 

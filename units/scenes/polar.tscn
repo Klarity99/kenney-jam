@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bvvl13oio5s1x" path="res://Assets/Animals/Polar/animal-polar.fbx" id="2_cartg"]
 [ext_resource type="Texture2D" uid="uid://c8fe5wldvut7q" path="res://Assets/Animals/colormap.png" id="3_qvbuq"]
 [ext_resource type="ArrayMesh" uid="uid://dtlyrtcv2k1p3" path="res://Assets/Animals/Crab/animal-crab.obj" id="4_dxcc8"]
-[ext_resource type="Script" uid="uid://iyflmqdgfele" path="res://units/behavior.gd" id="5_fchxg"]
+[ext_resource type="PackedScene" uid="uid://bh80k32kopcob" path="res://units/behavior.tscn" id="5_cartg"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p0sbq"]
 transparency = 2
@@ -13,7 +13,7 @@ alpha_antialiasing_mode = 0
 albedo_texture = ExtResource("3_qvbuq")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_p0sbq"]
-radius = 12.0
+radius = 5.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vu64o"]
 albedo_color = Color(0, 1, 0.3833332, 0.39215687)
@@ -23,19 +23,22 @@ material = SubResource("StandardMaterial3D_vu64o")
 inner_radius = 0.8
 outer_radius = 1.4
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_5i5oo"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_cartg"]
+radius = 10.0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_cartg"]
 viewport_path = NodePath("FloaterSprite3D/SubViewport")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_5i5oo"]
-radius = 10.0
+radius = 7.0
 
 [node name="Polar" unique_id=544613324 node_paths=PackedStringArray("animation") instance=ExtResource("1_cartg")]
-move_speed = 0.01
+move_speed = 2.0
 id = "polar"
 ally = false
-loot = 500
+loot = 1000
 animation = NodePath("View/animal-polar/AnimationPlayer")
-hp = 200
+hp = 100
 
 [node name="animal-polar" parent="View" parent_id_path=PackedInt32Array(1725393697) index="0" unique_id=170721151 instance=ExtResource("2_cartg")]
 transform = Transform3D(-7.5, 0, 6.556708e-07, 0, 7.5, 0, -6.556708e-07, 0, -7.5, 0, 0, 0)
@@ -53,17 +56,17 @@ shape = SubResource("SphereShape3D_p0sbq")
 [node name="SelectView" parent="." index="2" unique_id=1425820741]
 mesh = SubResource("TorusMesh_p0sbq")
 
+[node name="CollisionShape3D" parent="Reach" parent_id_path=PackedInt32Array(48632682) index="0" unique_id=18216346]
+shape = SubResource("SphereShape3D_cartg")
+
 [node name="FloaterSprite3D" parent="." index="6" unique_id=1350929214]
-texture = SubResource("ViewportTexture_5i5oo")
-
-[node name="Behavior" type="Node3D" parent="." index="7" unique_id=46667175]
-script = ExtResource("5_fchxg")
-id = "elephant"
-
-[node name="RandomWalk" type="Timer" parent="Behavior" index="0" unique_id=170530958]
+texture = SubResource("ViewportTexture_cartg")
 
 [node name="CollisionShape3D" parent="SelectArea" parent_id_path=PackedInt32Array(69241534) index="0" unique_id=767091832]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.8, 0)
 shape = SubResource("SphereShape3D_5i5oo")
+
+[node name="Behavior" parent="." index="8" unique_id=1409495441 instance=ExtResource("5_cartg")]
+id = "polar"
 
 [editable path="View/animal-polar"]

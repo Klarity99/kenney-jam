@@ -22,7 +22,6 @@ radius = 1.0
 
 [node name="Bee" unique_id=544613324 node_paths=PackedStringArray("animation") instance=ExtResource("1_nwdxo")]
 collision_mask = 4096
-move_speed = 4.0
 animation = NodePath("View/animal-bee/AnimationPlayer")
 carry_max = 32
 

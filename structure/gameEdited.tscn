@@ -6,9 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://bngshg2sjmuux" path="res://structure/floor.tscn" id="5_ccnt6"]
 [ext_resource type="PackedScene" uid="uid://ch3d3qx8l18tv" path="res://units/scenes/elephant.tscn" id="6_dix6q"]
 [ext_resource type="PackedScene" uid="uid://bdl3ig4n6gxgx" path="res://structure/Environment.tscn" id="6_u2mji"]
+[ext_resource type="PackedScene" uid="uid://0su1s1m36dnn" path="res://units/scenes/polar.tscn" id="7_cdvfy"]
 [ext_resource type="PackedScene" uid="uid://bt3g4k22j16ej" path="res://units/scenes/penguin.tscn" id="7_nrl1j"]
 [ext_resource type="PackedScene" uid="uid://1wc265jfy88u" path="res://structure/honey_collectible.tscn" id="8_cdvfy"]
 [ext_resource type="Script" uid="uid://glceocqlv4o3" path="res://structure/instructions_panel.gd" id="8_qwh1x"]
+[ext_resource type="Script" uid="uid://br4v1ygr4dke0" path="res://structure/clock_label.gd" id="11_2gtup"]
 [ext_resource type="FontFile" uid="uid://b7ox3ixlb24g1" path="res://Assets/Fonts/Kenney Future Narrow.ttf" id="13_c0ge4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vu64o"]
@@ -99,57 +101,68 @@ shape = SubResource("SphereShape3D_nrl1j")
 
 [node name="Crab" parent="Units" unique_id=1977050223 instance=ExtResource("3_ccnt6")]
 transform = Transform3D(-0.63636005, 0, 0.7713922, 0, 1, 0, -0.7713922, 0, -0.63636005, -10.993857, 0, 13.493238)
-
-[node name="Crab4" parent="Units" unique_id=826081175 instance=ExtResource("3_ccnt6")]
-transform = Transform3D(0.028815031, 0, 0.9995847, 0, 1, 0, -0.9995847, 0, 0.028815031, -27.713036, 0, -6.6569233)
+gameWonScene = null
 
 [node name="Crab5" parent="Units" unique_id=1091459337 instance=ExtResource("3_ccnt6")]
-transform = Transform3D(0.028815031, 0, 0.9995847, 0, 1, 0, -0.9995847, 0, 0.028815031, 23.309723, 0, -30.50064)
+transform = Transform3D(0.028815031, 0, 0.9995847, 0, 1, 0, -0.9995847, 0, 0.028815031, 38.075653, 0, -30.02457)
+gameWonScene = null
 
 [node name="Crab6" parent="Units" unique_id=1038715041 instance=ExtResource("3_ccnt6")]
 transform = Transform3D(0.028815031, 0, 0.9995847, 0, 1, 0, -0.9995847, 0, 0.028815031, -26.40813, 0, -33.822163)
+gameWonScene = null
 
 [node name="Crab7" parent="Units" unique_id=79002425 instance=ExtResource("3_ccnt6")]
-transform = Transform3D(0.028815031, 0, 0.9995847, 0, 1, 0, -0.9995847, 0, 0.028815031, -30.432507, 0, 24.624859)
+transform = Transform3D(0.028815031, 0, 0.9995847, 0, 1, 0, -0.9995847, 0, 0.028815031, -29.115273, 0, 13.232325)
+gameWonScene = null
 
 [node name="Crab8" parent="Units" unique_id=1438649871 instance=ExtResource("3_ccnt6")]
-transform = Transform3D(0.028815031, 0, 0.9995847, 0, 1, 0, -0.9995847, 0, 0.028815031, 2.0425148, 0, 22.192688)
+transform = Transform3D(0.028815031, 0, 0.9995847, 0, 1, 0, -0.9995847, 0, 0.028815031, 8.330077, 0, 30.186188)
+gameWonScene = null
 
 [node name="Crab9" parent="Units" unique_id=1516455151 instance=ExtResource("3_ccnt6")]
-transform = Transform3D(0.028815031, 0, 0.9995847, 0, 1, 0, -0.9995847, 0, 0.028815031, 26.76148, 0, 11.80009)
+transform = Transform3D(0.028815031, 0, 0.9995847, 0, 1, 0, -0.9995847, 0, 0.028815031, 44.460457, 0, 45.611794)
+gameWonScene = null
 
 [node name="Crab10" parent="Units" unique_id=1803475393 instance=ExtResource("3_ccnt6")]
-transform = Transform3D(0.028815031, 0, 0.9995847, 0, 1, 0, -0.9995847, 0, 0.028815031, 19.150026, 0, 33.65012)
-
-[node name="Crab11" parent="Units" unique_id=521784080 instance=ExtResource("3_ccnt6")]
-transform = Transform3D(0.028815031, 0, 0.9995847, 0, 1, 0, -0.9995847, 0, 0.028815031, 36.29093, 0, -13.82637)
+transform = Transform3D(0.028815031, 0, 0.9995847, 0, 1, 0, -0.9995847, 0, 0.028815031, -26.1108, 0, 42.01553)
+gameWonScene = null
 
 [node name="Crab2" parent="Units" unique_id=465752031 instance=ExtResource("3_ccnt6")]
-transform = Transform3D(0.6333881, 0, -0.7738344, 0, 1, 0, 0.7738344, 0, 0.6333881, 5.932967, 0, -15.379196)
+transform = Transform3D(0.6333881, 0, -0.7738344, 0, 1, 0, 0.7738344, 0, 0.6333881, -21.190441, 0, -14.0061)
+gameWonScene = null
 
 [node name="Crab3" parent="Units" unique_id=1010482667 instance=ExtResource("3_ccnt6")]
-transform = Transform3D(-0.34932056, 0, -0.93700325, 0, 1, 0, 0.93700325, 0, -0.34932056, 14.674031, 0, 2.9090772)
+transform = Transform3D(-0.34932056, 0, -0.93700325, 0, 1, 0, 0.93700325, 0, -0.34932056, 19.054482, 0, 7.1477323)
+gameWonScene = null
+
+[node name="Crab4" parent="Units" unique_id=544613324 instance=ExtResource("3_ccnt6")]
+transform = Transform3D(-0.34932056, 0, -0.93700325, 0, 1, 0, 0.93700325, 0, -0.34932056, 43.81054, 0, -7.7952743)
+gameWonScene = null
 
 [node name="Elephant" parent="Units" unique_id=1818721755 instance=ExtResource("6_dix6q")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, -48)
-
-[node name="Penguin" parent="Units" unique_id=386263323 instance=ExtResource("7_nrl1j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.576082, 0, 8.825165)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, -56)
+move_speed = 0.125
+gameWonScene = null
 
 [node name="Penguin2" parent="Units" unique_id=74853827 instance=ExtResource("7_nrl1j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.213463, 0, 26.203604)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.545643, 0, 20.269003)
+gameWonScene = null
 
 [node name="Penguin3" parent="Units" unique_id=1606471187 instance=ExtResource("7_nrl1j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.846779, 0, 36.972908)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.6895447, 0, 40.70618)
+gameWonScene = null
 
 [node name="Penguin4" parent="Units" unique_id=2005945757 instance=ExtResource("7_nrl1j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.92342, 0, 19.516352)
+gameWonScene = null
 
 [node name="Penguin5" parent="Units" unique_id=1373365549 instance=ExtResource("7_nrl1j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.607563, 3.8146973e-06, -9.169628)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.715557, -3.8146973e-06, -8.27132)
+gameWonScene = null
 
 [node name="Penguin6" parent="Units" unique_id=1975241694 instance=ExtResource("7_nrl1j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.040703, 3.8146973e-06, -19.210346)
+gameWonScene = null
 
 [node name="HoneyCollectible" parent="Units" unique_id=1869444858 instance=ExtResource("8_cdvfy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.332255, 0, 6.1652374)
@@ -174,6 +187,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.024314, 0, 15.322962)
 
 [node name="HoneyCollectible8" parent="Units" unique_id=2067211055 instance=ExtResource("8_cdvfy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.925938, 0, 12.923965)
+
+[node name="Polar" parent="Units" unique_id=1871911544 instance=ExtResource("7_cdvfy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.3101, 0, 5.6057606)
+gameWonScene = null
+
+[node name="Polar2" parent="Units" unique_id=1954744898 instance=ExtResource("7_cdvfy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.229141, 7.6293945e-06, 28.06033)
+gameWonScene = null
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=940165178]
 collision_layer = 256
@@ -202,6 +223,36 @@ offset_top = 3.0
 offset_right = 76.0
 offset_bottom = 34.0
 text = "Controls"
+
+[node name="Clock" type="Control" parent="Interface" unique_id=1264148264]
+anchors_preset = 0
+offset_left = 1763.0
+offset_top = 17.0
+offset_right = 1803.0
+offset_bottom = 57.0
+
+[node name="PanelContainer" type="PanelContainer" parent="Interface/Clock" unique_id=272129193]
+layout_mode = 0
+offset_left = 45.0
+offset_top = -5.0
+offset_right = 140.0
+offset_bottom = 47.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Interface/Clock/PanelContainer" unique_id=218286317]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="ClockLabel" type="Label" parent="Interface/Clock/PanelContainer/MarginContainer" unique_id=1501945939]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("13_c0ge4")
+theme_override_font_sizes/font_size = 32
+text = "4:00"
+script = ExtResource("11_2gtup")
+
+[node name="Timer" type="Timer" parent="Interface/Clock/PanelContainer/MarginContainer/ClockLabel" unique_id=910215786]
 
 [node name="InstructionsPanel" type="Control" parent="Interface" unique_id=1375313519]
 anchors_preset = 0
@@ -245,7 +296,7 @@ text = "[font_size=28][color=#FFD54F]Controls[/color][/font_size]
 [color=#64B5F6]Scroll Wheel[/color] Zoom camera
 
 [font_size=28][color=#FFD54F]Objective[/color][/font_size]
-Defeat the [color=#FF8A65][b]Big Elephant[/b][/color] within [color=#FF5252][b]3 minutes[/b][/color].
+Defeat the [color=#FF8A65][b]Big Elephant[/b][/color] within [color=#FF5252][b]8 minutes[/b][/color].
 
 [font_size=28][color=#FFD54F]Tips[/color][/font_size]
 Collect [color=#FDD835][b]Honey Blobs[/b][/color] for [color=#FDD835][b]10 Honey[/b][/color] each.
@@ -275,19 +326,19 @@ text = "[font_size=28][color=#FFD54F]Bee[/color][/font_size]
 [color=#FDD835]Cost:[/color] [b]50 Honey[/b]
 [color=#EF5350]Damage:[/color] [b]10[/b]
 [color=#81C784]Carry Capacity:[/color] [b]32[/b]
-[color=#64B5F6]Speed:[/color] [b]4[/b]
+[color=#64B5F6]Speed:[/color] [b]5[/b]
 
 [font_size=28][color=#FFD54F]Bumblebee[/color][/font_size]
 [color=#FDD835]Cost:[/color] [b]100 Honey[/b]
 [color=#EF5350]Damage:[/color] [b]20[/b]
 [color=#81C784]Carry Capacity:[/color] [b]100[/b]
-[color=#64B5F6]Speed:[/color] [b]2[/b]
+[color=#64B5F6]Speed:[/color] [b]3[/b]
 
 [font_size=28][color=#FFD54F]Wasp[/color][/font_size]
 [color=#FDD835]Cost:[/color] [b]75 Honey[/b]
 [color=#EF5350]Damage:[/color] [b]20[/b]
 [color=#81C784]Carry Capacity:[/color] [b]40[/b]
-[color=#64B5F6]Speed:[/color] [b]3[/b]
+[color=#64B5F6]Speed:[/color] [b]5[/b]
 [color=#81C784]Ability:[/color] [b]Makes animals run away[/b]"
 fit_content = true
 
@@ -315,7 +366,11 @@ text = "[font_size=28][color=#FFD54F]Crab[/color][/font_size]
 
 [font_size=28][color=#FFD54F]Penguin[/color][/font_size]
 [color=#EF5350]HP:[/color] [b]50[/b]
-[color=#FDD835]Reward:[/color] [b]500 Honey[/b]
+[color=#FDD835]Reward:[/color] [b]450 Honey[/b]
+
+[font_size=28][color=#FFD54F]Polar Bear[/color][/font_size]
+[color=#EF5350]HP:[/color] [b]100[/b]
+[color=#FDD835]Reward:[/color] [b]1000 Honey[/b]
 
 [font_size=28][color=#FFD54F]Big Elephant[/color][/font_size]
 [color=#EF5350]HP:[/color] [b]500[/b]
@@ -344,7 +399,7 @@ text = " CLOSE"
 [node name="HoneyCollectibleTimer" type="Timer" parent="." unique_id=1562126264]
 
 [node name="GameOverTimer" type="Timer" parent="." unique_id=1869205221]
-wait_time = 180.0
+wait_time = 480.0
 one_shot = true
 autostart = true
 

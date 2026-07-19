@@ -59,6 +59,7 @@ monitorable = false
 shape = SubResource("SphereShape3D_5jwt3")
 
 [node name="SecondsTimer" type="Timer" parent="." unique_id=1044625127]
+wait_time = 0.5
 
 [node name="FloaterSprite3D" type="Sprite3D" parent="." unique_id=1350929214]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.5)

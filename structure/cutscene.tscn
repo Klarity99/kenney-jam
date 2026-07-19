@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://dd7uwle4kcw1m"]
 
-[ext_resource type="Script" uid="uid://njhksr1cmd6q" path="res://structure/cutscene.gd" id="1_ljsmw"]
+[ext_resource type="Script" uid="uid://db5wj25iptwv1" path="res://structure/cutscene.gd" id="1_ljsmw"]
 [ext_resource type="Texture2D" uid="uid://cw6lv1tm7uuyk" path="res://Assets/Environment/skybox-day.png" id="2_dkv7v"]
 [ext_resource type="PackedScene" uid="uid://dlcsdorivbi3j" path="res://Assets/Animals/Bee/animal_bee.tscn" id="3_25tqd"]
 [ext_resource type="PackedScene" uid="uid://vec7pc7kxnw7" path="res://structure/thought_bubble2.tscn" id="4_dkv7v"]
+[ext_resource type="PackedScene" uid="uid://b1acjfapj8pg" path="res://Assets/Animals/Elephant/animal-elephant.fbx" id="4_uvmv6"]
 [ext_resource type="FontFile" uid="uid://b7ox3ixlb24g1" path="res://Assets/Fonts/Kenney Future Narrow.ttf" id="6_div0m"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vu64o"]
@@ -57,7 +58,7 @@ environment = SubResource("Environment_uv1g8")
 [node name="animal-bee" parent="." unique_id=777331044 instance=ExtResource("3_25tqd")]
 transform = Transform3D(0.258819, 0, 0.9659258, 0, 1, 0, -0.9659258, 0, 0.258819, -8.414495, 1.1242985, -28.800703)
 
-[node name="animal-bee2" parent="." unique_id=1120432046 instance=ExtResource("3_25tqd")]
+[node name="animal-elephant" parent="." unique_id=1123530282 instance=ExtResource("4_uvmv6")]
 transform = Transform3D(-21.21321, 0, 21.213198, 0, 30, 0, -21.213198, 0, -21.21321, -14, 1.1242975, 20.097017)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1320529640]

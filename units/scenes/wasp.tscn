@@ -22,7 +22,6 @@ radius = 1.0
 
 [node name="Wasp" unique_id=544613324 node_paths=PackedStringArray("animation") instance=ExtResource("1_4inor")]
 collision_mask = 4096
-move_speed = 3.0
 id = "wasp"
 animation = NodePath("View/animal-bee/AnimationPlayer")
 hp = 20

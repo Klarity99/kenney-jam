@@ -21,6 +21,13 @@ func _ready() -> void:
 		bee_view.global_position = Vector3(randf_range(-30,30), 1, randf_range(-15,15))
 		bee_nodes.append(bee_view)
 		bee_speeds[bee_view] = randf_range(8.0,12.0)
+		
+		var animation := bee_view.get_node("AnimationPlayer")
+		var animationName := "run"
+		if animation.has_animation(animationName):
+			var currentAnimation = animation.get_animation(animationName)
+			currentAnimation.loop_mode = Animation.LOOP_LINEAR
+		bee_view.get_node("AnimationPlayer").play("run")
 	
 func on_play_btn():
 	$AudioStreamPlayer2D.play()
@@ -36,6 +43,13 @@ func spawn_bees():
 		bee_view.global_position = Vector3(-30 + randf_range(-5,5), 1, randf_range(-15,15))
 		bee_nodes.append(bee_view)
 		bee_speeds[bee_view] = randf_range(8.0,12.0)
+		
+		var animation := bee_view.get_node("AnimationPlayer")
+		var animationName := "run"
+		if animation.has_animation(animationName):
+			var currentAnimation = animation.get_animation(animationName)
+			currentAnimation.loop_mode = Animation.LOOP_LINEAR
+		bee_view.get_node("AnimationPlayer").play("run")
 		
 	
 
