@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ukk6mw3ml4gn" path="res://units/unit.gd" id="1_2atv2"]
 [ext_resource type="PackedScene" uid="uid://dl2xlwksfbns3" path="res://units/floater_control.tscn" id="2_gxe1c"]
+[ext_resource type="PackedScene" uid="uid://bpg0r0flff8r3" path="res://structure/victory_ui.tscn" id="2_hkgx6"]
 [ext_resource type="AudioStream" uid="uid://xt53xmkjk38a" path="res://Assets/Audio/impactGeneric_light_001.ogg" id="3_xx66i"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_uv1g8"]
@@ -30,6 +31,7 @@ collision_mask = 0
 script = ExtResource("1_2atv2")
 id = "bee"
 ally = true
+gameWonScene = ExtResource("2_hkgx6")
 
 [node name="View" type="Node3D" parent="." unique_id=1725393697]
 

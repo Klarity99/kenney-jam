@@ -23,14 +23,14 @@ material = SubResource("StandardMaterial3D_vu64o")
 inner_radius = 0.8
 outer_radius = 1.4
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_5i5oo"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_xok0j"]
 viewport_path = NodePath("FloaterSprite3D/SubViewport")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_5i5oo"]
 radius = 10.0
 
 [node name="Elephant" unique_id=544613324 node_paths=PackedStringArray("animation") instance=ExtResource("1_xok0j")]
-move_speed = 0.01
+move_speed = 0.25
 id = "elephant"
 ally = false
 loot = 1000
@@ -54,7 +54,7 @@ shape = SubResource("SphereShape3D_p0sbq")
 mesh = SubResource("TorusMesh_p0sbq")
 
 [node name="FloaterSprite3D" parent="." index="6" unique_id=1350929214]
-texture = SubResource("ViewportTexture_5i5oo")
+texture = SubResource("ViewportTexture_xok0j")
 
 [node name="Behavior" type="Node3D" parent="." index="7" unique_id=46667175]
 script = ExtResource("5_iv6qm")

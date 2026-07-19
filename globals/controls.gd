@@ -1,6 +1,6 @@
 extends Node
 
-var quick_start := false
+var quick_start := true
 
 var selected_unit: Unit
 var honey := 500
