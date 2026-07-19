@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://dh15esnifan0x"]
+
+[ext_resource type="PackedScene" uid="uid://bm8xlwrlwytpw" path="res://Assets/Animals/cheese.fbx" id="1_q6uqd"]
+[ext_resource type="Texture2D" uid="uid://bhgkd2xxmq5hv" path="res://Assets/Animals/Polar/colormap.png" id="2_m8u8l"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ijtlr"]
+albedo_texture = ExtResource("2_m8u8l")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u7abo"]
+albedo_texture = ExtResource("2_m8u8l")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gimmx"]
+albedo_texture = ExtResource("2_m8u8l")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dvpdv"]
+albedo_texture = ExtResource("2_m8u8l")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_moinh"]
+albedo_texture = ExtResource("2_m8u8l")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d0b7p"]
+albedo_texture = ExtResource("2_m8u8l")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6k4q1"]
+albedo_texture = ExtResource("2_m8u8l")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vhvxq"]
+albedo_texture = ExtResource("2_m8u8l")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h3h08"]
+albedo_texture = ExtResource("2_m8u8l")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nxda6"]
+albedo_texture = ExtResource("2_m8u8l")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_31lsf"]
+albedo_texture = ExtResource("2_m8u8l")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1yjf5"]
+albedo_texture = ExtResource("2_m8u8l")
+
+[node name="cheese" unique_id=1830377516 instance=ExtResource("1_q6uqd")]
+
+[node name="wedge" parent="cheese" parent_id_path=PackedInt32Array(654954803) index="0" unique_id=1877816966]
+material_override = SubResource("StandardMaterial3D_ijtlr")
+
+[node name="wedge_1" parent="cheese" parent_id_path=PackedInt32Array(654954803) index="1" unique_id=1923383602]
+material_override = SubResource("StandardMaterial3D_u7abo")
+
+[node name="wedge_2" parent="cheese" parent_id_path=PackedInt32Array(654954803) index="2" unique_id=949179844]
+material_override = SubResource("StandardMaterial3D_gimmx")
+
+[node name="wedge_3" parent="cheese" parent_id_path=PackedInt32Array(654954803) index="3" unique_id=1121050538]
+material_override = SubResource("StandardMaterial3D_dvpdv")
+
+[node name="wedge_4" parent="cheese" parent_id_path=PackedInt32Array(654954803) index="4" unique_id=1895370961]
+material_override = SubResource("StandardMaterial3D_moinh")
+
+[node name="wedge_5" parent="cheese" parent_id_path=PackedInt32Array(654954803) index="5" unique_id=1098542444]
+material_override = SubResource("StandardMaterial3D_d0b7p")
+
+[node name="wedge_6" parent="cheese" parent_id_path=PackedInt32Array(654954803) index="6" unique_id=1040265598]
+material_override = SubResource("StandardMaterial3D_6k4q1")
+
+[node name="wedge_7" parent="cheese" parent_id_path=PackedInt32Array(654954803) index="7" unique_id=781253449]
+material_override = SubResource("StandardMaterial3D_vhvxq")
+
+[node name="wedge_8" parent="cheese" parent_id_path=PackedInt32Array(654954803) index="8" unique_id=1105023326]
+material_override = SubResource("StandardMaterial3D_h3h08")
+
+[node name="wedge_9" parent="cheese" parent_id_path=PackedInt32Array(654954803) index="9" unique_id=1583574831]
+material_override = SubResource("StandardMaterial3D_nxda6")
+
+[node name="wedge_10" parent="cheese" parent_id_path=PackedInt32Array(654954803) index="10" unique_id=62930808]
+material_override = SubResource("StandardMaterial3D_31lsf")
+
+[node name="wedge_11" parent="cheese" parent_id_path=PackedInt32Array(654954803) index="11" unique_id=1545733956]
+material_override = SubResource("StandardMaterial3D_1yjf5")

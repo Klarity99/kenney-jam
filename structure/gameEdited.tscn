@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" uid="uid://dgdtid53kw4kt" path="res://structure/game.gd" id="1_p1ves"]
 [ext_resource type="Script" uid="uid://ukk6mw3ml4gn" path="res://units/unit.gd" id="2_w5r8o"]
+[ext_resource type="PackedScene" uid="uid://dh15esnifan0x" path="res://Assets/cheese.tscn" id="3_c0ge4"]
 [ext_resource type="PackedScene" uid="uid://doe6norionpkc" path="res://units/scenes/crab.tscn" id="3_ccnt6"]
+[ext_resource type="PackedScene" uid="uid://dl2xlwksfbns3" path="res://units/floater_control.tscn" id="4_ugekv"]
 [ext_resource type="PackedScene" uid="uid://bngshg2sjmuux" path="res://structure/floor.tscn" id="5_ccnt6"]
 [ext_resource type="PackedScene" uid="uid://ch3d3qx8l18tv" path="res://units/scenes/elephant.tscn" id="6_dix6q"]
 [ext_resource type="PackedScene" uid="uid://bdl3ig4n6gxgx" path="res://structure/Environment.tscn" id="6_u2mji"]
@@ -12,24 +14,6 @@
 [ext_resource type="Script" uid="uid://glceocqlv4o3" path="res://structure/instructions_panel.gd" id="8_qwh1x"]
 [ext_resource type="Script" uid="uid://br4v1ygr4dke0" path="res://structure/clock_label.gd" id="11_2gtup"]
 [ext_resource type="FontFile" uid="uid://b7ox3ixlb24g1" path="res://Assets/Fonts/Kenney Future Narrow.ttf" id="13_c0ge4"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vu64o"]
-albedo_color = Color(1, 0.90000004, 0, 1)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_uv1g8"]
-material = SubResource("StandardMaterial3D_vu64o")
-radius = 1.0
-height = 3.0
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_yt7f2"]
-material = SubResource("StandardMaterial3D_vu64o")
-radius = 1.6
-height = 4.0
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_vpj1x"]
-material = SubResource("StandardMaterial3D_vu64o")
-radius = 2.2
-height = 5.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_uv1g8"]
 radius = 2.1000001
@@ -44,6 +28,9 @@ outer_radius = 2.5
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_nrl1j"]
 radius = 2.0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ur73f"]
+viewport_path = NodePath("FloaterSprite3D/SubViewport")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uv1g8"]
 size = Vector3(100, 1, 100)
@@ -70,18 +57,6 @@ script = ExtResource("2_w5r8o")
 id = "hive"
 ally = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Units/BeeHive" unique_id=1822252848]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
-mesh = SubResource("CapsuleMesh_uv1g8")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Units/BeeHive" unique_id=377843785]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.29999995, 0)
-mesh = SubResource("CapsuleMesh_yt7f2")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Units/BeeHive" unique_id=1816344865]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.90000004, 0)
-mesh = SubResource("CapsuleMesh_vpj1x")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Units/BeeHive" unique_id=698276083]
 shape = SubResource("SphereShape3D_uv1g8")
 
@@ -98,6 +73,32 @@ monitoring = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Units/BeeHive/SelectArea" unique_id=153173604]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("SphereShape3D_nrl1j")
+
+[node name="View" type="Node3D" parent="Units/BeeHive" unique_id=1313689088]
+
+[node name="cheese2" parent="Units/BeeHive/View" unique_id=1830377516 instance=ExtResource("3_c0ge4")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, -0.101545155, 0)
+
+[node name="cheese3" parent="Units/BeeHive/View" unique_id=2114930388 instance=ExtResource("3_c0ge4")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0.69845486, 0)
+
+[node name="cheese4" parent="Units/BeeHive/View" unique_id=1091765036 instance=ExtResource("3_c0ge4")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 1.4984548, 0)
+
+[node name="FloaterSprite3D" type="Sprite3D" parent="Units/BeeHive" unique_id=861561197]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.5)
+visible = false
+billboard = 1
+double_sided = false
+no_depth_test = true
+texture = SubResource("ViewportTexture_ur73f")
+
+[node name="SubViewport" type="SubViewport" parent="Units/BeeHive/FloaterSprite3D" unique_id=123489688]
+transparent_bg = true
+size = Vector2i(256, 256)
+
+[node name="FloaterControl" parent="Units/BeeHive/FloaterSprite3D/SubViewport" unique_id=178591429 instance=ExtResource("4_ugekv")]
+unique_name_in_owner = true
 
 [node name="Crab" parent="Units" unique_id=1977050223 instance=ExtResource("3_ccnt6")]
 transform = Transform3D(-0.63636005, 0, 0.7713922, 0, 1, 0, -0.7713922, 0, -0.63636005, -10.993857, 0, 13.493238)
@@ -141,7 +142,6 @@ gameWonScene = null
 
 [node name="Elephant" parent="Units" unique_id=1818721755 instance=ExtResource("6_dix6q")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, -56)
-move_speed = 0.125
 gameWonScene = null
 
 [node name="Penguin2" parent="Units" unique_id=74853827 instance=ExtResource("7_nrl1j")]
@@ -233,9 +233,9 @@ offset_bottom = 57.0
 
 [node name="PanelContainer" type="PanelContainer" parent="Interface/Clock" unique_id=272129193]
 layout_mode = 0
-offset_left = 45.0
+offset_left = -435.0
 offset_top = -5.0
-offset_right = 140.0
+offset_right = -340.0
 offset_bottom = 47.0
 
 [node name="MarginContainer" type="MarginContainer" parent="Interface/Clock/PanelContainer" unique_id=218286317]
@@ -249,7 +249,7 @@ theme_override_constants/margin_bottom = 8
 layout_mode = 2
 theme_override_fonts/font = ExtResource("13_c0ge4")
 theme_override_font_sizes/font_size = 32
-text = "4:00"
+text = "8:00"
 script = ExtResource("11_2gtup")
 
 [node name="Timer" type="Timer" parent="Interface/Clock/PanelContainer/MarginContainer/ClockLabel" unique_id=910215786]
@@ -273,10 +273,10 @@ color = Color(0, 0, 0, 0.39215687)
 
 [node name="PanelContainer" type="PanelContainer" parent="Interface/InstructionsPanel" unique_id=634719994]
 layout_mode = 0
-offset_left = -408.0
-offset_top = -45.0
-offset_right = 158.0
-offset_bottom = 295.0
+offset_left = -519.0
+offset_top = -141.0
+offset_right = 47.0
+offset_bottom = 199.0
 
 [node name="MarginContainer" type="MarginContainer" parent="Interface/InstructionsPanel/PanelContainer" unique_id=80110816]
 layout_mode = 2
@@ -292,23 +292,24 @@ bbcode_enabled = true
 text = "[font_size=28][color=#FFD54F]Controls[/color][/font_size]
 [color=#81C784]Left-click[/color] Select objects
 [color=#81C784]Right-click[/color] Command selected units to [b]Move[/b], [b]Gather[/b] and [b]Attack[/b]
-[color=#64B5F6]WASD[/color] Move camera
+[color=#64B5F6]WASDQE[/color] Move camera
+[color=#81C784]Shift Right-click[/color] Queue Up commands
 [color=#64B5F6]Scroll Wheel[/color] Zoom camera
 
 [font_size=28][color=#FFD54F]Objective[/color][/font_size]
 Defeat the [color=#FF8A65][b]Big Elephant[/b][/color] within [color=#FF5252][b]8 minutes[/b][/color].
 
 [font_size=28][color=#FFD54F]Tips[/color][/font_size]
-Collect [color=#FDD835][b]Honey Blobs[/b][/color] for [color=#FDD835][b]10 Honey[/b][/color] each.
+Collect [color=#FDD835][b]Honey Blobs[/b][/color] for [color=#FDD835][b]12 Honey[/b][/color] each.
 Sacrifice [color=#81C784][b]Bees[/b][/color] to kill animals and earn [color=#FDD835][b]Honey[/b][/color]. "
 fit_content = true
 
 [node name="PanelContainer2" type="PanelContainer" parent="Interface/InstructionsPanel" unique_id=1332505500]
 layout_mode = 0
-offset_left = 196.0
-offset_top = -191.0
-offset_right = 512.0
-offset_bottom = 264.0
+offset_left = 80.0
+offset_top = -185.0
+offset_right = 396.0
+offset_bottom = 316.0
 
 [node name="MarginContainer" type="MarginContainer" parent="Interface/InstructionsPanel/PanelContainer2" unique_id=2142422909]
 layout_mode = 2
@@ -325,29 +326,30 @@ bbcode_enabled = true
 text = "[font_size=28][color=#FFD54F]Bee[/color][/font_size]
 [color=#FDD835]Cost:[/color] [b]50 Honey[/b]
 [color=#EF5350]Damage:[/color] [b]10[/b]
-[color=#81C784]Carry Capacity:[/color] [b]32[/b]
+[color=#81C784]Carry Capacity:[/color] [b]40[/b]
 [color=#64B5F6]Speed:[/color] [b]5[/b]
 
 [font_size=28][color=#FFD54F]Bumblebee[/color][/font_size]
 [color=#FDD835]Cost:[/color] [b]100 Honey[/b]
-[color=#EF5350]Damage:[/color] [b]20[/b]
-[color=#81C784]Carry Capacity:[/color] [b]100[/b]
+[color=#EF5350]Damage:[/color] [b]10[/b]
+[color=#81C784]Carry Capacity:[/color] [b]150[/b]
 [color=#64B5F6]Speed:[/color] [b]3[/b]
+[color=#81C784]Ability:[/color] [b]Double gather speed[/b]
 
 [font_size=28][color=#FFD54F]Wasp[/color][/font_size]
 [color=#FDD835]Cost:[/color] [b]75 Honey[/b]
 [color=#EF5350]Damage:[/color] [b]20[/b]
-[color=#81C784]Carry Capacity:[/color] [b]40[/b]
+[color=#81C784]Carry Capacity:[/color] [b]50[/b]
 [color=#64B5F6]Speed:[/color] [b]5[/b]
 [color=#81C784]Ability:[/color] [b]Makes animals run away[/b]"
 fit_content = true
 
 [node name="PanelContainer3" type="PanelContainer" parent="Interface/InstructionsPanel" unique_id=300247202]
 layout_mode = 0
-offset_left = 672.0
-offset_top = -191.0
-offset_right = 988.0
-offset_bottom = 126.0
+offset_left = 464.0
+offset_top = -178.0
+offset_right = 780.0
+offset_bottom = 247.0
 
 [node name="MarginContainer" type="MarginContainer" parent="Interface/InstructionsPanel/PanelContainer3" unique_id=1012517726]
 layout_mode = 2
@@ -362,36 +364,36 @@ layout_mode = 2
 bbcode_enabled = true
 text = "[font_size=28][color=#FFD54F]Crab[/color][/font_size]
 [color=#EF5350]HP:[/color] [b]30[/b]
-[color=#FDD835]Reward:[/color] [b]250 Honey[/b]
+[color=#FDD835]Reward:[/color] [b]300 Honey[/b]
 
 [font_size=28][color=#FFD54F]Penguin[/color][/font_size]
 [color=#EF5350]HP:[/color] [b]50[/b]
-[color=#FDD835]Reward:[/color] [b]450 Honey[/b]
+[color=#FDD835]Reward:[/color] [b]600 Honey[/b]
 
 [font_size=28][color=#FFD54F]Polar Bear[/color][/font_size]
 [color=#EF5350]HP:[/color] [b]100[/b]
-[color=#FDD835]Reward:[/color] [b]1000 Honey[/b]
+[color=#FDD835]Reward:[/color] [b]1400 Honey[/b]
 
 [font_size=28][color=#FFD54F]Big Elephant[/color][/font_size]
-[color=#EF5350]HP:[/color] [b]500[/b]
+[color=#EF5350]HP:[/color] [b]400[/b]
 [color=#FDD835]Reward:[/color] [b]Victory[/b]"
 fit_content = true
 
 [node name="BtnBackground" type="ColorRect" parent="Interface/InstructionsPanel" unique_id=1509939402]
 layout_mode = 0
-offset_left = 293.0
-offset_top = 545.0
-offset_right = 493.0
-offset_bottom = 615.0
+offset_left = 40.0
+offset_top = 500.0
+offset_right = 240.0
+offset_bottom = 570.0
 mouse_filter = 2
 color = Color(0.71, 0.59308666, 0.17040001, 0.39215687)
 
 [node name="CloseBtn" type="Button" parent="Interface/InstructionsPanel" unique_id=136370410]
 layout_mode = 0
-offset_left = 297.0
-offset_top = 549.0
-offset_right = 489.0
-offset_bottom = 611.0
+offset_left = 44.0
+offset_top = 504.0
+offset_right = 236.0
+offset_bottom = 566.0
 theme_override_fonts/font = ExtResource("13_c0ge4")
 theme_override_font_sizes/font_size = 48
 text = " CLOSE"

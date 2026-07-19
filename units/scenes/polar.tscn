@@ -19,9 +19,10 @@ radius = 5.0
 albedo_color = Color(0, 1, 0.3833332, 0.39215687)
 
 [sub_resource type="TorusMesh" id="TorusMesh_p0sbq"]
+resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_vu64o")
-inner_radius = 0.8
-outer_radius = 1.4
+inner_radius = 4.7
+outer_radius = 5.6
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_cartg"]
 radius = 10.0
@@ -30,13 +31,14 @@ radius = 10.0
 viewport_path = NodePath("FloaterSprite3D/SubViewport")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_5i5oo"]
+resource_local_to_scene = true
 radius = 7.0
 
 [node name="Polar" unique_id=544613324 node_paths=PackedStringArray("animation") instance=ExtResource("1_cartg")]
 move_speed = 2.0
 id = "polar"
 ally = false
-loot = 1000
+loot = 1250
 animation = NodePath("View/animal-polar/AnimationPlayer")
 hp = 100
 
@@ -50,7 +52,7 @@ cast_shadow = 0
 mesh = ExtResource("4_dxcc8")
 
 [node name="CollisionShape3D" parent="." index="1" unique_id=1940204611]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 shape = SubResource("SphereShape3D_p0sbq")
 
 [node name="SelectView" parent="." index="2" unique_id=1425820741]

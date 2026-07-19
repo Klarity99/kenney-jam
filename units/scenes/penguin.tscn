@@ -34,7 +34,7 @@ collision_mask = 64
 move_speed = 3.0
 id = "penguin"
 ally = false
-loot = 450
+loot = 600
 animation = NodePath("View/animal-penguin/AnimationPlayer")
 hp = 50
 

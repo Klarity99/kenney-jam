@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dlcsdorivbi3j" path="res://Assets/Animals/Bee/animal_bee.tscn" id="3_25tqd"]
 [ext_resource type="PackedScene" uid="uid://vec7pc7kxnw7" path="res://structure/thought_bubble2.tscn" id="4_dkv7v"]
 [ext_resource type="PackedScene" uid="uid://b1acjfapj8pg" path="res://Assets/Animals/Elephant/animal-elephant.fbx" id="4_uvmv6"]
+[ext_resource type="PackedScene" uid="uid://dh15esnifan0x" path="res://Assets/cheese.tscn" id="5_nnixg"]
 [ext_resource type="FontFile" uid="uid://b7ox3ixlb24g1" path="res://Assets/Fonts/Kenney Future Narrow.ttf" id="6_div0m"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vu64o"]
@@ -23,24 +24,6 @@ sky_material = SubResource("PanoramaSkyMaterial_0ttyb")
 [sub_resource type="Environment" id="Environment_uv1g8"]
 background_mode = 2
 sky = SubResource("Sky_vu64o")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ljsmw"]
-albedo_color = Color(1, 0.90000004, 0, 1)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_uv1g8"]
-material = SubResource("StandardMaterial3D_ljsmw")
-radius = 1.0
-height = 3.0
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_yt7f2"]
-material = SubResource("StandardMaterial3D_ljsmw")
-radius = 1.6
-height = 4.0
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_vpj1x"]
-material = SubResource("StandardMaterial3D_ljsmw")
-radius = 2.2
-height = 5.0
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_dkv7v"]
 viewport_path = NodePath("Sprite3D/SubViewport")
@@ -69,19 +52,16 @@ current = true
 transform = Transform3D(-0.722472, 0.17894754, 0.66784126, 4.158017e-09, 0.9659259, -0.25881907, -0.6914002, -0.18698955, -0.6978544, -4.1953545, 2.0268402, -31.61474)
 
 [node name="View" type="Node3D" parent="." unique_id=605360061]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -10.51886, 2, -34.33354)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -10.187418, 2.000002, -33.51323)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="View" unique_id=988302786]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
-mesh = SubResource("CapsuleMesh_uv1g8")
+[node name="cheese2" parent="View" unique_id=1830377516 instance=ExtResource("5_nnixg")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, -0.7547326, 0)
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="View" unique_id=962624355]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.29999995, 0)
-mesh = SubResource("CapsuleMesh_yt7f2")
+[node name="cheese3" parent="View" unique_id=1141436304 instance=ExtResource("5_nnixg")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0.34845483, 0)
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="View" unique_id=680861031]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.90000004, 0)
-mesh = SubResource("CapsuleMesh_vpj1x")
+[node name="cheese4" parent="View" unique_id=1867730897 instance=ExtResource("5_nnixg")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 1.1984546, 0)
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=1282992443]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 30, -21)

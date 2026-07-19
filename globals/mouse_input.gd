@@ -10,17 +10,18 @@ func parse_mouse_press(button_index: int, unit: Node3D, floor_pos: Vector3):
 			if unit:
 				Controls.select_unit(unit)
 		MOUSE_BUTTON_RIGHT:
-			if Controls.selected_unit and not Controls.selected_unit.building and Controls.selected_unit.ally:
+			if Controls.selected_unit and not Controls.selected_unit.building and Controls.selected_unit.ally and not Controls.selected_unit.building:
 				if unit:
 					unit.select_blink()
+				var add_to_queue := Input.is_physical_key_pressed(KEY_SHIFT)
 				if unit and not unit.ally:
-					Controls.selected_unit.command(floor_pos, "attack", unit)	
+					Controls.selected_unit.command(floor_pos, "attack", unit, true, add_to_queue)	
 				elif unit and unit.id == "hive":
-					Controls.selected_unit.command(floor_pos, "to_buidling", unit)
+					Controls.selected_unit.command(floor_pos, "to_buidling", unit, true, add_to_queue)
 				elif unit and unit.id == "meat":
-					Controls.selected_unit.command(floor_pos, "mine", unit)
+					Controls.selected_unit.command(floor_pos, "mine", unit, true, add_to_queue)
 				else:
-					Controls.selected_unit.command(floor_pos, "move")
+					Controls.selected_unit.command(floor_pos, "move", null, true, add_to_queue)
 
 func mouse_press(event :InputEventMouseButton) -> void:
 	if not Nodes.game: return

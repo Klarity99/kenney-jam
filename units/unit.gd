@@ -8,6 +8,7 @@ class_name Unit
 @onready var seconds_timer: Timer = get_node_or_null("SecondsTimer")
 @onready var floater := %FloaterControl
 @onready var behavior := get_node_or_null("Behavior")
+@onready var navigation_reset_timer := get_node_or_null("NavigationReset")
 
 @export var move_speed := 5.0
 @export var id: String
@@ -21,6 +22,7 @@ class_name Unit
 var in_reach := []
 
 @export var hp := 10
+@export var gather_modifier := 1
 var hp_max := 10
 
 var carry := 0
@@ -45,7 +47,7 @@ func _ready() -> void:
 	if id == "hive":
 		Nodes.hive = self
 	if floater:
-		if id in ["bee", "hive", "bumblebee"]:
+		if id in ["bee", "hive", "bumblebee", "wasp"]:
 			floater.visible = false
 		else:
 			floater.visible = true
@@ -54,6 +56,9 @@ func _ready() -> void:
 	animationLoop("run", true)
 	animationLoop("eat", true)
 	playAnimation("idle")
+	if navigation_reset_timer and ally:
+		navigation_reset_timer.start(1.0)
+		navigation_reset_timer.timeout.connect(on_navigation_reset_timer)
 
 signal died
 
@@ -75,8 +80,8 @@ func dmg(amount: int) -> void:
 			add_sibling(meat_node)
 			meat_node.hp = loot
 			meat_node.hp_max = loot
-			meat_node.view.scale *= loot / 250.0
-			meat_node.get_node("CollisionShape3D").shape.radius *= loot / 250.0
+#			meat_node.view.scale *= loot / 250.0
+#			meat_node.get_node("CollisionShape3D").shape.radius *= loot / 250.0
 			meat_node.global_position = global_position
 	update_floater_hp()
 
@@ -112,7 +117,7 @@ func on_seconds_timeout():
 	if state == "mine" and carry < carry_max:
 		if last_target_mine:
 			last_target_mine.dmg(1)
-			set_carry(carry + 1)
+			set_carry(carry + (1 * gather_modifier))
 			if carry >= carry_max or (not last_target_mine or last_target_mine.hp <= 0):
 				command(Nodes.hive.global_position, "to_buidling", Nodes.hive)
 		else:
@@ -128,7 +133,19 @@ func set_carry(new_carry):
 			floater.visible = true
 			floater.bar.value = carry * 100.0 / float(carry_max)
 
-func command(pos: Vector3, command_type: String, new_target_unit = null):
+var queue := []
+
+func command(pos: Vector3, command_type: String, new_target_unit = null, click := false, add_to_queue := false):
+	if click:
+		if add_to_queue and state != "idle":
+			queue.append({
+				"target_unit": new_target_unit,
+				"target_floor": pos,
+				"command_type": command_type
+			})
+			return
+		else:
+			queue = []
 	target_unit = new_target_unit
 	target_floor = pos
 	change_state(command_type)
@@ -185,6 +202,11 @@ func change_state(new_state) -> void:
 		"mine":
 			playAnimation("eat")
 	match new_state:
+		"idle":
+			if not queue.is_empty():
+				command(queue[0].target_floor, queue[0].command_type, queue[0].target_unit)
+				queue.pop_front()
+				return
 		"attack":
 			if target_unit not in in_reach:
 				change_state("move_attack")
@@ -200,7 +222,8 @@ func change_state(new_state) -> void:
 				command(Nodes.hive.global_position, "to_buidling", Nodes.hive)
 				return
 			last_target_mine = target_unit
-			last_target_mine.died.connect(target_mine_lost.bind(last_target_mine))
+			if not last_target_mine.died.is_connected(target_mine_lost):
+				last_target_mine.died.connect(target_mine_lost.bind(last_target_mine))
 			if target_unit not in in_reach:
 				change_state("move_mine")
 				return
@@ -222,6 +245,12 @@ func change_state(new_state) -> void:
 			if target_floor != null:
 				nav_agent.target_position = target_floor
 	state = new_state
+		
+func on_navigation_reset_timer():
+	match state:
+		"move_attack":
+			if target_unit:
+				nav_agent.target_position = target_unit.global_position
 		
 func to_building():
 	Controls.set_honey(Controls.honey + carry)
@@ -263,7 +292,7 @@ func _input_event(_camera: Camera3D, event: InputEvent, _event_position: Vector3
 
 func on_area_entered(area: Area3D):
 	if area.get_parent() is HoneyCollectible:
-		set_carry(carry + 10)
+		set_carry(carry + 12)
 		area.get_parent().queue_free()
 
 

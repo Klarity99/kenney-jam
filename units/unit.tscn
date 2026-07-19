@@ -87,4 +87,7 @@ shape = SubResource("SphereShape3D_gxe1c")
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1629000621]
 stream = ExtResource("3_xx66i")
 
+[node name="NavigationReset" type="Timer" parent="." unique_id=2089223241]
+autostart = true
+
 [connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]

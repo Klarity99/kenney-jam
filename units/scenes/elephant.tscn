@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b1acjfapj8pg" path="res://Assets/Animals/Elephant/animal-elephant.fbx" id="2_xok0j"]
 [ext_resource type="Texture2D" uid="uid://c8fe5wldvut7q" path="res://Assets/Animals/colormap.png" id="3_ck7gt"]
 [ext_resource type="ArrayMesh" uid="uid://dtlyrtcv2k1p3" path="res://Assets/Animals/Crab/animal-crab.obj" id="4_gpgsv"]
-[ext_resource type="Script" uid="uid://iyflmqdgfele" path="res://units/behavior.gd" id="5_iv6qm"]
+[ext_resource type="Script" uid="uid://cx46bev2tmthj" path="res://units/behavior.gd" id="5_iv6qm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p0sbq"]
 transparency = 2
@@ -30,12 +30,12 @@ viewport_path = NodePath("FloaterSprite3D/SubViewport")
 radius = 10.0
 
 [node name="Elephant" unique_id=544613324 node_paths=PackedStringArray("animation") instance=ExtResource("1_xok0j")]
-move_speed = 0.25
+move_speed = 0.08
 id = "elephant"
 ally = false
 loot = 1000
 animation = NodePath("View/animal-elephant/AnimationPlayer")
-hp = 500
+hp = 400
 
 [node name="animal-elephant" parent="View" parent_id_path=PackedInt32Array(1725393697) index="0" unique_id=137948652 instance=ExtResource("2_xok0j")]
 transform = Transform3D(-15, 0, -1.3113416e-06, 0, 15, 0, 1.3113416e-06, 0, -15, 0, 0, 0)
