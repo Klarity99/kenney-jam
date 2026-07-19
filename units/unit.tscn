@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ukk6mw3ml4gn" path="res://units/unit.gd" id="1_2atv2"]
 [ext_resource type="PackedScene" uid="uid://dl2xlwksfbns3" path="res://units/floater_control.tscn" id="2_gxe1c"]
+[ext_resource type="AudioStream" uid="uid://xt53xmkjk38a" path="res://Assets/Audio/impactGeneric_light_001.ogg" id="3_xx66i"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_uv1g8"]
 radius = 1.0
@@ -79,3 +80,8 @@ monitoring = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SelectArea" unique_id=767091832]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("SphereShape3D_gxe1c")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1629000621]
+stream = ExtResource("3_xx66i")
+
+[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]

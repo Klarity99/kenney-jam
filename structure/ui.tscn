@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://gxtap4sod2qy" path="res://units/scenes/wasp.tscn" id="4_8fitx"]
 [ext_resource type="Texture2D" uid="uid://bx414feijiawg" path="res://Assets/Interface/round_damaged_brown.svg" id="4_xjbw4"]
 [ext_resource type="Texture2D" uid="uid://bardwof5knw0e" path="res://Assets/Interface/spritesheet-double.png" id="5_o5bcd"]
+[ext_resource type="AudioStream" uid="uid://cumnxp4gmw4fp" path="res://Assets/Audio/click3.ogg" id="8_fguqv"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xjbw4"]
 texture = ExtResource("4_xjbw4")
@@ -131,6 +132,9 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_wyju8")
 theme_override_styles/hover = SubResource("StyleBoxTexture_o5bcd")
 text = "75
 Wasp"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=134746892]
+stream = ExtResource("8_fguqv")
 
 [connection signal="pressed" from="Control/PanelOfBeeHive/VBoxContainer/BuyBeeButton" to="." method="_on_buy_bee_button_pressed"]
 [connection signal="pressed" from="Control/PanelOfBeeHive/VBoxContainer/BuyBumblebeeButton" to="." method="_on_buy_bumblebee_button_pressed"]

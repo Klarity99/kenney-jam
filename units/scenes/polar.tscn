@@ -1,16 +1,16 @@
-[gd_scene format=3 uid="uid://ch3d3qx8l18tv"]
+[gd_scene format=3 uid="uid://0su1s1m36dnn"]
 
-[ext_resource type="PackedScene" uid="uid://bvtp0s6wnj00c" path="res://units/unit.tscn" id="1_xok0j"]
-[ext_resource type="PackedScene" uid="uid://b1acjfapj8pg" path="res://Assets/Animals/Elephant/animal-elephant.fbx" id="2_xok0j"]
-[ext_resource type="Texture2D" uid="uid://c8fe5wldvut7q" path="res://Assets/Animals/colormap.png" id="3_ck7gt"]
-[ext_resource type="ArrayMesh" uid="uid://dtlyrtcv2k1p3" path="res://Assets/Animals/Crab/animal-crab.obj" id="4_gpgsv"]
-[ext_resource type="Script" uid="uid://iyflmqdgfele" path="res://units/behavior.gd" id="5_iv6qm"]
+[ext_resource type="PackedScene" uid="uid://bvtp0s6wnj00c" path="res://units/unit.tscn" id="1_cartg"]
+[ext_resource type="PackedScene" uid="uid://bvvl13oio5s1x" path="res://Assets/Animals/Polar/animal-polar.fbx" id="2_cartg"]
+[ext_resource type="Texture2D" uid="uid://c8fe5wldvut7q" path="res://Assets/Animals/colormap.png" id="3_qvbuq"]
+[ext_resource type="ArrayMesh" uid="uid://dtlyrtcv2k1p3" path="res://Assets/Animals/Crab/animal-crab.obj" id="4_dxcc8"]
+[ext_resource type="Script" uid="uid://iyflmqdgfele" path="res://units/behavior.gd" id="5_fchxg"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p0sbq"]
 transparency = 2
 alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
-albedo_texture = ExtResource("3_ck7gt")
+albedo_texture = ExtResource("3_qvbuq")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_p0sbq"]
 radius = 12.0
@@ -20,8 +20,8 @@ albedo_color = Color(0, 1, 0.3833332, 0.39215687)
 
 [sub_resource type="TorusMesh" id="TorusMesh_p0sbq"]
 material = SubResource("StandardMaterial3D_vu64o")
-inner_radius = 8.0
-outer_radius = 9.0
+inner_radius = 0.8
+outer_radius = 1.4
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_5i5oo"]
 viewport_path = NodePath("FloaterSprite3D/SubViewport")
@@ -29,22 +29,22 @@ viewport_path = NodePath("FloaterSprite3D/SubViewport")
 [sub_resource type="SphereShape3D" id="SphereShape3D_5i5oo"]
 radius = 10.0
 
-[node name="Elephant" unique_id=544613324 node_paths=PackedStringArray("animation") instance=ExtResource("1_xok0j")]
+[node name="Polar" unique_id=544613324 node_paths=PackedStringArray("animation") instance=ExtResource("1_cartg")]
 move_speed = 0.01
-id = "elephant"
+id = "polar"
 ally = false
-loot = 1000
-animation = NodePath("View/animal-elephant/AnimationPlayer")
-hp = 500
+loot = 500
+animation = NodePath("View/animal-polar/AnimationPlayer")
+hp = 200
 
-[node name="animal-elephant" parent="View" parent_id_path=PackedInt32Array(1725393697) index="0" unique_id=137948652 instance=ExtResource("2_xok0j")]
-transform = Transform3D(-15, 0, -1.3113416e-06, 0, 15, 0, 1.3113416e-06, 0, -15, 0, 0, 0)
+[node name="animal-polar" parent="View" parent_id_path=PackedInt32Array(1725393697) index="0" unique_id=170721151 instance=ExtResource("2_cartg")]
+transform = Transform3D(-7.5, 0, 6.556708e-07, 0, 7.5, 0, -6.556708e-07, 0, -7.5, 0, 0, 0)
 
 [node name="MeshInstance3D" parent="View" parent_id_path=PackedInt32Array(1725393697) index="1" unique_id=1431449746]
 transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_p0sbq")
 cast_shadow = 0
-mesh = ExtResource("4_gpgsv")
+mesh = ExtResource("4_dxcc8")
 
 [node name="CollisionShape3D" parent="." index="1" unique_id=1940204611]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
@@ -57,7 +57,7 @@ mesh = SubResource("TorusMesh_p0sbq")
 texture = SubResource("ViewportTexture_5i5oo")
 
 [node name="Behavior" type="Node3D" parent="." index="7" unique_id=46667175]
-script = ExtResource("5_iv6qm")
+script = ExtResource("5_fchxg")
 id = "elephant"
 
 [node name="RandomWalk" type="Timer" parent="Behavior" index="0" unique_id=170530958]
@@ -66,4 +66,4 @@ id = "elephant"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, 0)
 shape = SubResource("SphereShape3D_5i5oo")
 
-[editable path="View/animal-elephant"]
+[editable path="View/animal-polar"]

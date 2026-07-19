@@ -23,6 +23,7 @@ func _ready() -> void:
 		bee_speeds[bee_view] = randf_range(8.0,12.0)
 	
 func on_play_btn():
+	$AudioStreamPlayer2D.play()
 	queue_free()
 	add_sibling(load("res://structure/cutscene.tscn").instantiate())
 	
