@@ -27,10 +27,11 @@ outer_radius = 1.4
 viewport_path = NodePath("FloaterSprite3D/SubViewport")
 
 [node name="Crab" unique_id=544613324 node_paths=PackedStringArray("animation") instance=ExtResource("1_8syei")]
+collision_mask = 64
 move_speed = 2.0
 id = "crab"
 ally = false
-loot = 100
+loot = 250
 animation = NodePath("View/animal-crab/AnimationPlayer")
 hp = 30
 

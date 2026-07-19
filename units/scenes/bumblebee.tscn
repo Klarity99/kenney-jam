@@ -26,7 +26,7 @@ move_speed = 2.0
 id = "bumblebee"
 animation = NodePath("View/animal-bee/AnimationPlayer")
 hp = 20
-carry_max = 50
+carry_max = 100
 
 [node name="animal-bee" parent="View" parent_id_path=PackedInt32Array(1725393697) index="0" unique_id=1078006901 instance=ExtResource("2_oqmue")]
 transform = Transform3D(-1, 0, 1.509958e-07, 0, 1, 0, -1.509958e-07, 0, -1, 0, 0, 0)

@@ -55,14 +55,17 @@ mouse_filter = 2
 
 [node name="LabelOfMoney" type="Label" parent="Control" unique_id=152921799]
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 23.0
-grow_horizontal = 0
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 1166.0
+offset_top = -48.0
+offset_right = 1310.0
+offset_bottom = -9.0
+grow_vertical = 0
 theme_override_fonts/font = ExtResource("3_7nl45")
 theme_override_font_sizes/font_size = 50
+text = "Honey: 20"
 
 [node name="PanelOfDetail" type="PanelContainer" parent="Control" unique_id=1599520041]
 layout_mode = 1

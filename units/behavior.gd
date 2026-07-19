@@ -9,7 +9,7 @@ var wasps := []
 func _ready() -> void:
 	if id == "elephant":
 		await get_tree().process_frame
-		get_parent().command(Nodes.hive.global_position, "move_building", Nodes.hive)
+		get_parent().command(Nodes.hive.global_position, "to_buidling", Nodes.hive)
 	else:
 		reset_timer()
 		random_walk_timer.timeout.connect(on_random_walk)
@@ -31,7 +31,7 @@ func on_random_walk():
 
 		if away_direction.length_squared() > 0.01:
 			away_direction = away_direction.normalized()
-			walk_goal = away_direction * randf_range(3.0, 6.0)
+			walk_goal = away_direction * randf_range(5.0, 10.0)
 		else:
 			walk_goal = Vector3.ZERO
 	else:
@@ -47,8 +47,8 @@ func on_random_walk():
 func on_body_entered(body: Node3D):
 	if body is Unit and body.id == "wasp":
 		wasps.append(body)
-		if random_walk_timer.time_left > 5.0:
-			random_walk_timer.start(5.0)
+		if random_walk_timer.time_left > 4.0:
+			random_walk_timer.start(1.0)
 
 func on_body_exited(body: Node3D):
 	if body is Unit and body.id == "wasp":

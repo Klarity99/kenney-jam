@@ -69,8 +69,8 @@ func dmg(amount: int) -> void:
 			add_sibling(meat_node)
 			meat_node.hp = loot
 			meat_node.hp_max = loot
-			meat_node.view.scale *= loot / 100.0
-			meat_node.get_node("CollisionShape3D").shape.radius *= loot / 100.0
+			meat_node.view.scale *= loot / 200.0
+			meat_node.get_node("CollisionShape3D").shape.radius *= loot / 200.0
 			meat_node.global_position = global_position
 	update_floater_hp()
 
@@ -83,7 +83,7 @@ func is_selected():
 	return Controls.selected_unit == self
 
 func update_floater_hp():
-	if id not in ["bee", "hive", "bumblebee"]:
+	if id not in ["bee", "hive", "bumblebee", "wasp"]:
 		floater.bar.visible = hp < hp_max
 		floater.bar.value = hp * 100.0 / float(hp_max)
 
@@ -108,14 +108,14 @@ func on_seconds_timeout():
 			last_target_mine.dmg(1)
 			set_carry(carry + 1)
 			if carry >= carry_max or (not last_target_mine or last_target_mine.hp <= 0):
-				command(Nodes.hive.global_position, "move_building", Nodes.hive)
+				command(Nodes.hive.global_position, "to_buidling", Nodes.hive)
 		else:
 			change_state("idle")
 
 func set_carry(new_carry):
 	carry = new_carry
 	carry = min(carry, carry_max)
-	if id in ["bee", "bumblebee"]:
+	if id in ["bee", "bumblebee", "wasp"]:
 		if carry == 0:
 			floater.visible = false
 		else:
@@ -153,7 +153,7 @@ func target_mine_lost(target_mine) -> void:
 	if target_mine != last_target_mine: return
 	if state in ["mine", "move_mine"]:
 		if carry > 0:
-			command(Nodes.hive.global_position, "move_building", Nodes.hive)
+			command(Nodes.hive.global_position, "to_buidling", Nodes.hive)
 		else:
 			change_state("idle")
 		
@@ -170,7 +170,7 @@ func change_state(new_state) -> void:
 			playAnimation("run")
 		"move_mine":
 			playAnimation("run")
-		"move_building":
+		"move_building", "to_buidling":
 			playAnimation("run")
 		"move_attack":
 			playAnimation("run")
@@ -184,9 +184,14 @@ func change_state(new_state) -> void:
 				change_state("move_attack")
 				return
 			explode()
+		"to_buidling":
+			if target_unit not in in_reach:
+				change_state("move_building")
+				return
+			to_building()
 		"mine":
 			if carry >= carry_max:
-				command(Nodes.hive.global_position, "move_building", Nodes.hive)
+				command(Nodes.hive.global_position, "to_buidling", Nodes.hive)
 				return
 			last_target_mine = target_unit
 			last_target_mine.died.connect(target_mine_lost.bind(last_target_mine))
@@ -196,17 +201,29 @@ func change_state(new_state) -> void:
 			else:
 				seconds_timer.start(1.0)
 		"move_building":
-			nav_agent.target_position = target_floor
+			if target_floor != null:
+				nav_agent.target_position = target_floor
 		"move_attack":
-			nav_agent.target_position = target_floor
+			if target_floor != null:
+				nav_agent.target_position = target_floor
 		"move_mine":
 			if carry >= carry_max:
-				command(Nodes.hive.global_position, "move_building", Nodes.hive)
+				command(Nodes.hive.global_position, "to_buidling", Nodes.hive)
 				return
-			nav_agent.target_position = target_floor
+			if target_floor != null:
+				nav_agent.target_position = target_floor
 		"move":
-			nav_agent.target_position = target_floor
+			if target_floor != null:
+				nav_agent.target_position = target_floor
 	state = new_state
+		
+func to_building():
+	Controls.set_honey(Controls.honey + carry)
+	set_carry(0)
+	if last_target_mine:
+		command(last_target_mine.global_position, "mine", last_target_mine)
+	else:
+		change_state("idle")
 		
 func explode():
 	target_unit.dmg(hp) # hp for bees count as damage
@@ -216,12 +233,7 @@ func on_body_entered(body: Node3D) -> void:
 	if body == self: return
 	in_reach.append(body)
 	if body == target_unit and state == "move_building":
-		Controls.set_honey(Controls.honey + carry)
-		set_carry(0)
-		if last_target_mine:
-			command(last_target_mine.global_position, "mine", last_target_mine)
-		else:
-			change_state("idle")
+		to_building()
 	if body == target_unit and state == "move_mine":
 		change_state("mine")
 	if body == target_unit and state == "move_attack":
@@ -231,7 +243,7 @@ func on_body_exited(body: Node3D) -> void:
 	if body == self: return
 	in_reach.erase(body)
 	if body == target_unit and state == "mine":
-		if (name.contains("Bee") or name.contains("Bumblebee")) and !name.contains("Hive"):
+		if (name.contains("Bee") or name.contains("Bumblebee") or name.contains("Wasp")) and !name.contains("Hive"):
 			animation.play("idle")
 		change_state("idle")
 
@@ -245,7 +257,7 @@ func _input_event(_camera: Camera3D, event: InputEvent, _event_position: Vector3
 
 func on_area_entered(area: Area3D):
 	if area.get_parent() is HoneyCollectible:
-		set_carry(carry + 10)
+		set_carry(carry + 8)
 		area.get_parent().queue_free()
 
 

@@ -16,7 +16,7 @@ func parse_mouse_press(button_index: int, unit: Node3D, floor_pos: Vector3):
 				if unit and not unit.ally:
 					Controls.selected_unit.command(floor_pos, "attack", unit)	
 				elif unit and unit.id == "hive":
-					Controls.selected_unit.command(floor_pos, "move_building", unit)
+					Controls.selected_unit.command(floor_pos, "to_buidling", unit)
 				elif unit and unit.id == "meat":
 					Controls.selected_unit.command(floor_pos, "mine", unit)
 				else:

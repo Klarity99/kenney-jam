@@ -23,7 +23,7 @@ func _ready() -> void:
 		visible = false
 
 func updateMoneyUI() -> void:
-	moneyLabel.text = "Money : " + str(Controls.honey)
+	moneyLabel.text = "Honey: " + str(Controls.honey)
 
 func showDetails(state : String) -> void:
 	panelOfBeeHive.visible = true
@@ -31,8 +31,8 @@ func showDetails(state : String) -> void:
 	$Control/PanelOfDetail/VBoxContainer/State.text = "State : " + state
 
 func _on_buy_bee_button_pressed() -> void:
-	$AudioSteamPlayer2D.play()
-	var costBee := 50
+	$AudioStreamPlayer2D.play()
+	var costBee := 40
 	if Controls.honey < costBee:
 		return
 	if not beeSceneRef:
@@ -48,8 +48,8 @@ func _on_buy_bee_button_pressed() -> void:
 		newBeeSpawn.global_position = Vector3.ZERO
 
 func _on_buy_bumblebee_button_pressed() -> void:
-	$AudioSteamPlayer2D.play()
-	var costBee := 100
+	$AudioStreamPlayer2D.play()
+	var costBee := 80
 	if Controls.honey < costBee:
 		return
 	if not bumblebeeSceneRef:
@@ -65,8 +65,8 @@ func _on_buy_bumblebee_button_pressed() -> void:
 		newBeeSpawn.global_position = Vector3.ZERO
 
 func _on_buy_wasp_button_pressed() -> void:
-	$AudioSteamPlayer2D.play()
-	var costBee := 75
+	$AudioStreamPlayer2D.play()
+	var costBee := 60
 	if Controls.honey < costBee:
 		return
 	if not waspSceneRef:

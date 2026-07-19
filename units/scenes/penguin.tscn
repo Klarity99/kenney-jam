@@ -23,16 +23,18 @@ material = SubResource("StandardMaterial3D_vu64o")
 inner_radius = 1.7
 outer_radius = 2.2
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_k6g5l"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_u2ve2"]
 viewport_path = NodePath("FloaterSprite3D/SubViewport")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_n3mfm"]
 radius = 2.5
 
 [node name="Penguin" unique_id=544613324 node_paths=PackedStringArray("animation") instance=ExtResource("1_n3mfm")]
+collision_mask = 64
 move_speed = 3.0
 id = "penguin"
-loot = 150
+ally = false
+loot = 500
 animation = NodePath("View/animal-penguin/AnimationPlayer")
 hp = 50
 
@@ -61,7 +63,7 @@ shape = SubResource("SphereShape3D_p0sbq")
 mesh = SubResource("TorusMesh_p0sbq")
 
 [node name="FloaterSprite3D" parent="." index="6" unique_id=1350929214]
-texture = SubResource("ViewportTexture_k6g5l")
+texture = SubResource("ViewportTexture_u2ve2")
 
 [node name="CollisionShape3D" parent="SelectArea" parent_id_path=PackedInt32Array(69241534) index="0" unique_id=767091832]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)

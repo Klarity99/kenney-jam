@@ -3,7 +3,7 @@ extends Node
 var quick_start := false
 
 var selected_unit: Unit
-var honey := 500
+var honey := 50
 
 signal honey_updated
 
